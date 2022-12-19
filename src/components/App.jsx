@@ -1,3 +1,5 @@
+import LoginPage from "pages/LoginPage";
+
 export const App = () => {
   return (
     <div
@@ -11,6 +13,7 @@ export const App = () => {
       }}
     >
       Test
+      <LoginPage />
     </div>
   );
 };
