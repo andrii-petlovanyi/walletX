@@ -42,6 +42,19 @@ const getTransaction = async () => {
   const { data } = await axios.get(`transactions/`);
   return data;
 };
+//Result:
+// [
+//   {
+//     id: 'string',
+//     transactionDate: 'string',
+//     type: 'INCOME',
+//     categoryId: 'string',
+//     userId: 'string',
+//     comment: 'string',
+//     amount: 0,
+//     balanceAfter: 0,
+//   },
+// ];
 
 const createTransaction = async body => {
   const { data } = await axios.post('transactions', body);
