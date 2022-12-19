@@ -16,7 +16,7 @@ const signUp = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await API.signUp(credentials);
+      const data = await API.signUp(credentials);
       token.set(data.token);
 
       return data;
@@ -32,7 +32,7 @@ const signUp = createAsyncThunk(
 
 const signIn = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
   try {
-    const { data } = await API.signIn(credentials);
+    const data = await API.signIn(credentials);
 
     token.set(data.token);
     return data;
@@ -71,7 +71,7 @@ const fetchCurrentUser = createAsyncThunk(
     token.set(persistedToken);
 
     try {
-      const { data } = await API.fetchCurrentUser();
+      const data = await API.fetchCurrentUser();
       return data;
     } catch (error) {
       console.log(error);
