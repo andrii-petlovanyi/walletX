@@ -4,7 +4,9 @@ import options from './transactions-operations';
 const initialState = {
   transactions: [],
   category: [],
+  summary: [],
   loadingTrans: false,
+  loadingSummary: false,
   loadingAddTrans: false,
   loadingCat: false,
 };
@@ -42,6 +44,16 @@ const transactionSlice = createSlice({
     },
     [options.getTransactions.rejected]: state => {
       state.loadingTrans = false;
+    },
+    [options.getTransactionSummary.pending]: state => {
+      state.loadingSummary = true;
+    },
+    [options.getTransactionSummary.fulfilled]: (state, { payload }) => {
+      state.summary = payload.reverse();
+      state.loadingSummary = false;
+    },
+    [options.getTransactionSummary.rejected]: state => {
+      state.loadingSummary = false;
     },
   },
 });

@@ -45,10 +45,29 @@ const getCategory = createAsyncThunk('category/get', async (_, thunkAPI) => {
   }
 });
 
+const getTransactionSummary = createAsyncThunk(
+  'transactionSummary/get',
+  async (params, thunkAPI) => {
+    try {
+      const { data } = await API.getTransactionSummary(params);
+      return data;
+    } catch (error) {
+      console.log(error);
+
+      const {
+        status,
+        data: { message },
+      } = error.response;
+      return thunkAPI.rejectWithValue({ status, message });
+    }
+  }
+);
+
 const operations = {
   getCategory,
   createTransaction,
   getTransactions,
+  getTransactionSummary,
 };
 
 export default operations;
