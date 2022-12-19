@@ -1,4 +1,4 @@
-import { ModalWindow } from './index';
+
 
 export const App = () => {
   return (
@@ -12,7 +12,7 @@ export const App = () => {
         color: '#010101',
       }}
     >
-      
+      Test
     </div>
   );
 };
