@@ -1,40 +1,26 @@
-import { useState } from 'react';
-import Datetime from 'react-datetime';
-import 'react-datetime/css/react-datetime.css';
-
+import DatetimePicker from './DatetimePicker';
 import {
   BalanceDateWrapper,
   Button,
-  DatetimeWrapper,
   Input,
   ModalTitle,
   ModalWrapper,
-  SwitchWrapper,
-  Textarea,
-  TextExpense,
-  TextIncome,
+  TextareaComment,
 } from './styled';
+import SwitchModal from './SwitchModal';
 
 const ModalWindow = () => {
-  const [date, setDate] = useState([new Date()]);
   return (
     <ModalWrapper>
       <ModalTitle>Add transaction</ModalTitle>
-      <SwitchWrapper>
-        <TextIncome>Income</TextIncome>
-        <TextExpense>Expense</TextExpense>
-      </SwitchWrapper>
+      <SwitchModal />
       <BalanceDateWrapper>
         <Input placeholder="0.00" />
-        <DatetimeWrapper>
-          <Datetime dateFormat="DD.MM.YYYY" timeFormat={false} value={date} />
-          <svg width="24" height="24">
-            <use href="symbol-defs.svg#icon-baseline-date_range-24px-1"></use>
-          </svg>
-        </DatetimeWrapper>
+        <DatetimePicker />
       </BalanceDateWrapper>
 
-      <Textarea placeholder="Comment"></Textarea>
+      <TextareaComment placeholder="Comment"></TextareaComment>
+
       <Button>Add</Button>
       <Button>Cancel</Button>
     </ModalWrapper>
