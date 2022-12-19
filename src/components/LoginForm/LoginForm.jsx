@@ -1,23 +1,24 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
 import loginWalletDesk from '../../images/login/loginWalletDesk.svg';
 import loginEmail from '../../images/login/loginEmail.svg';
 import loginPassword from '../../images/login/loginPassword.svg'
+import operations from '../../redux/auth/auth-operations';
 
-// import { useDispatch } from 'react-redux';
-
-// import { signIn } from 'redux/userSlice/operations';
 
 function LoginForm({ isLoading }) {
-    const [formData, setFormData] = useState({
+    const { signIn } = operations;
+    const [credentials, setCredentials] = useState({
         email: '',
         password: '',
     });
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
     const onChange = e => {
         const { name, value } = e.target;
 
-        setFormData(prevState => ({
+        setCredentials(prevState => ({
             ...prevState,
             [name]: value,
         }));
@@ -26,17 +27,17 @@ function LoginForm({ isLoading }) {
     const onSubmit = e => {
         e.preventDefault();
 
-        // const finalData = {
-        //     email: formData.email,
-        //     password: formData.password,
-        // };
+        const finalData = {
+            email: credentials.email,
+            password: credentials.password,
+        };
 
-        // dispatch(signIn(finalData));
+        dispatch(signIn(finalData));
         reset();
     };
 
     const reset = () => {
-        setFormData({
+        setCredentials({
             email: '',
             password: '',
         });
@@ -44,15 +45,17 @@ function LoginForm({ isLoading }) {
 
     return (
         <form onSubmit={onSubmit}>
-            <img src={loginWalletDesk} alt="wallet" width="40" />
-            <h2>Wallet</h2>
+            <div>
+                <img src={loginWalletDesk} alt="wallet" width="40" />
+                <h2>Wallet</h2>
+            </div>
             <label htmlFor="">
                 <img src={loginEmail} alt="lock" />
                 <input
                     type="text"
                     name="email"
                     onChange={onChange}
-                    value={formData.email}
+                    value={credentials.email}
                     placeholder='E-mail'
                     required
                 />
@@ -64,7 +67,7 @@ function LoginForm({ isLoading }) {
                     type="password"
                     name="password"
                     onChange={onChange}
-                    value={formData.password}
+                    value={credentials.password}
                     placeholder='Password'
                     required
                 />
