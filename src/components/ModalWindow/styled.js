@@ -78,6 +78,11 @@ export const TextExpense = styled.p`
 `;
 
 export const Input = styled.input`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-bottom: 40px;
   width: 100%;
   max-width: 280px;
   height: 32px;
@@ -92,6 +97,17 @@ export const Input = styled.input`
   border-right: inherit;
   border-left: inherit;
   border-bottom: 1px solid #e0e0e0;
+  @media ${device.tablet} {
+    max-width: 190px;
+  }
+`;
+
+export const BalanceDateWrapper = styled.div`
+  @media ${device.tablet} {
+    display: flex;
+    justify-content: baseline;
+    /* align-items: center; */
+  }
 `;
 
 export const Textarea = styled.textarea`
@@ -141,13 +157,28 @@ export const Button = styled.button`
   }
 `;
 
-// export const Datetime = styled(Datetime)`
-//   width: 280px;
-//   height: 32px;
-//   font-family: 'Circe';
-//   font-style: normal;
-//   font-weight: 400;
-//   font-size: 18px;
-//   line-height: 1.5;
-//   color: var(--main-text-cl);
-// `;
+export const DatetimeWrapper = styled.label`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & input {
+    width: '280px';
+    height: '32px';
+    font-family: 'Circe';
+    font-style: 'normal';
+    font-weight: '400';
+    font-size: '18px';
+    line-height: '1.5';
+    color: 'var(--main-text-cl)';
+    border-top: 'inherit';
+    border-right: 'inherit';
+    border-left: 'inherit';
+    border-bottom: '1px solid #e0e0e0';
+    @media ${device.tablet} {
+      width: 180px;
+      height: 32px;
+      /* padding: 10px 8px; */
+    }
+  }
+`;

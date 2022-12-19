@@ -3,7 +3,9 @@ import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
 
 import {
+  BalanceDateWrapper,
   Button,
+  DatetimeWrapper,
   Input,
   ModalTitle,
   ModalWrapper,
@@ -22,28 +24,16 @@ const ModalWindow = () => {
         <TextIncome>Income</TextIncome>
         <TextExpense>Expense</TextExpense>
       </SwitchWrapper>
-      <Input placeholder="0.00" />
-      <Datetime
-        dateFormat="DD.MM.YYYY"
-        timeFormat={false}
-        inputProps={{
-          style: {
-            width: '280px',
-            height: '32px',
-            fontFamily: 'Circe',
-            fontStyle: 'normal',
-            fontWeight: '400',
-            fontSize: '18px',
-            lineHeight: '1.5',
-            color: 'var(--main-text-cl)',
-            borderTop: 'inherit',
-            borderRight: 'inherit',
-            borderLeft: 'inherit',
-            borderBottom: '1px solid #e0e0e0',
-          },
-        }}
-        value={date}
-      />
+      <BalanceDateWrapper>
+        <Input placeholder="0.00" />
+        <DatetimeWrapper>
+          <Datetime dateFormat="DD.MM.YYYY" timeFormat={false} value={date} />
+          <svg width="24" height="24">
+            <use href="symbol-defs.svg#icon-baseline-date_range-24px-1"></use>
+          </svg>
+        </DatetimeWrapper>
+      </BalanceDateWrapper>
+
       <Textarea placeholder="Comment"></Textarea>
       <Button>Add</Button>
       <Button>Cancel</Button>
