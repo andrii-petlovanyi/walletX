@@ -11,6 +11,7 @@ const Balance = () => {
         <Text>Balance</Text>
       </CurrentBalance>
     </BalanceWrap>
+
   );
 };
 export default Balance;
