@@ -7,10 +7,10 @@ export const MainContainer = styled.tr`
 
 export const DropDown = styled.select`
   box-sizing: border-box;
- 
-  left: 869px;
-  top: 177px;
 
+  // left: 869px;
+  // top: 177px;
+  width: 181px;
   border: 1px solid #000000;
   border-radius: 30px;
   padding: 12px 0 14px 20px;
@@ -28,7 +28,7 @@ export const DropDownTitle = styled.span`
 
 export const DropDownWrapper = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 32px;
 `;
@@ -39,17 +39,20 @@ export const TabItem = styled.tr`
 `;
 
 export const Table = styled.table`
+  width: 100%;
   padding-top: 20px;
   padding-bottom: 33px;
-  
 `;
 
-export const TableHeader = styled.thead`
+export const TableHeader = styled.th`
   background: #ffffff;
   border-radius: 30px;
-  paddind: 16px 28px;
-`;
+  padding: 15px;
 
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+`;
 
 export const TableData = styled.td`
   padding: 15px;
