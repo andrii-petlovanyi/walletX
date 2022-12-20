@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Layout from 'components/Layout/Layout';
+import ModalWindow from './ModalWindow/ModalWindow/ModalWindow';
 import PrivateRoute from './Routs/PrivateRoute';
 import LoginPage from 'pages/LoginPage/LoginPage';
 import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
@@ -33,6 +34,7 @@ export const App = () => {
             <Route path="login" element={<LoginPage />} />
             <Route path="register" element={<RegistrationPage />} />
           </Route>
+          <Route path="test" element={<ModalWindow />} />
         </Routes>
       </>
     )

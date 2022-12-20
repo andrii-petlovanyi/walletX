@@ -85,10 +85,9 @@ const getTransactionSummary = async params => {
 
 const getCategories = async () => {
   const { data } = await axios.get('transaction-categories');
+  console.log(data);
   return data;
 };
-
-
 
 // {id: 'c9d9e447-1b83-4238-8712-edc77b18b739', name: 'Main expenses', type: 'EXPENSE'}
 // 1
@@ -100,7 +99,7 @@ const getCategories = async () => {
 // 4
 // {id: '76cc875a-3b43-4eae-8fdb-f76633821a34', name: 'Child care', type: 'EXPENSE'}
 // 5
-// {id: '128673b5-2f9a-46ae-a428-ec48cf1effa1', name: 'Household products', type: 'EXPENSE'}
+// {id: '128673b5-2f9a-46ae-a428-ec48cf1effa1', name: 'Child care', type: 'EXPENSE'}
 // 6
 // {id: '1272fcc4-d59f-462d-ad33-a85a075e5581', name: 'Education', type: 'EXPENSE'}
 // 7
