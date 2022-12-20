@@ -4,6 +4,9 @@ import stat_desk from 'img/stat_desk.svg';
 import Balance from 'components/Balance/Balance';
 import Currency from 'components/Currency/Currency';
 import styles from 'components/SideBar/styled';
+import { AiFillHome } from 'react-icons/ai';
+import { BiStats } from 'react-icons/bi';
+import { IconContext } from 'react-icons';
 
 export const SideBar = () => {
   const { SideBarWrapper, NavStyled, NavLinkStyled } = styles;
@@ -11,10 +14,15 @@ export const SideBar = () => {
     <SideBarWrapper>
       <NavStyled>
         <NavLinkStyled to="/">
-          <img className="icon" src={home_desk} alt="home" /> Home
+          <IconContext.Provider value={{ className: 'icon' }}>
+            <AiFillHome />
+          </IconContext.Provider>
+          Home
         </NavLinkStyled>
         <NavLinkStyled to="diagram">
-          <img src={stat_desk} alt="statistics" />
+          <IconContext.Provider value={{ className: 'icon' }}>
+            <BiStats />
+          </IconContext.Provider>
           Statistics
         </NavLinkStyled>
       </NavStyled>

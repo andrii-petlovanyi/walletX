@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './styled';
 
 const Currency = () => {
-  const { CurrencyTable, Head, Body, Cell, HeaderLine } = styles;
+  const { CurrencyTable, Head, Body, Cell, HeaderLine, BodyWrap } = styles;
   const currencies = [
     {
       ccy: 'EUR',
@@ -20,11 +20,11 @@ const Currency = () => {
   return (
     <CurrencyTable>
       <Head>
-        <tr>
+        <BodyWrap>
           <HeaderLine>Currency</HeaderLine>
           <HeaderLine>Purchase</HeaderLine>
           <HeaderLine>Sale</HeaderLine>
-        </tr>
+        </BodyWrap>
       </Head>
       <Body>
         {currencies.map(({ ccy, buy, sale }) => (
