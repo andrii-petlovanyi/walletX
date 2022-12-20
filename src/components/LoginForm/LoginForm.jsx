@@ -7,15 +7,18 @@ import operations from '../../redux/auth/auth-operations';
 import { FormStyed, ImgStyed } from 'components/RegistrationForm/styled';
 import { Box } from 'components/Box';
 import Logo from 'components/Logo/Logo';
+import { useNavigate } from '../../../node_modules/react-router-dom/dist/index';
 
 
 function LoginForm({ isLoading }) {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const { signIn } = operations;
     const [credentials, setCredentials] = useState({
         email: '',
         password: '',
     });
-    const dispatch = useDispatch();
 
     const onChange = e => {
         const { name, value } = e.target;
@@ -25,6 +28,10 @@ function LoginForm({ isLoading }) {
             [name]: value,
         }));
     };
+
+    const onClickRegister = () => {
+        navigate('/register');
+    }
 
     const onSubmit = e => {
         e.preventDefault();
@@ -74,8 +81,8 @@ function LoginForm({ isLoading }) {
                 />
             </label>
 
-            <button type="submit" disabled={isLoading}>LOG IN</button>
-            <button type="submit" disabled={isLoading}>REGISTER</button>
+            <button type="submit" disabled={isLoading} onSubmit={onSubmit}>LOG IN</button>
+            <button disabled={isLoading} onClick={onClickRegister}>REGISTER</button>
         </FormStyed>
     );
 }

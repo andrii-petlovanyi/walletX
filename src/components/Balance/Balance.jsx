@@ -7,7 +7,7 @@ const Balance = () => {
       <styles.Title>your balance</styles.Title>
       <styles.CurrentBalance>
         <span>&#x20b4;</span>
-        <stylesText>Balance</stylesText>
+        <styles.Text>Balance</styles.Text>
       </styles.CurrentBalance>
     </styles.BalanceWrap>
   );
