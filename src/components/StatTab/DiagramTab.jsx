@@ -67,7 +67,7 @@ function DiagramTab() {
         </label>
         <label>
           <DropDown name="year" value={year} onChange={handleChangeYear}>
-            <option value="Year">Year</option>
+            <option value="">Year</option>
             <option value="">2022</option>
             <option value="">2021</option>
           </DropDown>
