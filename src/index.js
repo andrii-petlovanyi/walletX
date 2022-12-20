@@ -9,8 +9,8 @@ import { BrowserRouter } from '../node_modules/react-router-dom/dist/index';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter basename="/walletX">
-      <Provider store={store}>
-        <App />
+    <Provider store={store}>
+      <App />
       </Provider>
     </BrowserRouter>
   </React.StrictMode>
