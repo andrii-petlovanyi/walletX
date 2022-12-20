@@ -57,26 +57,6 @@ export const SwitchWrapper = styled.div`
   margin-bottom: 40px;
 `;
 
-export const TextIncome = styled.p`
-  font-family: 'Circe';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 1.5;
-  text-align: right;
-  color: #e0e0e0;
-`;
-
-export const TextExpense = styled.p`
-  font-family: 'Circe';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 1.5;
-  text-align: right;
-  color: #e0e0e0;
-`;
-
 export const Input = styled.input`
   display: flex;
   justify-content: center;
@@ -92,7 +72,7 @@ export const Input = styled.input`
   font-weight: 700;
   font-size: 18px;
   line-height: 1.5;
-  color: var(--secondary-text-cl);
+  color: 'var(--main-text-cl)';
   border-top: inherit;
   border-right: inherit;
   border-left: inherit;
@@ -164,8 +144,10 @@ export const Button = styled.button`
 export const DatetimeWrapper = styled.label`
   display: flex;
   width: 280px;
+  height: '32px';
   gap: 20px;
-  padding-bottom: 5px;
+  padding: 8px 20px;
+  border-top: none;
   border-bottom: '1px solid #e0e0e0';
 
   @media ${device.tablet} {
@@ -174,8 +156,7 @@ export const DatetimeWrapper = styled.label`
 `;
 
 export const Datetime = styled.input`
-  max-width: 180px;
-  height: '32px';
+  padding: 8px 20px;
   font-family: 'Circe';
   font-style: 'normal';
   font-weight: '400';
@@ -184,12 +165,12 @@ export const Datetime = styled.input`
   color: 'var(--main-text-cl)';
 `;
 
-export const DatetimeIcon = styled.svg`
-  width: 24px;
-  height: 24px;
-  fill: var(--accent-active-cl);
-  color: var(--accent-active-cl);
-`;
+// export const DatetimeIcon = styled.svg`
+//   width: 24px;
+//   height: 24px;
+//   fill: var(--accent-active-cl);
+//   color: var(--accent-active-cl);
+// `;
 
 export const SwitchLabel = styled.label`
   display: flex;
@@ -239,4 +220,24 @@ export const SwitchInput = styled.input`
       transform: translate(40px, -50%);
     }
   }
+`;
+
+export const TextIncome = styled.p`
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: right;
+  color: #e0e0e0;
+`;
+
+export const TextExpense = styled.p`
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: right;
+  color: #e0e0e0;
 `;

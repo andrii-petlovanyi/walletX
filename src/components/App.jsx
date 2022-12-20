@@ -1,10 +1,13 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Layout from 'components/Layout/Layout';
+import ModalWindow from './ModalWindow/ModalWindow';
 
 export const App = () => {
   return (
     <>
+      {' '}
+      <ModalWindow />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<div>Home</div>} />

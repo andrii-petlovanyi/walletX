@@ -1,6 +1,7 @@
 import 'react-datetime/css/react-datetime.css';
 import { useState } from 'react';
 import Datetime from 'react-datetime';
+import iconCalendar from 'images/modal/symbol-defs.svg';
 
 import { DatetimeIcon, DatetimeWrapper } from './styled';
 
@@ -9,9 +10,7 @@ const DatetimePicker = () => {
   return (
     <DatetimeWrapper>
       <Datetime dateFormat="DD.MM.YYYY" timeFormat={false} value={date} />
-      <DatetimeIcon>
-        <use href="./images/symbol-defs.svg#icon-baseline-date_range-24px-1"></use>
-      </DatetimeIcon>
+      {/* <RiCalendar2Fill /> */}
     </DatetimeWrapper>
   );
 };

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import SelectCategory from './SelectCategory';
 import {
   Switch,
   SwitchInput,
@@ -9,7 +10,7 @@ import {
 } from './styled';
 
 const SwitchModal = () => {
-  const [checked, setChecked] = useState(false); // store value
+  const [checked, setChecked] = useState(false);
 
   const handleChange = e => setChecked(e.target.checked);
 
@@ -17,7 +18,6 @@ const SwitchModal = () => {
     <SwitchWrapper>
       <TextIncome>Income</TextIncome>
       <SwitchLabel>
-        {/* {checked ? 'Income' : 'Expense'} */}
         <SwitchInput
           checked={checked}
           type="checkbox"
@@ -25,7 +25,9 @@ const SwitchModal = () => {
         />
         <Switch />
       </SwitchLabel>
+
       <TextExpense>Expense</TextExpense>
+      {checked && <SelectCategory />}
     </SwitchWrapper>
   );
 };
