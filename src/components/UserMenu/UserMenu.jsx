@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from 'components/UserMenu/styled';
 import { IoExitOutline } from 'react-icons/io5';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import ModalExit from 'components/ModalExit/ModalExit';
 const UserMenu = () => {
   const { UserMenuStyled, UserName, ButtonExit } = styles;
