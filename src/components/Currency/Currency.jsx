@@ -1,7 +1,17 @@
 import React from 'react';
+import getCurrency from 'services/api/currency';
 import styles from './styled';
 
 const Currency = () => {
+  const getCurr = async () => {
+    try {
+      const data = await getCurrency();
+      console.log(data);
+    } catch (error) {}
+  };
+
+  getCurr();
+
   const currencies = [
     {
       ccy: 'EUR',
