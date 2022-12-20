@@ -25,8 +25,8 @@ export const App = () => {
         <Routes>
           <Route element={<PrivateRoute />}>
             <Route path="/" element={<Layout />}>
-              <Route index element={<StatTab />} />
-              <Route path="diagram" element={<div>Statistics</div>} />
+              <Route index element={<>Home page...must be...</>} />
+              <Route path="diagram" element={<StatTab />} />
             </Route>
           </Route>
 
