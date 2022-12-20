@@ -1,6 +1,4 @@
 import React from 'react';
-import home_desk from 'img/home_desk.svg';
-import stat_desk from 'img/stat_desk.svg';
 import Balance from 'components/Balance/Balance';
 import Currency from 'components/Currency/Currency';
 import styles from 'components/SideBar/styled';
