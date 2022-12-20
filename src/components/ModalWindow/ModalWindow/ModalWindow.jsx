@@ -18,8 +18,8 @@ import { InputBalance } from './styled';
 const ModalWindow = () => {
   const [checked, setChecked] = useState(true);
   const [selected, setSelected] = useState();
-  const [balance, setBalance] = useState('');
-  const [comment, setComment] = useState('');
+//   const [balance, setBalance] = useState('');
+//   const [comment, setComment] = useState('');
   const [date, setDate] = useState();
   const dispatch = useDispatch();
 
