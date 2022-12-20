@@ -84,7 +84,7 @@ const RegistrationForm = () => {
       </label>
 
       <button type="submit">Register</button>
-      <button type="submit">Log-in</button>
+      <button type="submit">LogIn</button>
       {/* <Link>Log in</Link> */}
     </FormStyed>
   );
