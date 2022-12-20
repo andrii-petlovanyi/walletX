@@ -8,7 +8,6 @@ const LayoutStyled = styled.div`
 const Wrapper = styled.div`
   position: relative;
   display: flex;
-  height: 100vh;
   background-image: url(${elipsebl}), url(${elipsepn});
   background-repeat: no-repeat;
   background-position: bottom 0 left 0, top 0 right 0;

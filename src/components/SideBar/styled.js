@@ -14,6 +14,7 @@ const NavStyled = styled.nav`
 `;
 const SideBarWrapper = styled.div`
   display: flex;
+  min-height: 100vh;
   flex-direction: column;
   padding-right: 16px;
   padding-left: 16px;
