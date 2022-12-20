@@ -1,10 +1,12 @@
+import { SelectForm } from '../styled';
+
 const SelectCategory = () => {
   const handleSubmit = () => {};
   return (
-    <form onSubmit={handleSubmit}>
+    <SelectForm onSubmit={handleSubmit}>
       <label>
         <select
-        // name="category" value={category} onChange={handleChange}
+        // name="name" value={name} onChange={handleChange}
         >
           <option>Select a category</option>
           <option>Main expenses</option>
@@ -18,7 +20,7 @@ const SelectCategory = () => {
           <option>Entertainment</option>
         </select>
       </label>
-    </form>
+    </SelectForm>
   );
 };
 export default SelectCategory;
