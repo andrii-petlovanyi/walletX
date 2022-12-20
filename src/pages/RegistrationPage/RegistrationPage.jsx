@@ -1,6 +1,6 @@
 import RegistrationForm from 'components/RegistrationForm/RegistrationForm';
 import React from 'react';
-import mainRegister from '../images/regitration/mainRegister.svg';
+import mainRegister from 'images/registration/mainRegister.svg';
 import {
   FieldStyled,
   TitleFieldStyled,
