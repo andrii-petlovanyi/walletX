@@ -14,6 +14,11 @@ export const device = {
   desktop: `(min-width: ${size.desktop})`,
 };
 
-export const SelectForm = styled.form``;
+export const SelectForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 280px;
+`;
 
 export const Label = styled.label``;

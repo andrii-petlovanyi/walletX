@@ -34,6 +34,7 @@ export const App = () => {
             <Route path="login" element={<LoginPage />} />
             <Route path="register" element={<RegistrationPage />} />
           </Route>
+          <Route path="test" element={<ModalWindow />} />
         </Routes>
       </>
     )

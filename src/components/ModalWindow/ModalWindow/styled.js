@@ -50,11 +50,12 @@ export const ModalTitle = styled.h1`
   }
 `;
 
-export const Input = styled.input`
+export const InputBalance = styled.input`
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+  margin-top: 40px;
   margin-bottom: 40px;
   width: 100%;
   max-width: 280px;

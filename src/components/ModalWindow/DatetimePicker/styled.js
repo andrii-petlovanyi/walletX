@@ -41,4 +41,7 @@ export const Icon = styled.svg`
   width: 24px;
   height: 24px;
   fill: var(--accent-active-cl);
+  &:hover {
+    fill: red;
+  }
 `;

@@ -1,26 +1,28 @@
+import { useSelector } from 'react-redux';
+import { selectCategory } from 'redux/category/category-selectors';
+import Select from 'react-select';
+// import { selectCategory } from 'redux/transactions/transactions-selectors';
 import { SelectForm } from '../styled';
+import { useState } from 'react';
 
-const SelectCategory = () => {
-  const handleSubmit = () => {};
+const SelectCategory = ({ selected, setSelected }) => {
+  // const [selected, setSelected] = useState();
+  const categories = useSelector(selectCategory);
+  const options = categories
+    .filter(category => category.type === 'EXPENSE')
+    .map(category => {
+      return { value: category.name, label: category.name };
+    });
+
   return (
-    <SelectForm onSubmit={handleSubmit}>
-      <label>
-        <select
-        // name="name" value={name} onChange={handleChange}
-        >
-          <option>Select a category</option>
-          <option>Main expenses</option>
-          <option>Products</option>
-          <option>Car</option>
-          <option>Self care</option>
-          <option>Child care</option>
-          <option>Education</option>
-          <option>Leisure</option>
-          <option>Other expenses</option>
-          <option>Entertainment</option>
-        </select>
-      </label>
-    </SelectForm>
+    // <SelectForm onSubmit={handleSubmit}>
+    <Select
+      options={options}
+      onChange={data => {
+        setSelected(data);
+      }}
+    />
+    // </SelectForm>
   );
 };
 export default SelectCategory;
