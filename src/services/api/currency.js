@@ -1,14 +1,12 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = '';
-
-//Auth
-
-const getCurrency = async () => {
-  const { data } = await axios.get(
-    'https://api.privatbank.ua/p24api/pubinfo?exchange&coursid=5'
-  );
-  return data;
+const fetchCurrency = async () => {
+  const res = await axios.get('https://api.monobank.ua/bank/currency');
+  console.log(res);
+  if (!res.ok) {
+    throw new Error(res.status);
+  }
+  return res.data;
 };
 
-export default getCurrency;
+export default fetchCurrency;
