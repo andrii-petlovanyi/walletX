@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 
 export const MainContainer = styled.tr`
-  background: #e7eaf2;
-
+  background-color: rgba(231, 234, 242, 0.4);
+  backdrop-filter: blur(25px);
+  display: flex;
+  justify-content: flex-end;
+  padding: 32px 16px;
+  width: 100%;
 `;
 
 export const DropDown = styled.select`
@@ -16,6 +20,13 @@ export const DropDown = styled.select`
   padding: 12px 0 14px 20px;
 `;
 
+export const TabHeader = styled.h1`
+  font-family: 'Poppins';
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 45px;
+`;
+
 export const DropDownTitle = styled.span`
   font-family: 'Circe';
   font-style: normal;
@@ -23,7 +34,6 @@ export const DropDownTitle = styled.span`
   font-size: 16px;
   line-height: 24px;
   color: #000000;
-  
 `;
 
 export const DropDownWrapper = styled.div`

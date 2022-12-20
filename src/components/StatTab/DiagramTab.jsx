@@ -1,3 +1,4 @@
+import { Box } from 'components/Box';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -33,24 +34,22 @@ function DiagramTab() {
   const dispatch = useDispatch();
   const statData = useSelector(state => state.statistic.statistic);
   console.log(statData);
-  
+
   // month:
   // year:
-  
+
   useEffect(() => {
     dispatch(getTransactionSummary({ month, year }));
   }, [month, year, dispatch]);
-  
+
   const handleChangeMonth = e => {
     setMonth(e.target.value);
-   
   };
   const handleChangeYear = e => {
-    
     setYear(e.target.value);
   };
   return (
-    <div>
+    <Box marginTop="60px">
       <DropDownWrapper>
         <label>
           <DropDown name="month" value={month} onChange={handleChangeMonth}>
@@ -95,7 +94,7 @@ function DiagramTab() {
           })}
         </tbody>
       </Table>
-    </div>
+    </Box>
   );
 }
 
