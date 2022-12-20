@@ -4,13 +4,14 @@ import Logo from 'components/Logo/Logo';
 import styles from 'components/AppBar/styled';
 
 const AppBar = () => {
+  const { AppBar, Nav } = styles;
   return (
-    <styles.AppBar>
-      <styles.Nav>
+    <AppBar>
+      <Nav>
         <Logo />
-      </styles.Nav>
+      </Nav>
       <UserMenu />
-    </styles.AppBar>
+    </AppBar>
   );
 };
 export default AppBar;
