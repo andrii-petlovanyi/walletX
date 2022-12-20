@@ -5,10 +5,10 @@ import operations from 'redux/auth/auth-operations';
 import Logo from 'components/Logo/Logo';
 import { Box } from 'components/Box';
 
-import emailImg from '../../images/regitration/mail.svg';
-import lockImg from '../../images/regitration/lock.svg';
-import lock2Img from '../../images/regitration/lock-2.svg';
-import personImg from '../../images/regitration/person.svg';
+import emailImg from 'images/registration/mail.svg';
+import lockImg from 'images/registration/lock.svg';
+import lock2Img from 'images/registration/lock-2.svg';
+import personImg from 'images/registration/person.svg';
 import { useState } from 'react';
 
 const RegistrationForm = () => {
@@ -91,48 +91,3 @@ const RegistrationForm = () => {
 };
 
 export default RegistrationForm;
-
-// const RegisterForm = () => {
-//   const dispatch = useDispatch();
-//   const onSubmit = e => {
-//     e.preventDefault();
-//     const form = e.currentTarget;
-
-//     dispatch(
-//       register({
-//         name: form.elements.name.value,
-//         email: form.elements.email.value,
-//         password: form.elements.password.value,
-//       })
-//     );
-//     form.reset();
-//   };
-//   return (
-//     <Box mt="20px">
-//       <LoginFormStyled onSubmit={onSubmit} autoComplete="off">
-//         <label>
-//           Username
-//           <input type="text" name="name" />
-//         </label>
-//         <label>
-//           Email
-//           <input type="email" name="email" />
-//         </label>
-//         <label>
-//           Password
-//           <input type="password" name="password" />
-//         </label>
-//         <button type="submit">Register</button>
-//         <Box
-//           display="flex"
-//           mt="10px"
-//           justifyContent="center"
-//           alignItems="center"
-//         >
-//           <p>Already have an account?</p>
-//           <Link to="/login">Sign in</Link>
-//         </Box>
-//       </LoginFormStyled>
-//     </Box>
-//   );
-// };
