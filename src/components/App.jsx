@@ -6,12 +6,12 @@ import ModalWindow from './ModalWindow/ModalWindow';
 export const App = () => {
   return (
     <>
-      <Routes>
+      {<Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<div>Home</div>} />
           <Route path="diagram" element={<div>Statistics</div>} />
         </Route>
-      </Routes>
+      </Routes>}
     </>
   );
 };
