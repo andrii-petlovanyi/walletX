@@ -1,4 +1,8 @@
-import React from 'react';
+import { Box } from 'components/Box';
+import React, { useState } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import getTransactionSummary from 'redux/statistic/statistic-operations';
 import {
   DropDown,
   DropDownTitle,
@@ -10,66 +14,77 @@ import {
   TableHeader,
 } from './styled';
 
-
+const monthsList = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  ' December',
+];
 function DiagramTab() {
-  const monthsList = ['January', 'Februery', 'March']
-  
-  const tabData = [
-    {
-      type: 'Main expenses',
-      amount: 3800.0,
-    },
-    {
-      type: 'Products',
-      amount: 3800.74,
-    },
-    {
-      type: 'Car',
-      amount: 1500,
-    },
-    {
-      type: 'Self care',
-      amount: 800,
-    },
-  ];
+  const [month, setMonth] = useState('');
+  const [year, setYear] = useState('');
+  const dispatch = useDispatch();
+  const statData = useSelector(state => state.statistic.statistic);
+  console.log(statData);
 
+  // month:
+  // year:
+
+  useEffect(() => {
+    dispatch(getTransactionSummary({ month, year }));
+  }, [month, year, dispatch]);
+
+  const handleChangeMonth = e => {
+    setMonth(e.target.value);
+  };
+  const handleChangeYear = e => {
+    setYear(e.target.value);
+  };
   return (
-    <div>
+    <Box marginTop="60px">
       <DropDownWrapper>
         <label>
-          <DropDown name="month">
-            <option value="xs" selected>
+          <DropDown name="month" value={month} onChange={handleChangeMonth}>
+            <option value="" selected>
               <DropDownTitle> Month</DropDownTitle>
             </option>
 
-            {monthsList.map(month => (
-              <option key={month} value="text">
-                {month}
+            {monthsList.map((monthEl, index) => (
+              <option key={monthEl} value={index + 1}>
+                {monthEl}
               </option>
             ))}
           </DropDown>
         </label>
         <label>
-          <DropDown name="" id="">
+          <DropDown name="year" value={year} onChange={handleChangeYear}>
             <option value="" selected>
               Year
             </option>
-            <option value="current">2022</option>
-            <option value="past">2021</option>
+            <option value="">2022</option>
+            <option value="">2021</option>
           </DropDown>
         </label>
       </DropDownWrapper>
       <Table>
-        <TableHeader>
+        <thead>
           <tr>
-            <th colSpan={2}>
+            <TableHeader colSpan={2}>
               <span>Category </span>
               <span>Sum</span>
-            </th>
+            </TableHeader>
           </tr>
-        </TableHeader>
+        </thead>
         <tbody>
-          {Object.values(tabData).map(({ type, amount }) => {
+          {statData.map(({ type, amount }) => {
             return (
               <TabItem>
                 <TableData>{type}</TableData>
@@ -79,7 +94,7 @@ function DiagramTab() {
           })}
         </tbody>
       </Table>
-    </div>
+    </Box>
   );
 }
 

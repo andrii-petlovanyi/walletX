@@ -1,18 +1,18 @@
-import React from 'react'
+import { Box } from 'components/Box';
+import React from 'react';
 import DiagramTab from './DiagramTab';
 import DoughnutChart from './DoughnutChart';
-import { MainContainer} from './styled';
+import { MainContainer, TabHeader } from './styled';
 
 function StatTab() {
-  
-  
   return (
-    <MainContainer >
-      Statistics
-
+    <MainContainer>
+      <Box marginRight="auto">
+        <TabHeader>Statistics</TabHeader>
+        <DoughnutChart />
+      </Box>
       <DiagramTab />
-    <DoughnutChart />
-    </MainContainer >
+    </MainContainer>
   );
 }
 

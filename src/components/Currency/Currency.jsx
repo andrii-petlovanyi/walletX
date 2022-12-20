@@ -1,40 +1,47 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import styles from './styled';
 
 const Currency = () => {
-  const currencies = [
-    {
-      ccy: 'EUR',
-      base_ccy: 'UAH',
-      buy: '19.20000',
-      sale: '20.00000',
-    },
-    {
-      ccy: 'USD',
-      base_ccy: 'UAH',
-      buy: '15.50000',
-      sale: '15.85000',
-    },
-  ];
+  const { CurrencyTable, Head, Body, Cell, HeaderLine, BodyWrap } = styles;
+const [currency, setCurrency] = useState(
+    JSON.parse(localStorage.getItem('currency')) || []
+  );
+
+  useEffect(() => {
+    if (currency.length) return;
+    const getCurrency = async () => {
+      try {
+        const { data } = await axios.get(
+          'https://api.monobank.ua/bank/currency'
+        );
+        localStorage.setItem('currency', JSON.stringify(data.slice(0, 2)));
+        setCurrency(data.slice(0, 2));
+      } catch (error) {}
+    };
+    getCurrency();
+  }, [currency.length]);
+  
   return (
-    <styles.CurrencyTable>
-      <styles.Head>
-        <tr>
-          <th>Currency</th>
-          <th>Purchase</th>
-          <th>Sale</th>
-        </tr>
-      </styles.Head>
-      <styles.Body>
-        {currencies.map(({ ccy, buy, sale }) => (
-          <tr key={ccy}>
-            <styles.Cell>{ccy}</styles.Cell>
-            <styles.Cell>{buy}</styles.Cell>
-            <styles.Cell>{sale}</styles.Cell>
+    <CurrencyTable>
+      <Head>
+        <BodyWrap>
+          <HeaderLine>Currency</HeaderLine>
+          <HeaderLine>Purchase</HeaderLine>
+          <HeaderLine>Sale</HeaderLine>
+        </BodyWrap>
+      </Head>
+      <Body>
+        {currency?.map(({ currencyCodeA, rateBuy, rateSell }) => (
+          <tr key={currencyCodeA}>
+            <Cell>{currencyCodeA === 840 ? 'USD' : 'EUR'}</Cell>
+            <Cell>{rateBuy.toFixed(2)}</Cell>
+            <Cell>{rateSell.toFixed(2)}</Cell>
+
           </tr>
         ))}
-      </styles.Body>
-    </styles.CurrencyTable>
+      </Body>
+    </CurrencyTable>
   );
 };
 export default Currency;

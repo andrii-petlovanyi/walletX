@@ -73,6 +73,7 @@ const createTransaction = async body => {
 //Statistics
 const getTransactionSummary = async params => {
   const { data } = await axios.get('transactions-summary', params);
+  
   return data;
 };
 
