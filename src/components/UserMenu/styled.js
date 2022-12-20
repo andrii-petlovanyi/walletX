@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const UserMenu = styled.div`
+export const UserMenuStyled = styled.div`
   display: flex;
   align-items: center;
   font-family: 'Circe';
@@ -44,5 +44,5 @@ export const ButtonExit = styled.button`
   }
 `;
 
-const styles = { UserMenu, UserName, ButtonExit };
+const styles = { UserMenuStyled, UserName, ButtonExit };
 export default styles;

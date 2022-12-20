@@ -6,19 +6,20 @@ import Currency from 'components/Currency/Currency';
 import styles from 'components/SideBar/styled';
 
 export const SideBar = () => {
+  const { SideBarWrapper, NavStyled, NavLinkStyled } = styles;
   return (
-    <styles.SideBarWrapper>
-      <styles.NavStyled>
-        <styles.NavLinkStyled to="/">
-          <img src={home_desk} alt="home" /> Home
-        </styles.NavLinkStyled>
-        <styles.NavLinkStyled to="diagram">
+    <SideBarWrapper>
+      <NavStyled>
+        <NavLinkStyled to="/">
+          <img className="icon" src={home_desk} alt="home" /> Home
+        </NavLinkStyled>
+        <NavLinkStyled to="diagram">
           <img src={stat_desk} alt="statistics" />
           Statistics
-        </styles.NavLinkStyled>
-      </styles.NavStyled>
+        </NavLinkStyled>
+      </NavStyled>
       <Balance />
       <Currency />
-    </styles.SideBarWrapper>
+    </SideBarWrapper>
   );
 };

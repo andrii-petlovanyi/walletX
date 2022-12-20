@@ -27,8 +27,13 @@ const NavLinkStyled = styled(NavLink)`
   display: flex;
   gap: 20px;
 
+  &.icon {
+    fill: currentColor;
+  }
+
   &.active {
     font-weight: 700;
+    fill: #6e78e8;
   }
   &:hover:not(.active),
   &:focus-visible:not(.active) {
