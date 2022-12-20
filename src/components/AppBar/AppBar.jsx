@@ -1,17 +1,16 @@
 import React from 'react';
-import {
-  AppBarStyled,
-  NavStyled,
-  NavLinkStyled,
-} from 'components/AppBar/styled';
+import UserMenu from 'components/UserMenu/UserMenu';
+import Logo from 'components/Logo/Logo';
+import styles from 'components/AppBar/styled';
 
-export const AppBar = () => {
+const AppBar = () => {
   return (
-    <AppBarStyled>
-      <NavStyled>
-        <NavLinkStyled to="">Home</NavLinkStyled>
-        <NavLinkStyled to="movies">Movies</NavLinkStyled>
-      </NavStyled>
-    </AppBarStyled>
+    <styles.AppBar>
+      <styles.Nav>
+        <Logo />
+      </styles.Nav>
+      <UserMenu />
+    </styles.AppBar>
   );
 };
+export default AppBar;
