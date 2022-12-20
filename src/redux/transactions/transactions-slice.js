@@ -3,26 +3,14 @@ import options from './transactions-operations';
 
 const initialState = {
   transactions: [],
-  category: [],
   loadingTrans: false,
   loadingAddTrans: false,
-  loadingCat: false,
 };
 
 const transactionSlice = createSlice({
   name: 'transaction',
   initialState,
   extraReducers: {
-    [options.getCategory.pending]: state => {
-      state.loadingCat = true;
-    },
-    [options.getCategory.fulfilled]: (state, { payload }) => {
-      state.category = payload;
-      state.loadingCat = false;
-    },
-    [options.getCategory.rejected]: state => {
-      state.loadingCat = false;
-    },
     [options.createTransaction.pending]: state => {
       state.loadingAddTrans = true;
     },
