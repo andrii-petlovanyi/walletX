@@ -1,19 +1,24 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import loginWalletDesk from '../../images/login/loginWalletDesk.svg';
 import loginEmail from '../../images/login/loginEmail.svg';
 import loginPassword from '../../images/login/loginPassword.svg'
 import operations from '../../redux/auth/auth-operations';
+import { FormStyed, ImgStyed } from 'components/RegistrationForm/styled';
+import { Box } from 'components/Box';
+import Logo from 'components/Logo/Logo';
+import { useNavigate } from '../../../node_modules/react-router-dom/dist/index';
 
 
 function LoginForm({ isLoading }) {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const { signIn } = operations;
     const [credentials, setCredentials] = useState({
         email: '',
         password: '',
     });
-    const dispatch = useDispatch();
 
     const onChange = e => {
         const { name, value } = e.target;
@@ -23,6 +28,10 @@ function LoginForm({ isLoading }) {
             [name]: value,
         }));
     };
+
+    const onClickRegister = () => {
+        navigate('/register');
+    }
 
     const onSubmit = e => {
         e.preventDefault();
@@ -44,13 +53,12 @@ function LoginForm({ isLoading }) {
     };
 
     return (
-        <form onSubmit={onSubmit}>
-            <div>
-                <img src={loginWalletDesk} alt="wallet" width="40" />
-                <h2>Wallet</h2>
-            </div>
+        <FormStyed onSubmit={onSubmit}>
+            <Box m="0px auto" height="40px" width="181px">
+                <Logo />
+            </Box>
             <label htmlFor="">
-                <img src={loginEmail} alt="lock" />
+                <ImgStyed src={loginEmail} alt="lock" />
                 <input
                     type="text"
                     name="email"
@@ -62,7 +70,7 @@ function LoginForm({ isLoading }) {
             </label>
 
             <label htmlFor="">
-                <img src={loginPassword} alt="lock" />
+                <ImgStyed src={loginPassword} alt="lock" />
                 <input
                     type="password"
                     name="password"
@@ -73,9 +81,9 @@ function LoginForm({ isLoading }) {
                 />
             </label>
 
-            <button type="submit" disabled={isLoading}>LOG IN</button>
-            <button type="submit" disabled={isLoading}>REGISTER</button>
-        </form>
+            <button type="submit" disabled={isLoading} onSubmit={onSubmit}>LOG IN</button>
+            <button disabled={isLoading} onClick={onClickRegister}>REGISTER</button>
+        </FormStyed>
     );
 }
 
