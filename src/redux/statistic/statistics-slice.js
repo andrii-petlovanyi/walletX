@@ -14,7 +14,7 @@ const statisticSlice = createSlice({
       state.loadingStat = true;
     },
     [getTransactionSummary.fulfilled]: (state, { payload }) => {
-      state.transactions = payload.result.reverse();
+      state.transactions = payload.result?.reverse();
       state.loadingStat = false;
     },
     [getTransactionSummary.rejected]: state => {

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const MainContainer = styled.tr`
+export const MainContainer = styled.div`
   background-color: rgba(231, 234, 242, 0.4);
   backdrop-filter: blur(25px);
   display: flex;

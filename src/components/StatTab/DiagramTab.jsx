@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import getTransactionSummary from 'redux/statistic/statistic-operations';
 import {
   DropDown,
-  DropDownTitle,
+  // DropDownTitle,
   DropDownWrapper,
   TabItem,
   Table,
@@ -53,8 +53,9 @@ function DiagramTab() {
       <DropDownWrapper>
         <label>
           <DropDown name="month" value={month} onChange={handleChangeMonth}>
-            <option value="" selected>
-              <DropDownTitle> Month</DropDownTitle>
+            <option value="">
+              {/* <DropDownTitle> Month</DropDownTitle> */}
+              Month
             </option>
 
             {monthsList.map((monthEl, index) => (
@@ -66,9 +67,7 @@ function DiagramTab() {
         </label>
         <label>
           <DropDown name="year" value={year} onChange={handleChangeYear}>
-            <option value="" selected>
-              Year
-            </option>
+            <option value="Year">Year</option>
             <option value="">2022</option>
             <option value="">2021</option>
           </DropDown>
