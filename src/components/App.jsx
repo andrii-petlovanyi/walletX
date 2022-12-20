@@ -29,7 +29,6 @@ export const App = () => {
               <Route path="diagram" element={<StatTab />} />
             </Route>
           </Route>
-
           <Route element={<PublicRoute />}>
             <Route path="login" element={<LoginPage />} />
             <Route path="register" element={<RegistrationPage />} />
