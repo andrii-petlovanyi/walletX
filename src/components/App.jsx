@@ -6,7 +6,6 @@ import ModalWindow from './ModalWindow/ModalWindow/ModalWindow';
 export const App = () => {
   return (
     <>
-      <ModalWindow></ModalWindow>
       {
         <Routes>
           <Route path="/" element={<Layout />}>
