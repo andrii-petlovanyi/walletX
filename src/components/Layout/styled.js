@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import elipsebl from 'img/elipsebl.svg';
-import elipsepn from 'img/elipsepn.svg';
+// import elipsebl from 'img/elipsebl.svg';
+// import elipsepn from 'img/elipsepn.svg';
 
 const LayoutStyled = styled.div`
   padding-bottom: 12px;
