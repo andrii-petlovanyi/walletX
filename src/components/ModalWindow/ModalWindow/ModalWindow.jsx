@@ -8,7 +8,6 @@ import SelectCategory from '../SelectCategory/SelectCategory';
 import {
   BalanceDateWrapper,
   Button,
-  Input,
   ModalTitle,
   ModalWrapper,
   TextareaComment,

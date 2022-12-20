@@ -78,23 +78,28 @@ export const InputBalance = styled.input`
 `;
 
 export const BalanceDateWrapper = styled.label`
-  @media ${device.tablet} {
+  /* @media ${device.tablet} {
     display: flex;
-    justify-content: baseline;
-    /* align-items: center; */
-  }
+    flex-direction: column;
+    justify-content: center;
+  } */
 `;
 
 export const TextareaComment = styled.textarea`
-  width: 100%;
-  max-width: 280px;
-  height: 84px;
-  resize: none;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding-left: 20px;
   padding-right: 20px;
-  margin-top: 40px;
+  margin: 0 auto;
+  /* margin-top: 40px;
   margin-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto; */
+  width: 100%;
+  width: 280px;
+  height: 84px;
+  resize: none;
   font-family: 'Circe';
   font-style: normal;
   font-weight: 400;
@@ -114,9 +119,10 @@ export const TextareaComment = styled.textarea`
 `;
 
 export const Button = styled.button`
+  display: flex;
+  justify-content: center;
   width: 300px;
   height: 50px;
-  margin-top: 20px;
   border: 1px solid var(--accent-active-cl);
   border-radius: 20px;
   font-family: 'Circe';
@@ -129,6 +135,10 @@ export const Button = styled.button`
   text-transform: uppercase;
   background: var(--main-bg-cl);
   color: var(--accent-active-cl);
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
+
   &:hover,
   &:active {
     background: var(--income-cl);

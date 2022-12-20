@@ -144,7 +144,7 @@ export const Button = styled.button`
 
 export const DatetimeWrapper = styled.label`
   display: flex;
-  gap: 20px;
+  /* gap: 20px; */
   /* max-width: 280px;
   height: '32px';
   padding: 8px 20px;

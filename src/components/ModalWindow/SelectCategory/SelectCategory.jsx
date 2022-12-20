@@ -2,8 +2,6 @@ import { useSelector } from 'react-redux';
 import { selectCategory } from 'redux/category/category-selectors';
 import Select from 'react-select';
 // import { selectCategory } from 'redux/transactions/transactions-selectors';
-import { SelectForm } from '../styled';
-import { useState } from 'react';
 
 const SelectCategory = ({ selected, setSelected }) => {
   // const [selected, setSelected] = useState();

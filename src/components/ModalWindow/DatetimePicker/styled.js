@@ -16,16 +16,10 @@ export const device = {
 
 export const DatetimeWrapper = styled.label`
   display: flex;
+  justify-content: center;
   gap: 20px;
-
   /* max-width: 280px;
-  height: '32px';
-  padding: 8px 20px;
-  border-top: none;
-  border-bottom: '1px solid #e0e0e0';
-  max-width: 180px;
-  @media ${device.tablet} {
-    max-width: 180px; */
+  height: '32px'; */
 `;
 
 export const Datetime = styled.input`
@@ -41,7 +35,4 @@ export const Icon = styled.svg`
   width: 24px;
   height: 24px;
   fill: var(--accent-active-cl);
-  &:hover {
-    fill: red;
-  }
 `;
