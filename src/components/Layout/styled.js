@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-import elipsebl from 'img/elipsebl.svg';
-import elipsepn from 'img/elipsepn.svg';
 
 const size = {
   mobileS: '320px',
@@ -16,45 +14,30 @@ export const device = {
   desktop: `(min-width: ${size.desktop})`,
 };
 
-const LayoutStyled = styled.div`
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
-`;
+const LayoutStyled = styled.div``;
+
 const Wrapper = styled.div`
- width: 100%;
-  /* margin-left: auto;
-  margin-right: auto; */
+  width: 100%;
+  height: 100vh;
   margin: 0 auto;
   padding-left: 20px;
   padding-right: 20px;
 
-  @media screen and (min-width: 480px) {
-  width: 480px;
-
+  @media ${device.mobileM} {
+    width: 480px;
   }
-  @media screen and (min-width: 768px) {
+
+  @media ${device.tablet} {
     width: 768px;
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-  @media screen and (min-width: 1280px) {
-    width: 1280px;
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
-
-  /* @media ${device.tablet} {
+    padding: 32px 32px 84px 32px;
     display: block;
-    height: 100vh;
-    /* background-image: url(${elipsebl}), url(${elipsepn});
-    background-repeat: no-repeat;
-    background-position: bottom 0 left 0, top 0 right 0; */
   }
+
   @media ${device.desktop} {
+    width: 1280px;
+    padding: 40px 16px 63px 16px;
     display: flex;
-  } */
+  }
 `;
 
 const styles = { LayoutStyled, Wrapper };

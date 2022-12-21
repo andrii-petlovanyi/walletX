@@ -1,23 +1,11 @@
 import styled from 'styled-components';
-const size = {
-  mobileS: '320px',
-  mobileM: '480px',
-  tablet: '768px',
-  desktop: '1280px',
-};
+import { device } from 'components/Layout/styled';
 
-const device = {
-  mobileS: `(min-width: ${size.mobileS})`,
-  mobileM: `(min-width: ${size.mobileM})`,
-  tablet: `(min-width: ${size.tablet})`,
-  desktop: `(min-width: ${size.desktop})`,
-};
 const AppBarStyled = styled.header`
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 20px;
   background-color: var(--main-bg-cl);
   @media ${device.tablet} {
   }
@@ -27,16 +15,18 @@ const AppBarStyled = styled.header`
 const Wrap = styled.div`
   width: 100%;
   max-width: 480px;
+  padding: 15px 20px;
+
   @media ${device.tablet} {
     max-width: 768px;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 20px;
+    padding: 20px 32px;
   }
   @media ${device.desktop} {
     max-width: 1280px;
+    padding: 20px 16px;
   }
 `;
 export const Nav = styled.nav`
@@ -46,6 +36,5 @@ const styles = {
   AppBarStyled,
   Nav,
   Wrap,
-  device,
 };
 export default styles;
