@@ -22,7 +22,30 @@ const LayoutStyled = styled.div`
   align-items: center; */
 `;
 const Wrapper = styled.div`
-  @media ${device.tablet} {
+ width: 100%;
+  /* margin-left: auto;
+  margin-right: auto; */
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  @media screen and (min-width: 480px) {
+  width: 480px;
+
+  }
+  @media screen and (min-width: 768px) {
+    width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 1280px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+
+  /* @media ${device.tablet} {
     display: block;
     height: 100vh;
     /* background-image: url(${elipsebl}), url(${elipsepn});
@@ -31,7 +54,7 @@ const Wrapper = styled.div`
   }
   @media ${device.desktop} {
     display: flex;
-  }
+  } */
 `;
 
 const styles = { LayoutStyled, Wrapper };

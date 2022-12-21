@@ -13,24 +13,30 @@ const device = {
   desktop: `(min-width: ${size.desktop})`,
 };
 const AppBarStyled = styled.header`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
   background-color: var(--main-bg-cl);
   @media ${device.tablet} {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 20px;
   }
   @media ${device.desktop} {
   }
 `;
 const Wrap = styled.div`
+  width: 100%;
+  max-width: 480px;
   @media ${device.tablet} {
+    max-width: 768px;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-top: 20px;
   }
   @media ${device.desktop} {
+    max-width: 1280px;
   }
 `;
 export const Nav = styled.nav`

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const ListBox = styled.div`
-  width: 100%;
+  /* width: 100%; */
   @media screen and (min-width: 479.98px) {
     padding-top: 32px;
   }

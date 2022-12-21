@@ -4,20 +4,21 @@ import AppBar from 'components/AppBar/AppBar';
 import { SideBar } from 'components/SideBar/SideBar';
 import styles from './styled';
 import Container from 'components/Container/Container';
+import { Box } from 'components/Box';
 
 const Layout = () => {
   const { LayoutStyled, Wrapper } = styles;
   return (
     <LayoutStyled>
-      <Container>
-        <AppBar />
-        <Wrapper>
-          <SideBar />
-          <Suspense fallback={null}>
-            <Outlet />
-          </Suspense>
-        </Wrapper>
-      </Container>
+      <AppBar />
+      <Wrapper>
+        {/* <Container> */}
+        <SideBar />
+        <Suspense fallback={null}>
+          <Outlet />
+        </Suspense>
+        {/* </Container> */}
+      </Wrapper>
     </LayoutStyled>
   );
 };

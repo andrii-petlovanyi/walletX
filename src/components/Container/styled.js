@@ -16,11 +16,15 @@ export const device = {
 
 const ContainerStyled = styled.div`
   width: 100%;
-  max-width: 480px;
   /* margin-left: auto;
   margin-right: auto; */
+  margin: 0 auto;
   padding-left: 20px;
   padding-right: 20px;
+
+  @media ${device.mobileM} {
+    width: 480px;
+  }
   @media ${device.tablet} {
     width: 768px;
     padding-left: 32px;
