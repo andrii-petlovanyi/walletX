@@ -4,7 +4,6 @@ import authSelectors from 'redux/auth/auth-selectors';
 import getCategory from 'redux/category/category-operations';
 import { selectCategory } from 'redux/category/category-selectors';
 import operations from 'redux/transactions/transactions-operations';
-import { selectOpenModal } from 'redux/transactions/transactions-selectors';
 import { closeModal } from 'redux/transactions/transactions-slice';
 import DatetimePicker from '../DatetimePicker/DatetimePicker';
 import SelectCategory from '../SelectCategory/SelectCategory';
@@ -30,7 +29,6 @@ const ModalWindow = () => {
   const categories = useSelector(selectCategory);
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  const isModalOpen = useSelector(selectOpenModal);
 
   console.log(balance);
   // console.log(comment);
