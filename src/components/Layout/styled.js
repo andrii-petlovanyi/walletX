@@ -17,9 +17,9 @@ export const device = {
 };
 
 const LayoutStyled = styled.div`
-  padding-bottom: 12px;
-  max-width: 1280px;
-  margin: 0 auto;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
 `;
 const Wrapper = styled.div`
   @media ${device.tablet} {

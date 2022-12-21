@@ -6,29 +6,40 @@ const size = {
   desktop: '1280px',
 };
 
-export const device = {
+const device = {
   mobileS: `(min-width: ${size.mobileS})`,
   mobileM: `(min-width: ${size.mobileM})`,
   tablet: `(min-width: ${size.tablet})`,
   desktop: `(min-width: ${size.desktop})`,
 };
-export const AppBar = styled.header`
+const AppBarStyled = styled.header`
+  background-color: var(--main-bg-cl);
   @media ${device.tablet} {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 32px;
-    background-color: var(--main-bg-cl);
+    padding-top: 20px;
   }
   @media ${device.desktop} {
-    padding: 20px 16px;
+  }
+`;
+const Wrap = styled.div`
+  @media ${device.tablet} {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+  }
+  @media ${device.desktop} {
   }
 `;
 export const Nav = styled.nav`
   /* display: flex; */
 `;
 const styles = {
-  AppBar,
+  AppBarStyled,
   Nav,
+  Wrap,
+  device,
 };
 export default styles;
