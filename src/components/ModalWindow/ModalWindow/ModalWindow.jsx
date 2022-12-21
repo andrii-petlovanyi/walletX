@@ -25,13 +25,9 @@ const ModalWindow = () => {
   // const [date, setDate] = useState(new Date());
   const categories = useSelector(selectCategory);
   const dispatch = useDispatch();
-  const isFetchingCurrentUser = useSelector(
-    state => state.auth.isRefreshingUser
-  );
-
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
-  // console.log(balance);
+  console.log(balance);
   // console.log(comment);
   const findCategory = value => {
     return categories.find(category => category.name === value);
@@ -41,18 +37,18 @@ const ModalWindow = () => {
     if (!isLoggedIn) return;
 
     dispatch(getCategory());
-  }, [isLoggedIn]);
+  }, [dispatch, isLoggedIn]);
 
-  const handleChange = e => {
-    const { name, value } = e.target;
-    console.log(e.target.name, e.target.value);
-    if (name === 'comment') {
-      setComment(value);
-    }
-    if (name === 'balance') {
-      setBalance(value);
-    }
-  };
+  // const handleChange = e => {
+  //   const { name, value } = e.target;
+  //   console.log(e.target.name, e.target.value);
+  //   if (name === 'comment') {
+  //     setComment(value);
+  //   }
+  //   if (name === 'balance') {
+  //     setBalance(value);
+  //   }
+  // };
 
   const onSubmit = e => {
     e.preventDefault();
