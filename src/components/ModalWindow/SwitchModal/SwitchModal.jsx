@@ -21,6 +21,7 @@ const SwitchModal = ({ checked, setChecked }) => {
           name="checkbox"
           checked={checked}
           type="checkbox"
+          // required
           onChange={handleChange}
         />
         <Switch switchColor={!checked ? '#24cca7' : '#ff6596'} />
