@@ -94,7 +94,6 @@ const ModalWindow = () => {
             placeholder="0.00"
             // type="text"
             // pattern="[0-9]*"
-            type="number"
             step="0.01"
             // value={balance}
             required
