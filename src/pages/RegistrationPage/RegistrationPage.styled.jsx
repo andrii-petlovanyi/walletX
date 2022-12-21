@@ -12,11 +12,6 @@ export const FieldStyled = styled.div`
   background-image: url(${ellipse1}), url(${ellipse2});
   background-position: bottom left, top right;
   background-repeat: no-repeat;
-
-  /* background-image: url({elipsebl}), url({elipsepn});
-  background-repeat: no-repeat;
-  background-position: top right 130px, top 270px left 130px, center, 100px 60px,
-    center; */
 `;
 
 export const TitleFieldStyled = styled.div`

@@ -32,7 +32,8 @@ const DatetimePicker = ({ date, setDate }) => {
         dateFormat="DD.MM.YYYY"
         // open={isOpen}
         timeFormat={false}
-        // value={date}
+        required
+        value={date}
         isValidDate={valid}
         onChange={handleChange}
       />

@@ -17,7 +17,7 @@ const SelectCategory = ({ selected, setSelected }) => {
     <Select
       options={options}
       onChange={data => {
-        setSelected(data);
+        setSelected(data.value);
       }}
     />
     // </SelectForm>

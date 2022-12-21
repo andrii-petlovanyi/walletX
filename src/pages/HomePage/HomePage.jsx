@@ -11,6 +11,7 @@ const HomePage = () => {
   return (
       <ListBox>
           { viewPortWith<767.98 ? <TransactionsListMobile/> :  <TransactionsListDesktop/>}
+    <button>Add transaction</button>
     </ListBox>
   );
 }
