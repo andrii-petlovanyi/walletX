@@ -1,7 +1,7 @@
-import React, { useEffect, useCallback } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import operations from 'redux/auth/auth-operations';
-import { Overlay, ModalStyled, ButtonWrap } from './slyled';
+import { ModalStyled, ButtonWrap } from './slyled';
 
 const ModalExit = ({ handleClose }) => {
   const dispatch = useDispatch();
