@@ -1,11 +1,7 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const FormStyed = styled.form`
-  label {
-    height: 32px;
-    width: 410px;
-    position: relative;
-  }
   display: flex;
   flex-wrap: wrap;
   width: 533px;
@@ -13,6 +9,14 @@ export const FormStyed = styled.form`
   background-color: white;
   padding: 40px 59px 66px 65px;
   border-radius: 20px;
+  div {
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  label {
+    height: 32px;
+    width: 410px;
+    position: relative;
+  }
   h1 {
   }
   input {
@@ -69,16 +73,27 @@ export const ImgStyed = styled.img`
   left: 10px;
 `;
 
-export const IndicatorBar = styled.div`
-  margin-top: 5px;
+export const LinkStyled = styled(Link)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 300px;
+  height: 50px;
+  border: 1px solid #4a56e2;
+  background: #fff;
+  border-radius: 20px;
 
-  /* width: 50%; */
-  /* background-color: #24cca7; */
-  border-radius: 2px;
-  /* border: 2px solid #24cca7;
-  box-shadow: 0px 1px 8px rgba(36, 204, 167, 0.5); */
-
-  background-color: yellow;
-  border: 2px solid yellow;
-  box-shadow: 0px 1px 8px rgba(214, 211, 29, 0.5);
+  color: #4a56e2;
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  :hover {
+    cursor: pointer;
+  }
 `;

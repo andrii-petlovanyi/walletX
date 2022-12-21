@@ -1,26 +1,23 @@
 import styled from 'styled-components';
 
-export const Overlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.8);
-  z-index: 1200;
-`;
-
 export const ModalStyled = styled.div`
-  width: 250px;
-  height: 120px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+  left: -100px;
+  top: 45px;
+  width: 380px;
+  height: 150px;
   padding: 10px 10px;
   border-radius: 20px;
-  background-color: white;
+  box-shadow: 0 0 0 1px #dadce0;
+  background-color: var(--main-bg-cl);
+  color: var(--main-text-cl);
   max-width: calc(100vw - 48px);
   max-height: calc(100vh - 24px);
+  z-index: 9999;
 
   p {
     font-weight: 700;
@@ -28,16 +25,15 @@ export const ModalStyled = styled.div`
     line-height: 1.5;
     text-align: center;
     text-transform: uppercase;
-    margin-bottom: 20px;
   }
 `;
 export const ButtonWrap = styled.div`
   display: flex;
   justify-content: center;
-  gap: 5px;
+  gap: 20px;
   button {
     width: 80px;
-    height: 20px;
+    height: 35px;
     border: none;
     background: #24cca7;
     border-radius: 20px;
