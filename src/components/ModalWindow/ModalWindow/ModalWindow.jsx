@@ -4,9 +4,10 @@ import authSelectors from 'redux/auth/auth-selectors';
 import getCategory from 'redux/category/category-operations';
 import { selectCategory } from 'redux/category/category-selectors';
 import operations from 'redux/transactions/transactions-operations';
-// import { closeModal } from 'redux/transactions/transactions-slice';
 import DatetimePicker from '../DatetimePicker/DatetimePicker';
 import SelectCategory from '../SelectCategory/SelectCategory';
+import { ButtonAddTrans } from '../styled';
+import { HiPlus } from 'react-icons/hi2';
 
 import SwitchModal from '../SwitchModal/SwitchModal';
 
@@ -29,7 +30,7 @@ const ModalWindow = () => {
   const categories = useSelector(selectCategory);
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  
+
   const [isOpen, setIsOpen] = useState(false);
 
   console.log(balance);
@@ -105,7 +106,14 @@ const ModalWindow = () => {
 
   return (
     <>
-      {<button onClick={() => setIsOpen(!isOpen)}>Add</button>}
+      {!isOpen && (
+        <ButtonAddTrans
+          aria-label="add transaction"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          <HiPlus />
+        </ButtonAddTrans>
+      )}
       {isOpen && (
         <Overlay onClick={handleBackDropClick}>
           <ModalWrapper>
