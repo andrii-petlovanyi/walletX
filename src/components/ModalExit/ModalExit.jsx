@@ -1,9 +1,11 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import operations from 'redux/auth/auth-operations';
-import { ModalStyled, ButtonWrap } from './slyled';
 
+import styles from './slyled';
 const ModalExit = ({ handleClose }) => {
+  const { ModalStyled, ButtonWrap, ButtonYes, ButtonNo } = styles;
+
   const dispatch = useDispatch();
   // const handelKeyDown = useCallback(
   //   event => {
@@ -31,10 +33,13 @@ const ModalExit = ({ handleClose }) => {
       <ModalStyled>
         <p>you really wanted to exit</p>
         <ButtonWrap>
-          <button type="button" onClick={() => dispatch(operations.signOut())}>
+          <ButtonYes
+            type="button"
+            onClick={() => dispatch(operations.signOut())}
+          >
             Yes
-          </button>
-          <button onClick={() => handleClose()}>No</button>
+          </ButtonYes>
+          <ButtonNo onClick={() => handleClose()}>No</ButtonNo>
         </ButtonWrap>
       </ModalStyled>
     </div>
