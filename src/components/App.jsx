@@ -9,6 +9,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import operations from 'redux/auth/auth-operations';
 import PublicRoute from './Routs/PublicRoute';
 import StatTab from './StatTab/StatTab';
+import HomePage from 'pages/HomePage/HomePage';
+
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -26,7 +28,7 @@ export const App = () => {
         <Routes>
           <Route element={<PrivateRoute />}>
             <Route path="/" element={<Layout />}>
-              <Route index element={<>Home page...must be...</>} />
+              <Route index element={<HomePage/>} />
               <Route path="diagram" element={<StatTab />} />
             </Route>
           </Route>
