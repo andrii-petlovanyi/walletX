@@ -15,7 +15,9 @@ export const FieldStyled = styled.div`
 `;
 
 export const TitleFieldStyled = styled.div`
+position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 45%;
@@ -29,4 +31,14 @@ export const FormFieldStyled = styled.div`
   padding: 52px 91px 52px 107px;
   background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(25px);
+`;
+
+export const TextStyled = styled.p`
+position: absolute;
+bottom: -60px;
+left: 50%;
+font-family: Poppins;
+transform: translate(-50%);
+font-size: 30px;
+line-height: 45px;
 `;

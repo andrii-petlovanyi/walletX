@@ -5,13 +5,18 @@ import {
   FieldStyled,
   TitleFieldStyled,
   FormFieldStyled,
+  TextStyled,
 } from './RegistrationPage.styled';
+import { Box } from 'components/Box';
 
 const RegistrationPage = () => {
   return (
     <FieldStyled>
       <TitleFieldStyled>
-        <img src={mainRegister} alt="" width="450" />
+        <Box position="relative">
+          <img src={mainRegister} alt="" width="450" />
+          <TextStyled>Finance App</TextStyled>
+        </Box>
       </TitleFieldStyled>
       <FormFieldStyled>
         <RegistrationForm />
