@@ -29,6 +29,7 @@ export const App = () => {
             <Route path="/" element={<Layout />}>
               <Route index element={<HomePage />} />
               <Route path="diagram" element={<StatTab />} />
+              {/* <Route path="test" element={<ModalWindow />} /> */}
             </Route>
           </Route>
           <Route element={<PublicRoute />}>

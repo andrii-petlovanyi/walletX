@@ -35,10 +35,6 @@ const getTransactions = createAsyncThunk(
   }
 );
 
-
-
-
-
 const operations = {
   createTransaction,
   getTransactions,
