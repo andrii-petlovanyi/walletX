@@ -4,7 +4,7 @@ import authSelectors from 'redux/auth/auth-selectors';
 import getCategory from 'redux/category/category-operations';
 import { selectCategory } from 'redux/category/category-selectors';
 import operations from 'redux/transactions/transactions-operations';
-import { closeModal } from 'redux/transactions/transactions-slice';
+// import { closeModal } from 'redux/transactions/transactions-slice';
 import DatetimePicker from '../DatetimePicker/DatetimePicker';
 import SelectCategory from '../SelectCategory/SelectCategory';
 
@@ -29,6 +29,8 @@ const ModalWindow = () => {
   const categories = useSelector(selectCategory);
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  
+  const [isOpen, setIsOpen] = useState(false);
 
   console.log(balance);
   // console.log(comment);
@@ -83,15 +85,14 @@ const ModalWindow = () => {
   const handelKeyDown = useCallback(
     event => {
       if (event.code === 'Escape') {
-        console.log(event.code);
-        dispatch(closeModal());
+        setIsOpen(!isOpen);
       }
     },
-    [dispatch]
+    [isOpen]
   );
   const handleBackDropClick = event => {
     if (event.currentTarget === event.target) {
-      dispatch(closeModal());
+      setIsOpen(!isOpen);
     }
   };
   useEffect(() => {
@@ -103,47 +104,47 @@ const ModalWindow = () => {
   }, [handelKeyDown]);
 
   return (
-    <Overlay onClick={handleBackDropClick}>
-      <ModalWrapper>
-        <button
-          type="button"
-          onClick={() => {
-            dispatch(closeModal());
-          }}
-        >
-          Close
-        </button>
-        <form onSubmit={onSubmit}>
-          <ModalTitle>Add transaction</ModalTitle>
-          <SwitchModal checked={checked} setChecked={setChecked} />
-          {checked && (
-            <SelectCategory selected={selected} setSelected={setSelected} />
-          )}
-          <BalanceDateWrapper htmlFor="balance">
-            <InputBalance
-              type="number"
-              name="balance"
-              id="balance"
-              placeholder="0.00"
-              // type="text"
-              // pattern="[0-9]*"
-              step="0.01"
-              // value={balance}
-              required
-              // onChange={handleChange}
-            />
-            <DatetimePicker date={date} setDate={setDate} />
-          </BalanceDateWrapper>
-          <TextareaComment
-            placeholder="Comment"
-            name="comment"
-            // onChange={handleChange}
-          ></TextareaComment>
-          <Button type="button">Add</Button>
-          <Button type="button">Clear</Button>
-        </form>
-      </ModalWrapper>
-    </Overlay>
+    <>
+      {<button onClick={() => setIsOpen(!isOpen)}>Add</button>}
+      {isOpen && (
+        <Overlay onClick={handleBackDropClick}>
+          <ModalWrapper>
+            <button type="button" onClick={() => setIsOpen(!isOpen)}>
+              Close
+            </button>
+            <form onSubmit={onSubmit}>
+              <ModalTitle>Add transaction</ModalTitle>
+              <SwitchModal checked={checked} setChecked={setChecked} />
+              {checked && (
+                <SelectCategory selected={selected} setSelected={setSelected} />
+              )}
+              <BalanceDateWrapper htmlFor="balance">
+                <InputBalance
+                  type="number"
+                  name="balance"
+                  id="balance"
+                  placeholder="0.00"
+                  // type="text"
+                  // pattern="[0-9]*"
+                  step="0.01"
+                  // value={balance}
+                  required
+                  // onChange={handleChange}
+                />
+                <DatetimePicker date={date} setDate={setDate} />
+              </BalanceDateWrapper>
+              <TextareaComment
+                placeholder="Comment"
+                name="comment"
+                // onChange={handleChange}
+              ></TextareaComment>
+              <Button type="submit">Add</Button>
+              <Button type="button">Clear</Button>
+            </form>
+          </ModalWrapper>
+        </Overlay>
+      )}
+    </>
   );
 };
 export default ModalWindow;
