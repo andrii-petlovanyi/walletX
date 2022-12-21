@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import authSelectors from 'redux/auth/auth-selectors';
 import getCategory from 'redux/category/category-operations';
 import { selectCategory } from 'redux/category/category-selectors';
 import operations from 'redux/transactions/transactions-operations';
@@ -18,12 +19,17 @@ import { InputBalance } from './styled';
 const ModalWindow = () => {
   const [checked, setChecked] = useState(true);
   const [selected, setSelected] = useState();
-  const [balance, setBalance] = useState();
+  const [balance, setBalance] = useState(null);
   const [comment, setComment] = useState('');
   const [date, setDate] = useState();
   // const [date, setDate] = useState(new Date());
   const categories = useSelector(selectCategory);
   const dispatch = useDispatch();
+  const isFetchingCurrentUser = useSelector(
+    state => state.auth.isRefreshingUser
+  );
+
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
   // console.log(balance);
   // console.log(comment);
@@ -32,8 +38,10 @@ const ModalWindow = () => {
   };
 
   useEffect(() => {
+    if (!isLoggedIn) return;
+
     dispatch(getCategory());
-  }, [dispatch]);
+  }, [isLoggedIn]);
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -53,8 +61,8 @@ const ModalWindow = () => {
     const transaction = {
       amount:
         categoryData.type === 'EXPENSE'
-          ? Number(balance) * -1
-          : Number(balance),
+          ? Number(e.target.elements.balance.value) * -1
+          : Number(e.target.elements.balance.value),
       transactionDate: date,
       type: categoryData.type,
       categoryId: categoryData.id,
@@ -67,7 +75,7 @@ const ModalWindow = () => {
 
   const reset = () => {
     setSelected(null);
-    setBalance();
+    setBalance(null);
     setComment('');
     setDate('');
     setChecked(true);
@@ -90,16 +98,16 @@ const ModalWindow = () => {
             // pattern="[0-9]*"
             type="number"
             step="0.01"
-            value={balance}
+            // value={balance}
             required
-            onChange={handleChange}
+            // onChange={handleChange}
           />
           <DatetimePicker date={date} setDate={setDate} />
         </BalanceDateWrapper>
         <TextareaComment
           placeholder="Comment"
           name="comment"
-          onChange={handleChange}
+          // onChange={handleChange}
         ></TextareaComment>
         <Button>Add</Button>
         <Button>Cancel</Button>

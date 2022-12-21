@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 const getCategory = createAsyncThunk('category/get', async (_, thunkAPI) => {
   try {
     const data = await API.getCategories();
-    console.log(data);
+    // console.log(data);
     return data;
   } catch (error) {
     toast.error('Cant connect to server');
