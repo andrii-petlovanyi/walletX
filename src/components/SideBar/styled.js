@@ -18,19 +18,21 @@ export const device = {
 const SideBarWrapper = styled.div`
   @media ${device.tablet} {
     display: flex;
-    flex-direction: row;
-    padding: 40px 32px 20px;
+    padding-bottom: 20px;
   }
   @media ${device.desktop} {
+    width: 480px;
     flex-direction: column;
-    padding: 40px 16px;
+    justify-content: flex-start;
     border-right: 1px solid rgba(231, 229, 242, 1);
     box-shadow: 1px 0px 0px 0px rgba(255, 255, 255, 0.6);
   }
 `;
 const NavWrap = styled.div`
   @media ${device.tablet} {
-    /* display: flex; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 `;
 
@@ -46,7 +48,6 @@ const NavStyled = styled.nav`
     transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
   @media ${device.desktop} {
-    width: 480px;
   }
 `;
 
@@ -77,5 +78,5 @@ const NavLinkStyled = styled(NavLink)`
   }
 `;
 
-const styles = { NavStyled, SideBarWrapper, NavLinkStyled, NavWrap };
+const styles = { NavStyled, SideBarWrapper, NavLinkStyled, NavWrap, device };
 export default styles;

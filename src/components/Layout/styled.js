@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-import elipsebl from 'img/elipsebl.svg';
-import elipsepn from 'img/elipsepn.svg';
 
 const size = {
   mobileS: '320px',
@@ -16,20 +14,28 @@ export const device = {
   desktop: `(min-width: ${size.desktop})`,
 };
 
-const LayoutStyled = styled.div`
-  padding-bottom: 12px;
-  max-width: 1280px;
-  margin: 0 auto;
-`;
+const LayoutStyled = styled.div``;
+
 const Wrapper = styled.div`
-  @media ${device.tablet} {
-    display: block;
-    height: 100vh;
-    /* background-image: url(${elipsebl}), url(${elipsepn});
-    background-repeat: no-repeat;
-    background-position: bottom 0 left 0, top 0 right 0; */
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  @media ${device.mobileM} {
+    width: 480px;
   }
+
+  @media ${device.tablet} {
+    width: 768px;
+    padding: 32px 32px 84px 32px;
+    display: block;
+  }
+
   @media ${device.desktop} {
+    width: 1280px;
+    padding: 40px 16px 63px 16px;
     display: flex;
   }
 `;
