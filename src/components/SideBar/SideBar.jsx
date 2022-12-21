@@ -7,24 +7,26 @@ import { BiStats } from 'react-icons/bi';
 import { IconContext } from 'react-icons';
 
 export const SideBar = () => {
-  const { SideBarWrapper, NavStyled, NavLinkStyled } = styles;
+  const { SideBarWrapper, NavStyled, NavLinkStyled, NavWrap } = styles;
   return (
     <SideBarWrapper>
-      <NavStyled>
-        <NavLinkStyled to="/">
-          <IconContext.Provider value={{ className: 'icon' }}>
-            <AiFillHome />
-          </IconContext.Provider>
-          Home
-        </NavLinkStyled>
-        <NavLinkStyled to="diagram">
-          <IconContext.Provider value={{ className: 'icon' }}>
-            <BiStats />
-          </IconContext.Provider>
-          Statistics
-        </NavLinkStyled>
-      </NavStyled>
-      <Balance />
+      <NavWrap>
+        <NavStyled>
+          <NavLinkStyled to="/">
+            <IconContext.Provider value={{ className: 'icon' }}>
+              <AiFillHome />
+            </IconContext.Provider>
+            Home
+          </NavLinkStyled>
+          <NavLinkStyled to="diagram">
+            <IconContext.Provider value={{ className: 'icon' }}>
+              <BiStats />
+            </IconContext.Provider>
+            Statistics
+          </NavLinkStyled>
+        </NavStyled>
+        <Balance />
+      </NavWrap>
       <Currency />
     </SideBarWrapper>
   );

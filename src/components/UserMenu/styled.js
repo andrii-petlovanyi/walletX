@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const UserMenuStyled = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   font-family: 'Circe';
@@ -12,13 +13,11 @@ export const UserMenuStyled = styled.div`
 `;
 export const UserName = styled.p`
   display: flex;
-  align-items: center;
-
   :after {
     content: '';
     margin-left: 12px;
     margin-right: 12px;
-    display: inline-block;
+    display: block;
     height: 30px;
     border-right: 1px solid var(--secondary-text-cl);
   }
@@ -40,7 +39,7 @@ export const ButtonExit = styled.button`
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
   &:focus {
-    color: var(--main-text-cl);
+    color: var(--accent-active-cl);
   }
 `;
 

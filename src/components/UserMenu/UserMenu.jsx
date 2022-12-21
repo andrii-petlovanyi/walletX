@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import styles from 'components/UserMenu/styled';
-import { IoExitOutline } from 'react-icons/io5';
+import { TbLogout } from 'react-icons/tb';
 import { useSelector } from 'react-redux';
 import ModalExit from 'components/ModalExit/ModalExit';
+import authSelectors from 'redux/auth/auth-selectors';
+import { IconContext } from 'react-icons';
 const UserMenu = () => {
   const { UserMenuStyled, UserName, ButtonExit } = styles;
-  const name = useSelector(state => state);
-  console.log(name);
+  const { getUserName } = authSelectors;
+  const name = useSelector(getUserName);
 
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
@@ -14,13 +16,15 @@ const UserMenu = () => {
   return (
     <>
       <UserMenuStyled>
-        <UserName>Name </UserName>
+        <UserName>{name}</UserName>
         <ButtonExit type="button" onClick={handleShow}>
-          <IoExitOutline size={20} />
+          <IconContext.Provider value={{ className: 'icon' }}>
+            <TbLogout />
+          </IconContext.Provider>
           <span>Exit</span>
         </ButtonExit>
+        {show && <ModalExit show={show} handleClose={handleClose} />}
       </UserMenuStyled>
-      {show && <ModalExit show={show} handleClose={handleClose} />}
     </>
   );
 };
