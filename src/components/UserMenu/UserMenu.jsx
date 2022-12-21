@@ -13,6 +13,8 @@ const UserMenu = () => {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
+  const viewPortWidth = window.innerWidth;
+  console.log(viewPortWidth);
   return (
     <>
       <UserMenuStyled>
@@ -21,7 +23,7 @@ const UserMenu = () => {
           <IconContext.Provider value={{ className: 'icon' }}>
             <TbLogout />
           </IconContext.Provider>
-          <span>Exit</span>
+          {viewPortWidth > 767.98 && <span>Exit</span>}
         </ButtonExit>
         {show && <ModalExit show={show} handleClose={handleClose} />}
       </UserMenuStyled>
