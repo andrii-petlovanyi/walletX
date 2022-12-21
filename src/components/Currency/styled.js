@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 const CurrencyTable = styled.table`
   width: 393px;
-
   background: var(--accent-active-cl);
   border: none;
   border-radius: 30px;
@@ -17,13 +16,15 @@ const CurrencyTable = styled.table`
   text-align: center;
   color: var(--main-bg-cl);
   overflow: hidden;
+
   background-image: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.2) -7.46%,
     rgba(255, 255, 255, 0) 100%
   );
-  background-position: left 18px top 539px;
+  /* background-position: left 18px top 539px; */
 `;
+
 const Head = styled.thead`
   /* height: 60px; */
   padding: 17px 44px;
@@ -52,3 +53,5 @@ const Body = styled.tbody`
 
 const styles = { CurrencyTable, Head, Cell, Body, HeaderLine, BodyWrap };
 export default styles;
+
+// ======

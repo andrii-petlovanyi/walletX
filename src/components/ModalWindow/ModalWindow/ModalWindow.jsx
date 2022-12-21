@@ -22,7 +22,7 @@ const ModalWindow = () => {
   const [comment, setComment] = useState('');
   const [date, setDate] = useState();
   const dispatch = useDispatch();
-  
+
   console.log(balance);
   console.log(comment);
 
@@ -51,6 +51,7 @@ const ModalWindow = () => {
         )}
         <BalanceDateWrapper htmlFor="balance">
           <InputBalance
+            type="number"
             name="balance"
             id="balance"
             placeholder="0.00"
