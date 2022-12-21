@@ -14,41 +14,20 @@ export const device = {
   desktop: `(min-width: ${size.desktop})`,
 };
 
-export const ModalWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: '100vw';
-  height: '100vh';
-  padding-right: 10px;
-  padding-left: 10px;
-  padding-top: 20px;
-  padding-bottom: 37px;
-  @media ${device.tablet} {
-    max-width: 540px;
-    padding: 40px 73px;
-  }
-
-  @media ${device.desktop} {
-    width: 540px;
-  }
-`;
-
-export const ModalTitle = styled.h1`
-  margin-bottom: 40px;
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 1.5;
-  text-align: center;
-  color: var(--main-text-cl);
-  @media ${device.tablet} {
-    font-size: 30px;
-    line-height: 1.5;
-  }
-`;
+// export const ModalTitle = styled.h1`
+//   margin-bottom: 40px;
+//   font-family: 'Poppins';
+//   font-style: normal;
+//   font-weight: 400;
+//   font-size: 24px;
+//   line-height: 1.5;
+//   text-align: center;
+//   color: var(--main-text-cl);
+//   @media ${device.tablet} {
+//     font-size: 30px;
+//     line-height: 1.5;
+//   }
+// `;
 
 export const SwitchWrapper = styled.div`
   display: flex;
