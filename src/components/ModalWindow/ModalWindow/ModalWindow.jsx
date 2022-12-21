@@ -105,49 +105,47 @@ const ModalWindow = () => {
   }, [handelKeyDown]);
 
   return (
-    isModalOpen && (
-      <Overlay onClick={handleBackDropClick}>
-        <ModalWrapper>
-          <button
-            type="button"
-            onClick={() => {
-              dispatch(closeModal());
-            }}
-          >
-            Close
-          </button>
-          <form onSubmit={onSubmit}>
-            <ModalTitle>Add transaction</ModalTitle>
-            <SwitchModal checked={checked} setChecked={setChecked} />
-            {checked && (
-              <SelectCategory selected={selected} setSelected={setSelected} />
-            )}
-            <BalanceDateWrapper htmlFor="balance">
-              <InputBalance
-                type="number"
-                name="balance"
-                id="balance"
-                placeholder="0.00"
-                // type="text"
-                // pattern="[0-9]*"
-                step="0.01"
-                // value={balance}
-                required
-                // onChange={handleChange}
-              />
-              <DatetimePicker date={date} setDate={setDate} />
-            </BalanceDateWrapper>
-            <TextareaComment
-              placeholder="Comment"
-              name="comment"
+    <Overlay onClick={handleBackDropClick}>
+      <ModalWrapper>
+        <button
+          type="button"
+          onClick={() => {
+            dispatch(closeModal());
+          }}
+        >
+          Close
+        </button>
+        <form onSubmit={onSubmit}>
+          <ModalTitle>Add transaction</ModalTitle>
+          <SwitchModal checked={checked} setChecked={setChecked} />
+          {checked && (
+            <SelectCategory selected={selected} setSelected={setSelected} />
+          )}
+          <BalanceDateWrapper htmlFor="balance">
+            <InputBalance
+              type="number"
+              name="balance"
+              id="balance"
+              placeholder="0.00"
+              // type="text"
+              // pattern="[0-9]*"
+              step="0.01"
+              // value={balance}
+              required
               // onChange={handleChange}
-            ></TextareaComment>
-            <Button type="button">Add</Button>
-            <Button type="button">Clear</Button>
-          </form>
-        </ModalWrapper>
-      </Overlay>
-    )
+            />
+            <DatetimePicker date={date} setDate={setDate} />
+          </BalanceDateWrapper>
+          <TextareaComment
+            placeholder="Comment"
+            name="comment"
+            // onChange={handleChange}
+          ></TextareaComment>
+          <Button type="button">Add</Button>
+          <Button type="button">Clear</Button>
+        </form>
+      </ModalWrapper>
+    </Overlay>
   );
 };
 export default ModalWindow;
