@@ -1,22 +1,37 @@
 import styled from 'styled-components';
+import ellipse1 from 'images/registration/ellipse1.png';
+import ellipse2 from 'images/registration/ellipse2.png';
 
 export const FieldStyled = styled.div`
-  width: 1280px;
+  width: 100vw;
+
+  margin: 0 auto;
+  height: 100vh;
   display: flex;
+  background-color: #e5e5e5;
+  background-image: url(${ellipse1}), url(${ellipse2});
+  background-position: bottom left, top right;
+  background-repeat: no-repeat;
+
+  /* background-image: url({elipsebl}), url({elipsepn});
+  background-repeat: no-repeat;
+  background-position: top right 130px, top 270px left 130px, center, 100px 60px,
+    center; */
 `;
 
 export const TitleFieldStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 549px;
+  width: 45%;
 `;
 
 export const FormFieldStyled = styled.div`
+  width: 55%;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 720px;
   padding: 52px 91px 52px 107px;
-  background: #e5e5e5;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(25px);
 `;

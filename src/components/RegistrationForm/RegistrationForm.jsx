@@ -1,5 +1,11 @@
 import React from 'react';
-import { FormStyed, ImgStyed, IndicatorBar } from './styled';
+import {
+  FormStyed,
+  ImgStyed,
+  LinkStyled,
+  // IndicatorBarWrapper,
+  // IndicatorBar,
+} from './styled';
 import { useDispatch } from 'react-redux';
 import operations from 'redux/auth/auth-operations';
 import Logo from 'components/Logo/Logo';
@@ -18,18 +24,29 @@ const RegistrationForm = () => {
   const dispatch = useDispatch();
   const { signUp } = operations;
 
+  const checkPassword = () => {
+    if (JSON.stringify(parol) !== JSON.stringify(parol1)) {
+      return false;
+    }
+    return true;
+  };
+
   const onChangePassword = e => {
-    console.log(e.target.value);
     setParol(e.target.value);
   };
 
   const onChangePassword1 = e => {
-    console.log(e.target.value);
     setParol1(e.target.value);
   };
 
   const onSubmit = async e => {
     e.preventDefault();
+    const checked = checkPassword();
+    if (!checked) {
+      alert('Пароли не совпадают!');
+      return;
+    }
+
     const form = e.currentTarget;
     const res = await dispatch(
       signUp({
@@ -49,7 +66,13 @@ const RegistrationForm = () => {
       </Box>
       <label>
         <ImgStyed src={emailImg} alt="" />
-        <input type="email" name="email" placeholder="E-mail" />
+        <input
+          type="email"
+          name="email"
+          placeholder="E-mail"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+          required
+        />
       </label>
       <label>
         <ImgStyed src={lockImg} alt="" />
@@ -58,8 +81,10 @@ const RegistrationForm = () => {
           type="password"
           name="password"
           placeholder="Password"
-          pattern=".{8,}"
           value={parol1}
+          required
+          pattern=".{6,}"
+          // pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,12}$"
         />
       </label>
       <label>
@@ -70,22 +95,39 @@ const RegistrationForm = () => {
           type="password"
           name="ConfirmPassword"
           placeholder="Confirm password"
-          pattern=".{8,}"
+          required
+          pattern=".{6,}"
+          // pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,12}$"
         />
         {parol.length > 0 && (
-          <Box width={`${parol.length * 10}px`} color="yellow">
-            <IndicatorBar />
+          <Box
+            maxWidth="180px"
+            overflow="hidden"
+            backgroundColor="#e5f1e9"
+            mt="5px"
+            borderRadius="20px"
+          >
+            <Box
+              width={`${parol.length * 30}px`}
+              backgroundColor={checkPassword() ? '#28ce65' : '#e6ed17'}
+              height="5px"
+            />
           </Box>
         )}
       </label>
       <label>
         <ImgStyed src={personImg} alt="" />
-        <input type="text" name="name" placeholder="First name" />
+        <input
+          type="text"
+          name="name"
+          placeholder="First name"
+          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          required
+        />
       </label>
 
       <button type="submit">Register</button>
-      <button type="submit">LogIn</button>
-      {/* <Link>Log in</Link> */}
+      <LinkStyled to="/login">Log-In</LinkStyled>
     </FormStyed>
   );
 };
