@@ -15,7 +15,7 @@ const transactionSlice = createSlice({
       state.loadingAddTrans = true;
     },
     [options.createTransaction.fulfilled]: (state, { payload }) => {
-      state.transactions = payload.result.reverse();
+      state.transactions = payload.result?.reverse();
       state.loadingAddTrans = false;
     },
     [options.createTransaction.rejected]: state => {
@@ -25,7 +25,7 @@ const transactionSlice = createSlice({
       state.loadingTrans = true;
     },
     [options.getTransactions.fulfilled]: (state, { payload }) => {
-      state.transactions = payload.reverse();
+      state.transactions = payload?.reverse();
       state.loadingTrans = false;
     },
     [options.getTransactions.rejected]: state => {

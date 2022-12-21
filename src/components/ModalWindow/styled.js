@@ -57,26 +57,6 @@ export const SwitchWrapper = styled.div`
   margin-bottom: 40px;
 `;
 
-export const TextIncome = styled.p`
-  font-family: 'Circe';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 1.5;
-  text-align: right;
-  color: #e0e0e0;
-`;
-
-export const TextExpense = styled.p`
-  font-family: 'Circe';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 1.5;
-  text-align: right;
-  color: #e0e0e0;
-`;
-
 export const Input = styled.input`
   display: flex;
   justify-content: center;
@@ -92,7 +72,7 @@ export const Input = styled.input`
   font-weight: 700;
   font-size: 18px;
   line-height: 1.5;
-  color: var(--secondary-text-cl);
+  color: 'var(--main-text-cl)';
   border-top: inherit;
   border-right: inherit;
   border-left: inherit;
@@ -115,6 +95,7 @@ export const TextareaComment = styled.textarea`
   width: 100%;
   max-width: 280px;
   height: 84px;
+  resize: none;
   padding-left: 20px;
   padding-right: 20px;
   margin-top: 40px;
@@ -163,19 +144,20 @@ export const Button = styled.button`
 
 export const DatetimeWrapper = styled.label`
   display: flex;
-  width: 280px;
-  gap: 20px;
-  padding-bottom: 5px;
+  /* gap: 20px; */
+  /* max-width: 280px;
+  height: '32px';
+  padding: 8px 20px;
+  border-top: none;
   border-bottom: '1px solid #e0e0e0';
-
+  max-width: 180px;
   @media ${device.tablet} {
     max-width: 180px;
-  }
+  } */
 `;
 
 export const Datetime = styled.input`
-  max-width: 180px;
-  height: '32px';
+  /* padding: 8px 20px; */
   font-family: 'Circe';
   font-style: 'normal';
   font-weight: '400';
@@ -184,12 +166,12 @@ export const Datetime = styled.input`
   color: 'var(--main-text-cl)';
 `;
 
-export const DatetimeIcon = styled.svg`
-  width: 24px;
-  height: 24px;
-  fill: var(--accent-active-cl);
-  color: var(--accent-active-cl);
-`;
+// export const DatetimeIcon = styled.svg`
+//   width: 24px;
+//   height: 24px;
+//   fill: var(--accent-active-cl);
+//   color: var(--accent-active-cl);
+// `;
 
 export const SwitchLabel = styled.label`
   display: flex;
@@ -215,7 +197,7 @@ export const Switch = styled.div`
     top: 50%;
     width: 44px;
     height: 44px;
-    background: var(--expense-cl);
+    background: ${p => p.switchColor};
     box-shadow: 0px 6px 15px rgba(255, 101, 150, 0.5);
     border-radius: 50px;
     transform: translate(0, -50%);
@@ -238,5 +220,43 @@ export const SwitchInput = styled.input`
     &:before {
       transform: translate(40px, -50%);
     }
+  }
+`;
+
+export const TextIncome = styled.p`
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: right;
+  color: ${p => p.incomeColor};
+`;
+
+export const TextExpense = styled.p`
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: right;
+  color: ${p => p.expenseColor};
+`;
+
+export const SelectForm = styled.form``;
+
+export const Label = styled.label`
+  display: flex;
+  .rdtPicker {
+    display: none;
+    position: absolute;
+    min-width: 250px;
+    padding: 4px;
+    margin-top: 1px;
+    z-index: 99999 !important;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #f9f9f9;
+    background-color: red;
   }
 `;

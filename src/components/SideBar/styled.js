@@ -16,6 +16,7 @@ export const device = {
 };
 
 const SideBarWrapper = styled.div`
+
   @media ${device.tablet} {
     display: flex;
     flex-direction: row;

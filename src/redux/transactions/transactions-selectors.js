@@ -1,3 +1,1 @@
-const getCategory = state => state.transaction.category;
-
-export default getCategory;
+export const selectCategory = state => state.transaction.category;

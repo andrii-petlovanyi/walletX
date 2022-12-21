@@ -20,6 +20,7 @@ const LayoutStyled = styled.div`
   padding-bottom: 12px;
 `;
 const Wrapper = styled.div`
+
   @media ${device.tablet} {
     display: block;
     height: 100vh;
@@ -30,6 +31,7 @@ const Wrapper = styled.div`
   @media ${device.desktop} {
     display: flex;
   }
+
 `;
 
 const styles = { LayoutStyled, Wrapper };

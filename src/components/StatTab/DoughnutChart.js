@@ -22,12 +22,12 @@ const DoughnutChart = () => {
       },
     ],
   };
-   const options =   {}
+  const options = { cutout: '70%' };
 
   return (
-    <div>
+    <>
       <Doughnut data={data} options={options} />
-    </div>
+    </>
   );
 };
 
