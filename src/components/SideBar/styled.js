@@ -16,21 +16,16 @@ export const device = {
 };
 
 const SideBarWrapper = styled.div`
-
   @media ${device.tablet} {
     display: flex;
     flex-direction: row;
     padding: 40px 32px 20px;
-    background-color: rgba(231, 234, 242, 0.4);
-    backdrop-filter: blur(25px);
   }
   @media ${device.desktop} {
     flex-direction: column;
     padding: 40px 16px;
     border-right: 1px solid rgba(231, 229, 242, 1);
     box-shadow: 1px 0px 0px 0px rgba(255, 255, 255, 0.6);
-    background-color: rgba(231, 234, 242, 0.4);
-    backdrop-filter: blur(25px);
   }
 `;
 const NavWrap = styled.div`

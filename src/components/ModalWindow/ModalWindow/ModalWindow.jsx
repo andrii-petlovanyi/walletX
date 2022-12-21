@@ -27,6 +27,7 @@ const ModalWindow = () => {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
+
   console.log(balance);
   // console.log(comment);
   const findCategory = value => {
@@ -87,6 +88,7 @@ const ModalWindow = () => {
         )}
         <BalanceDateWrapper htmlFor="balance">
           <InputBalance
+            type="number"
             name="balance"
             id="balance"
             placeholder="0.00"

@@ -18,20 +18,20 @@ export const device = {
 
 const LayoutStyled = styled.div`
   padding-bottom: 12px;
+  max-width: 1280px;
+  margin: 0 auto;
 `;
 const Wrapper = styled.div`
-
   @media ${device.tablet} {
     display: block;
     height: 100vh;
-    background-image: url(${elipsebl}), url(${elipsepn});
+    /* background-image: url(${elipsebl}), url(${elipsepn});
     background-repeat: no-repeat;
-    background-position: bottom 0 left 0, top 0 right 0;
+    background-position: bottom 0 left 0, top 0 right 0; */
   }
   @media ${device.desktop} {
     display: flex;
   }
-
 `;
 
 const styles = { LayoutStyled, Wrapper };
