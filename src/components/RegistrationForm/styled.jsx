@@ -16,6 +16,7 @@ export const FormStyed = styled.form`
     height: 32px;
     width: 410px;
     position: relative;
+    margin-bottom: 40px;
   }
   h1 {
   }
@@ -45,6 +46,7 @@ export const FormStyed = styled.form`
   }
   button {
     margin: 0 auto;
+    margin-bottom: 20px;
     width: 300px;
     height: 50px;
     border: none;
