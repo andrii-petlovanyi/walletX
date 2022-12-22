@@ -15,8 +15,6 @@ const DatetimePicker = ({ date, setDate }) => {
   };
 
   const handleChange = dateObj => {
-    // const { value } = e.target;
-    console.log(dateObj._d);
     setDate(dateObj._d);
     // setIsOpen(false);
   };
