@@ -5,6 +5,7 @@ const BalanceWrap = styled.div`
   padding-top: 8px;
   padding-left: 40px;
   padding-bottom: 11px;
+  margin-top: 12px;
   margin-bottom: 32px;
   height: 80px;
   background-color: var(--main-bg-cl);
@@ -21,7 +22,7 @@ const BalanceWrap = styled.div`
   }
 `;
 
-export const Title = styled.p`
+const Title = styled.p`
   font-family: 'Circe';
   font-style: normal;
   font-weight: 400;
@@ -30,7 +31,7 @@ export const Title = styled.p`
   text-transform: uppercase;
   color: #a6a6a6;
 `;
-export const CurrentBalance = styled.div`
+const CurrentBalance = styled.div`
   display: flex;
   gap: 3px;
   font-family: 'Poppins';
@@ -40,7 +41,7 @@ export const CurrentBalance = styled.div`
   line-height: 1.5;
   color: var(--main-text-cl);
 `;
-export const Text = styled.p`
+const Text = styled.p`
   font-weight: 700;
 `;
 

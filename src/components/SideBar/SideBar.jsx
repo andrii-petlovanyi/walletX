@@ -1,4 +1,6 @@
 import React from 'react';
+import { useMedia } from 'react-use';
+import { useLocation } from 'react-router';
 import Balance from 'components/Balance/Balance';
 import Currency from 'components/Currency/Currency';
 import styles from 'components/SideBar/styled';
@@ -7,14 +9,19 @@ import NavMob from 'components/NavMob/NavMob';
 
 export const SideBar = () => {
   const { SideBarWrapper, NavWrap } = styles;
-  const viewPortWidth = window.innerWidth;
+  const isWide = useMedia('(min-width: 768px)');
+
+  const location = useLocation();
   return (
     <SideBarWrapper>
       <NavWrap>
-        {viewPortWidth < 767.98 ? <NavMob /> : <NavTab />}
-        <Balance />
+        {isWide ? <NavTab /> : <NavMob />}
+        {(isWide && <Balance />) ||
+          (location.pathname !== '/currency' && <Balance />)}
       </NavWrap>
-      {viewPortWidth > 767.98 && <Currency />}
+      {(isWide && <Currency />) ||
+        (location.pathname === '/currency' && <Currency />)}
+      {/* {isWide && <Currency />} */}
     </SideBarWrapper>
   );
 };

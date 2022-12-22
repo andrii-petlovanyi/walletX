@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { device } from 'components/Layout/styled';
 
-export const UserMenuStyled = styled.div`
+const UserMenuStyled = styled.div`
   position: relative;
   display: flex;
   align-items: center;
@@ -12,7 +12,7 @@ export const UserMenuStyled = styled.div`
   line-height: 1.5;
   color: var(--secondary-text-cl);
 `;
-export const UserName = styled.p`
+const UserName = styled.p`
   margin-right: 8px;
   @media ${device.tablet} {
     display: flex;
@@ -27,7 +27,7 @@ export const UserName = styled.p`
   }
 `;
 
-export const ButtonExit = styled.button`
+const ButtonExit = styled.button`
   display: flex;
   gap: 8px;
   align-items: center;

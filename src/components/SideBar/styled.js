@@ -28,7 +28,6 @@ const NavWrap = styled.div`
 const NavStyled = styled.nav`
   display: flex;
   gap: 32px;
-  margin-bottom: 12px;
   @media ${device.tablet} {
     flex-direction: column;
     gap: 12px;
@@ -37,8 +36,6 @@ const NavStyled = styled.nav`
     font-size: 18px;
     line-height: 1.5;
     transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  @media ${device.desktop} {
   }
 `;
 
