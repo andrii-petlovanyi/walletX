@@ -27,7 +27,7 @@ import {
 import { selectError } from 'redux/transactions/transactions-selectors';
 import { cleanError } from 'redux/transactions/transactions-slice';
 
-const ModalWindow = () => {
+const ModalAddTransaction = () => {
   const [checked, setChecked] = useState(true);
   const [selected, setSelected] = useState();
   const [balance, setBalance] = useState('');
@@ -240,4 +240,4 @@ const ModalWindow = () => {
     </>
   );
 };
-export default ModalWindow;
+export default ModalAddTransaction;
