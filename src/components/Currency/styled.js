@@ -55,22 +55,25 @@ const Body = styled.tbody`
 `;
 
 const CurrencyWrap = styled.div`
-  width: 280;
-  height: 174px;
+  width: 280px;
+
+  min-height: 174px;
   border-radius: 30px;
   background-color: #4a56e2;
   background-image: url(${BackgroundPicture});
   background-repeat: no-repeat;
   background-position: bottom;
   background-size: 100%;
+  margin: 0 auto;
 
   @media ${device.tablet} {
     width: 336px;
-    height: 182px;
+    min-height: 182px;
   }
   @media ${device.desktop} {
     width: 393px;
-    height: 331px;
+    min-height: 331px;
+    margin: 0;
   }
 `;
 
