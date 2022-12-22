@@ -66,16 +66,22 @@ const TransactionsListDesktop = () => {
     const dispatch = useDispatch();
     const elementsList = useSelector(state => state.transaction.transactions);
     const category = useSelector(state => state.category.category);
+    const isLoading = useSelector(state => state.transaction.loadingAddTrans);
 
     useEffect(() => {
         dispatch(operations.getTransactions());
     }, [dispatch]);
+    
+    console.log('category:', category);
+    console.log('elementsList:', elementsList);
+    
+    if (!category || !elementsList) return;
 
     if (category.length===0 || elementsList.length === 0) return;
 
     // console.log(Date(elementsList[0].transactionDate));
     // console.log(elementsList);
-    return (
+    return !isLoading && (
         <Table>
             <thead>
                 <HeaderTr>
@@ -88,12 +94,12 @@ const TransactionsListDesktop = () => {
                 </HeaderTr>
             </thead>    
             <tbody>
-                {elementsList.map(e => {
+                {elementsList?.map(e => {
                     return (
                         <StrTr key={e.id}>
                             <StrTdDate>{e.transactionDate}</StrTdDate>
                             <StrTdType>{e.type==='INCOME' ? '+' : '-' }</StrTdType>
-                            <StrTdCadegoryId>{category.find(c => c.id===e.categoryId).name}</StrTdCadegoryId>
+                            <StrTdCadegoryId>{category?.find(c => c.id===e.categoryId).name}</StrTdCadegoryId>
                             <StrTdComment>{e.comment}</StrTdComment>
                             <StrTdAmount type={e.type}>{e.amount.toFixed(2)}</StrTdAmount>
                             <StrTdBalanceAfter>{e.balanceAfter.toFixed(2)}</StrTdBalanceAfter>
