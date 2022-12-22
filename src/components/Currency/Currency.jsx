@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import styles from './styled';
 import fetchCurrency from 'services/api/currency';
 import Loader from 'components/Loader/Loader';
+import styles from './styled';
+
 const Currency = () => {
   const {
     CurrencyWrap,
