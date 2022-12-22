@@ -20,21 +20,19 @@ const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
   margin: 0 auto;
-  padding-left: 20px;
-  padding-right: 20px;
-
+  padding: 12px 20px 0 20px;
+  display: block;
   @media ${device.mobileM} {
-    width: 480px;
+    max-width: 480px;
   }
 
   @media ${device.tablet} {
-    width: 768px;
+    max-width: 768px;
     padding: 32px 32px 84px 32px;
-    display: block;
   }
 
   @media ${device.desktop} {
-    width: 1280px;
+    max-width: 1280px;
     padding: 40px 16px 63px 16px;
     display: flex;
   }

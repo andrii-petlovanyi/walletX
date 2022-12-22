@@ -7,15 +7,14 @@ const AppBarStyled = styled.header`
   justify-content: center;
   align-items: center;
   background-color: var(--main-bg-cl);
-  @media ${device.tablet} {
-  }
-  @media ${device.desktop} {
-  }
 `;
 const Wrap = styled.div`
   width: 100%;
   max-width: 480px;
   padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   @media ${device.tablet} {
     max-width: 768px;
