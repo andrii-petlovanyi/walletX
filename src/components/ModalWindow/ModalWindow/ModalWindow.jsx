@@ -8,6 +8,7 @@ import DatetimePicker from '../DatetimePicker/DatetimePicker';
 import SelectCategory from '../SelectCategory/SelectCategory';
 import { ButtonAddTrans } from '../styled';
 import { HiPlus } from 'react-icons/hi2';
+import Select from 'react-select';
 
 import SwitchModal from '../SwitchModal/SwitchModal';
 
@@ -33,8 +34,12 @@ const ModalWindow = () => {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  console.log(balance);
-  // console.log(comment);
+  const options = categories
+    .filter(category => category.type === 'EXPENSE')
+    .map(category => {
+      return { value: category.name, label: category.name };
+    });
+
   const findCategory = value => {
     return categories.find(category => category.name === value);
   };
@@ -58,7 +63,7 @@ const ModalWindow = () => {
 
   const onSubmit = e => {
     e.preventDefault();
-    const categoryData = findCategory(checked ? selected : 'Income');
+    const categoryData = findCategory(checked ? selected.value : 'Income');
 
     const transaction = {
       amount:
@@ -70,13 +75,12 @@ const ModalWindow = () => {
       categoryId: categoryData.id,
       comment: comment,
     };
-    console.log(transaction);
     dispatch(operations.createTransaction(transaction));
     reset();
   };
 
   const reset = () => {
-    setSelected(null);
+    setSelected();
     setBalance(null);
     setComment('');
     setDate('');
@@ -124,7 +128,11 @@ const ModalWindow = () => {
               <ModalTitle>Add transaction</ModalTitle>
               <SwitchModal checked={checked} setChecked={setChecked} />
               {checked && (
-                <SelectCategory selected={selected} setSelected={setSelected} />
+                <Select
+                  options={options}
+                  value={selected ? selected : ''}
+                  onChange={setSelected}
+                />
               )}
               <BalanceDateWrapper htmlFor="balance">
                 <InputBalance
