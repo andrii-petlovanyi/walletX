@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Layout from 'components/Layout/Layout';
-import ModalWindow from './ModalWindow/ModalWindow/ModalWindow';
+import ModalWindow from './ModalWindow/ModalAddTransaction/ModalAddTransaction';
 import PrivateRoute from './Routs/PrivateRoute';
 import LoginPage from 'pages/LoginPage/LoginPage';
 import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';

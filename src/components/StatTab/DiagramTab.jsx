@@ -35,12 +35,14 @@ function DiagramTab() {
 
   const statData = useSelector(state => state.statistic.statistic);
 
-  console.log('statData :',statData);
-
-
   useEffect(() => {
-    dispatch(getTransactionSummary({ month, year }));
+    if (month.length > 0 && year.length > 0)
+      dispatch(getTransactionSummary({ month, year }));
   }, [month, year, dispatch]);
+
+  const filteredExp = statData?.categoriesSummary?.filter(
+    el => el.type !== 'INCOME'
+  );
 
   const handleChangeMonth = e => {
     setMonth(e.target.value);
@@ -82,16 +84,18 @@ function DiagramTab() {
             </TableHeader>
           </tr>
         </thead>
-        <tbody>
-          {statData.categoriesSummary.map(({ name, total }) => {
-            return (
-              <TabItem>
-                <TableData>{name}</TableData>
-                <TableDataAmount>{total}</TableDataAmount>
-              </TabItem>
-            );
-          })}
-        </tbody>
+        {filteredExp?.length > 0 && (
+          <tbody>
+            {filteredExp?.map(({ name, total }) => {
+              return (
+                <TabItem key={name}>
+                  <TableData>{name}</TableData>
+                  <TableDataAmount>{total}</TableDataAmount>
+                </TabItem>
+              );
+            })}
+          </tbody>
+        )}
       </Table>
       <p>
         <span>Expenses</span>
@@ -99,7 +103,7 @@ function DiagramTab() {
       </p>
       <p>
         <span>Income</span>
-        <span>{statData.expenseSummary}</span>
+        <span>{statData.incomeSummary}</span>
       </p>
     </Box>
   );

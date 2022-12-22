@@ -28,9 +28,7 @@ const Wrap = styled.div`
     padding: 20px 16px;
   }
 `;
-export const Nav = styled.nav`
-  /* display: flex; */
-`;
+export const Nav = styled.nav``;
 const styles = {
   AppBarStyled,
   Nav,

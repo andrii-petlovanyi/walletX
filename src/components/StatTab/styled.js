@@ -74,3 +74,19 @@ export const TableDataAmount = styled.td`
   border: 1px solid #dcdcdf;
   box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
 `;
+
+export const DoughnutBalance = styled.p`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.5;
+`;
+
+export const ChartContainer = styled.div`
+  position: relative;
+  margin-bottom: 32px;
+`;

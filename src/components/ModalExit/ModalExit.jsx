@@ -1,11 +1,10 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import operations from 'redux/auth/auth-operations';
-
 import styles from './slyled';
+
 const ModalExit = ({ handleClose }) => {
   const { ModalStyled, ButtonWrap, ButtonYes, ButtonNo } = styles;
-
   const dispatch = useDispatch();
 
   return (
