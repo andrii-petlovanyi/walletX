@@ -1,76 +1,36 @@
 import React from 'react';
-import { TdBorder,StrTr, TdName, TdData, TdDataSum, Table, TdBorderDate, TdBorderBalance } from './TransactionsListMobile.styled';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
-function getTransList() {
-    const transList = [
-        {
-            id: '1',
-            transactionDate: '04.01.19',
-            type: '-',
-            categoryId: 'Other',
-            // userId: 'string', 
-            comment: 'Gift for you wife',
-            amount: 300.00,
-            balanceAfter: 6900.00,
-        },
-        {
-            id: '2',
-            transactionDate: '05.01.19',
-            type: 'INCOME',
-            categoryId: 'Income',
-            // userId: 'string', 
-            comment: 'January bonus',
-            amount: 8000.00,
-            balanceAfter: 14900.00,
-        },
-        {
-            id: '3',
-            transactionDate: '07.01.19',
-            type: '-',
-            categoryId: 'Car',
-            // userId: 'string', 
-            comment: 'Oil',
-            amount: 1000.00,
-            balanceAfter: 13900.00,
-        },
-        {
-            id: '4',
-            transactionDate: '07.01.19',
-            type: '-',
-            categoryId: 'Products',
-            // userId: 'string', 
-            comment: 'Vegetables for week',
-            amount: 280.00,
-            balanceAfter: 13870.00,
-        },
-        {
-            id: '5',
-            transactionDate: '07.01.19',
-            type: 'INCOME',
-            categoryId: 'Income',
-            // userId: 'string', 
-            comment: 'Gift',
-            amount: 1000.00,
-            balanceAfter: 14870.00,
-        },
-    ];
+import { TdBorder, StrTr, TdName, TdData, TdDataSum, Table, TdBorderDate, TdBorderBalance } from './TransactionsListMobile.styled';
+import { transactionsListSort } from 'components/TransactionsListSort/TransactionsListSort';
+import moment from '../../../node_modules/moment/moment';
+import operations from 'redux/transactions/transactions-operations';
 
-    return transList;
-}
 
 const TransactionsListMobile = () => {
-    const elementsList = getTransList();
+  const dispatch = useDispatch();
+  const elementsList = useSelector(state => state.transaction.transactions);
+  const category = useSelector(state => state.category.category);
+
+  useEffect(() => {
+    dispatch(operations.getTransactions());
+  }, [dispatch]);
+
+  if (category.length === 0 || elementsList.length === 0) return;
+    
+  const sortElementsList = transactionsListSort(elementsList, category);
 
     return (
 
-    elementsList.map(e => {
+    sortElementsList.map(e => {
         return (
         <Table key={e.id}>
             <tbody>
                 <StrTr >    
                     <TdBorderDate type={e.type}/>
                     <TdName>Date</TdName>
-                    <TdData>{e.transactionDate}</TdData>
+                    <TdData>{moment(e.transactionDate).format('DD.MM.YY')}</TdData>
                 </StrTr>
                 <StrTr >
                     <TdBorder type={e.type}/>
@@ -80,7 +40,7 @@ const TransactionsListMobile = () => {
                 <StrTr >
                     <TdBorder type={e.type}/>
                     <TdName>Category</TdName>
-                    <TdData>{e.categoryId}</TdData>
+                    <TdData>{category?.find(c => c.id === e.categoryId).name}</TdData>
                 </StrTr>
                 <StrTr >
                     <TdBorder type={e.type}/>
