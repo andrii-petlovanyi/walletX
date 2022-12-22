@@ -25,16 +25,16 @@ const Wrapper = styled.div`
   padding: 12px 20px 0 20px;
   display: block;
   @media ${device.mobileM} {
-    max-width: 480px;
+    width: 480px;
   }
 
   @media ${device.tablet} {
-    max-width: 768px;
+    width: 768px;
     padding: 32px 32px 84px 32px;
   }
 
   @media ${device.desktop} {
-    max-width: 1280px;
+    width: 1280px;
     padding: 40px 16px 63px 16px;
     display: flex;
   }

@@ -19,9 +19,7 @@ export const SideBar = () => {
         {(isWide && <Balance />) ||
           (location.pathname !== '/currency' && <Balance />)}
       </NavWrap>
-      {(isWide && <Currency />) ||
-        (location.pathname === '/currency' && <Currency />)}
-      {/* {isWide && <Currency />} */}
+      {isWide && <Currency />}
     </SideBarWrapper>
   );
 };
