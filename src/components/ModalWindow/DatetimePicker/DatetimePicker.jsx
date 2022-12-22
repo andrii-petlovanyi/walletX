@@ -15,8 +15,6 @@ const DatetimePicker = ({ date, setDate, setError }) => {
   };
 
   const handleChange = dateObj => {
-    // const { value } = e.target;
-    console.log(dateObj);
     setDate(dateObj._d);
     setError(prevState => {
       return { ...prevState, datePick: null };

@@ -12,24 +12,21 @@ const initialState = {
 const transactionSlice = createSlice({
   name: 'transaction',
   initialState,
-  reducers: {
-    // openModal(state, _) {
-    //   state.isModalOpen = true;
-    // },
-    // closeModal(state, _) {
-    //   state.isModalOpen = false;
-    // },
-    cleanError(state, _) {
-      state.error = null;
-    },
-  },
+  // reducers: {
+  //   openModal(state, _) {
+  //     state.isModalOpen = true;
+  //   },
+  //   closeModal(state, _) {
+  //     state.isModalOpen = false;
+  //   },
+  // },
   extraReducers: {
     [options.createTransaction.pending]: state => {
       state.loadingAddTrans = true;
       state.error = null;
     },
     [options.createTransaction.fulfilled]: (state, { payload }) => {
-      state.transactions = payload.result?.reverse();
+      state.transactions = [payload, ...state.transactions];
       state.loadingAddTrans = false;
       state.error = null;
     },
@@ -41,7 +38,7 @@ const transactionSlice = createSlice({
       state.loadingTrans = true;
     },
     [options.getTransactions.fulfilled]: (state, { payload }) => {
-      state.transactions = payload?.reverse();
+      state.transactions = payload;
       state.loadingTrans = false;
     },
     [options.getTransactions.rejected]: state => {

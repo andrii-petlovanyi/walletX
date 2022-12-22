@@ -56,7 +56,6 @@ const Body = styled.tbody`
 
 const CurrencyWrap = styled.div`
   width: 280px;
-
   min-height: 174px;
   border-radius: 30px;
   background-color: #4a56e2;
@@ -65,6 +64,7 @@ const CurrencyWrap = styled.div`
   background-position: bottom;
   background-size: 100%;
   margin: 0 auto;
+  margin-top: 28px;
 
   @media ${device.tablet} {
     width: 336px;
@@ -87,5 +87,3 @@ const styles = {
   BodyWrap,
 };
 export default styles;
-
-// ======
