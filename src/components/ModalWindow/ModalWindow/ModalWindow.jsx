@@ -5,7 +5,6 @@ import getCategory from 'redux/category/category-operations';
 import { selectCategory } from 'redux/category/category-selectors';
 import operations from 'redux/transactions/transactions-operations';
 import DatetimePicker from '../DatetimePicker/DatetimePicker';
-// import SelectCategory from '../SelectCategory/SelectCategory';
 import { ButtonAddTrans } from '../styled';
 import { HiPlus } from 'react-icons/hi2';
 import Select from 'react-select';
@@ -51,9 +50,7 @@ const ModalWindow = () => {
   }, [dispatch, isLoggedIn]);
 
   const handleChange = e => {
-    console.log(e.target);
     const { name, value } = e.target;
-    console.log(e.target.name, e.target.value);
     if (name === 'comment') {
       setComment(() => value);
     }
@@ -63,7 +60,7 @@ const ModalWindow = () => {
   };
 
   const handleChangeBalance = event => {
-    const result = event.target.value.replace(/[a-z]/g, '');
+    const result = event.target.value.replace(/[a-zA-Z]/g, '');
 
     setBalance(result);
   };
@@ -71,12 +68,12 @@ const ModalWindow = () => {
   const onSubmit = e => {
     e.preventDefault();
     const categoryData = findCategory(checked ? selected.value : 'Income');
-
+    const normalizeBalance = Number(balance).toFixed(2);
     const transaction = {
       amount:
         categoryData.type === 'EXPENSE'
-          ? Number(e.target.elements.balance.value) * -1
-          : Number(e.target.elements.balance.value),
+          ? normalizeBalance * -1
+          : normalizeBalance,
       transactionDate: date,
       type: categoryData.type,
       categoryId: categoryData.id,
@@ -90,7 +87,7 @@ const ModalWindow = () => {
     setSelected();
     setBalance('');
     setComment('');
-    setDate('');
+    setDate(new Date());
     setChecked(true);
   };
 
@@ -147,10 +144,6 @@ const ModalWindow = () => {
                   name="balance"
                   id="balance"
                   placeholder="0.00"
-                  // type="text"
-                  // pattern="[0-9]*"
-                  // step="0.01"
-
                   value={balance}
                   required
                   onChange={e => handleChangeBalance(e)}
