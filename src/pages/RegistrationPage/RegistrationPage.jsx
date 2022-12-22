@@ -6,21 +6,21 @@ import {
   TitleFieldStyled,
   FormFieldStyled,
   TextStyled,
+  ContainerStyled,
 } from './RegistrationPage.styled';
-import { Box } from 'components/Box';
 
 const RegistrationPage = () => {
   return (
     <FieldStyled>
-      <TitleFieldStyled>
-        <Box position="relative">
+      <ContainerStyled>
+        <TitleFieldStyled>
           <img src={mainRegister} alt="" width="450" />
           <TextStyled>Finance App</TextStyled>
-        </Box>
-      </TitleFieldStyled>
-      <FormFieldStyled>
-        <RegistrationForm />
-      </FormFieldStyled>
+        </TitleFieldStyled>
+        <FormFieldStyled>
+          <RegistrationForm />
+        </FormFieldStyled>
+      </ContainerStyled>
     </FieldStyled>
   );
 };
