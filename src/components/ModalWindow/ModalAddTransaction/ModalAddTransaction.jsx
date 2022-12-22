@@ -86,7 +86,6 @@ const ModalAddTransaction = () => {
       datePick: false,
     };
     if (checked && !selected) {
-      console.log('select error');
       await setError(prevState => {
         return { ...prevState, select: 'select category' };
       });
@@ -94,9 +93,7 @@ const ModalAddTransaction = () => {
     }
 
     if (isValidDate(date) === false) {
-      console.log('DATE ERROR');
       await setError(prevState => {
-        console.log(prevState);
         return { ...prevState, datePick: `date format DD.MM.YYYY` };
       });
       errorObj.datePick = true;
@@ -107,12 +104,9 @@ const ModalAddTransaction = () => {
   const onSubmit = async e => {
     e.preventDefault();
     const errorObj = await validateField();
-    console.log(errorObj);
     if (errorObj.select || errorObj.datePick || errorObj.balance) {
-      console.log(123);
       return;
     }
-    console.log(new Date(date));
     const categoryData = findCategory(checked ? selected.value : 'Income');
     const normalizeBalance = Number(balance).toFixed(2);
     const transaction = {
@@ -146,11 +140,13 @@ const ModalAddTransaction = () => {
     },
     [isOpen]
   );
+
   const handleBackDropClick = event => {
     if (event.currentTarget === event.target) {
       setIsOpen(!isOpen);
     }
   };
+
   useEffect(() => {
     window.addEventListener('keydown', handelKeyDown);
 
