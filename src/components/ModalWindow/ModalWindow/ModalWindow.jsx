@@ -5,7 +5,7 @@ import getCategory from 'redux/category/category-operations';
 import { selectCategory } from 'redux/category/category-selectors';
 import operations from 'redux/transactions/transactions-operations';
 import DatetimePicker from '../DatetimePicker/DatetimePicker';
-import SelectCategory from '../SelectCategory/SelectCategory';
+// import SelectCategory from '../SelectCategory/SelectCategory';
 import { ButtonAddTrans } from '../styled';
 import { HiPlus } from 'react-icons/hi2';
 import Select from 'react-select';
@@ -25,7 +25,7 @@ import {
 const ModalWindow = () => {
   const [checked, setChecked] = useState(true);
   const [selected, setSelected] = useState();
-  const [balance, setBalance] = useState(null);
+  const [balance, setBalance] = useState('');
   const [comment, setComment] = useState('');
   const [date, setDate] = useState(new Date());
   const categories = useSelector(selectCategory);
@@ -50,16 +50,23 @@ const ModalWindow = () => {
     dispatch(getCategory());
   }, [dispatch, isLoggedIn]);
 
-  // const handleChange = e => {
-  //   const { name, value } = e.target;
-  //   console.log(e.target.name, e.target.value);
-  //   if (name === 'comment') {
-  //     setComment(value);
-  //   }
-  //   if (name === 'balance') {
-  //     setBalance(value);
-  //   }
-  // };
+  const handleChange = e => {
+    console.log(e.target);
+    const { name, value } = e.target;
+    console.log(e.target.name, e.target.value);
+    if (name === 'comment') {
+      setComment(() => value);
+    }
+    // if (name === 'balance') {
+    //   setBalance(() => value);
+    // }
+  };
+
+  const handleChangeBalance = event => {
+    const result = event.target.value.replace(/[a-z]/g, '');
+
+    setBalance(result);
+  };
 
   const onSubmit = e => {
     e.preventDefault();
@@ -81,7 +88,7 @@ const ModalWindow = () => {
 
   const reset = () => {
     setSelected();
-    setBalance(null);
+    setBalance('');
     setComment('');
     setDate('');
     setChecked(true);
@@ -136,23 +143,25 @@ const ModalWindow = () => {
               )}
               <BalanceDateWrapper htmlFor="balance">
                 <InputBalance
-                  type="number"
+                  type="text"
                   name="balance"
                   id="balance"
                   placeholder="0.00"
                   // type="text"
                   // pattern="[0-9]*"
-                  step="0.01"
-                  // value={balance}
+                  // step="0.01"
+
+                  value={balance}
                   required
-                  // onChange={handleChange}
+                  onChange={e => handleChangeBalance(e)}
                 />
                 <DatetimePicker date={date} setDate={setDate} />
               </BalanceDateWrapper>
               <TextareaComment
                 placeholder="Comment"
                 name="comment"
-                // onChange={handleChange}
+                value={comment}
+                onChange={e => handleChange(e)}
               ></TextareaComment>
               <Button type="submit">Add</Button>
               <Button type="button">Clear</Button>
