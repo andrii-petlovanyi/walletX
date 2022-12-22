@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import fetchCurrency from 'services/api/currency';
 import Loader from 'components/Loader/Loader';
 import styles from './styled';
-import { useNavigate } from 'react-router-dom';
-import { useMedia } from 'react-use';
+
 const Currency = () => {
   const {
     CurrencyWrap,
@@ -17,10 +16,8 @@ const Currency = () => {
   const [currency, setCurrency] = useState(
     JSON.parse(localStorage.getItem('currency')) || []
   );
-
   const [isLoading, setLoading] = useState(false);
-  const navigate = useNavigate();
-  const isNarrow = useMedia('(min-width: 768px)');
+
   const currencyName = [
     { name: 'EUR', code: 978 },
     { name: 'USD', code: 840 },
@@ -57,11 +54,6 @@ const Currency = () => {
     };
     getCurrency();
   }, [currency]);
-  useEffect(() => {
-    if (isNarrow) {
-      navigate('/');
-    }
-  }, [isNarrow, navigate]);
   return (
     <>
       {isLoading && <Loader />}
