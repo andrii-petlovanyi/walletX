@@ -1,20 +1,28 @@
 import React from 'react';
 import LoginForm from 'components/LoginForm/LoginForm';
-import { FieldStyled, FormFieldStyled, TitleFieldStyled } from 'pages/RegistrationPage/RegistrationPage.styled';
-import loginGroupDesk from 'images/login/loginGroupDesk.svg'
+import {
+  ContainerStyled,
+  FieldStyled,
+  FormFieldStyled,
+  TextStyled,
+  TitleFieldStyled,
+} from 'pages/RegistrationPage/RegistrationPage.styled';
+import loginGroupDesk from 'images/login/loginGroupDesk.svg';
 
 function LoginPage() {
-
-    return (
-        <FieldStyled>
-            <TitleFieldStyled>
-                <img src={loginGroupDesk} alt="" width="436" />
-            </TitleFieldStyled>
-            <FormFieldStyled>
-                <LoginForm />
-            </FormFieldStyled>
-        </FieldStyled>
-    )
+  return (
+    <FieldStyled>
+      <ContainerStyled>
+        <TitleFieldStyled>
+          <img src={loginGroupDesk} alt="" width="436" />
+          <TextStyled>Finance App</TextStyled>
+        </TitleFieldStyled>
+        <FormFieldStyled>
+          <LoginForm />
+        </FormFieldStyled>
+      </ContainerStyled>
+    </FieldStyled>
+  );
 }
 
 export default LoginPage;

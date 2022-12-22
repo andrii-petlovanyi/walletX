@@ -5,15 +5,18 @@ const BalanceWrap = styled.div`
   padding-top: 8px;
   padding-left: 40px;
   padding-bottom: 11px;
-
+  margin-bottom: 32px;
   height: 80px;
   background-color: var(--main-bg-cl);
   border-radius: 30px;
+  min-width: 280px;
+  @media ${device.mobileM} {
+    min-width: 280px;
+  }
   @media ${device.tablet} {
     min-width: 336px;
   }
   @media ${device.desktop} {
-    margin-bottom: 32px;
     width: 395px;
   }
 `;

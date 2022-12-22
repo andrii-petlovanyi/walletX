@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import styles from './styled';
+import fetchCurrency from 'services/api/currency';
 
 const Currency = () => {
   const {
@@ -15,20 +15,40 @@ const Currency = () => {
   const [currency, setCurrency] = useState(
     JSON.parse(localStorage.getItem('currency')) || []
   );
+  const currencyName = [
+    { name: 'EUR', code: 978 },
+    { name: 'USD', code: 840 },
+    { name: 'CHF', code: 756 },
+    { name: 'PLN', code: 985 },
+  ];
+
+  const searchCurrencyName = currencyCode => {
+    const filtered = currencyName.filter(item => item.code === currencyCode);
+    return filtered[0].name;
+  };
 
   useEffect(() => {
-    if (currency.length) return;
+    const sortCurrencyArr = [978, 840, 756, 985];
+    const delta = Date.now() - Number(currency.time) < 3600000;
+    if (currency.currency?.length && delta) return;
     const getCurrency = async () => {
       try {
-        const { data } = await axios.get(
-          'https://api.monobank.ua/bank/currency'
+        const { data } = await fetchCurrency();
+        const filteredCurrency = data.filter(
+          item =>
+            sortCurrencyArr.includes(Number(item.currencyCodeA)) &&
+            item.currencyCodeB !== 840
         );
-        localStorage.setItem('currency', JSON.stringify(data.slice(0, 2)));
-        setCurrency(data.slice(0, 2));
+
+        localStorage.setItem(
+          'currency',
+          JSON.stringify({ currency: filteredCurrency, time: Date.now() })
+        );
+        setCurrency(JSON.parse(localStorage.getItem('currency')));
       } catch (error) {}
     };
     getCurrency();
-  }, [currency.length]);
+  }, [currency]);
 
   return (
     <CurrencyWrap>
@@ -40,15 +60,18 @@ const Currency = () => {
             <HeaderLine>Sale</HeaderLine>
           </BodyWrap>
         </Head>
-
         <Body>
-          {currency?.map(({ currencyCodeA, rateBuy, rateSell }) => (
-            <tr key={currencyCodeA}>
-              <Cell>{currencyCodeA === 840 ? 'USD' : 'EUR'}</Cell>
-              <Cell>{rateBuy.toFixed(2)}</Cell>
-              <Cell>{rateSell.toFixed(2)}</Cell>
-            </tr>
-          ))}
+          {currency.currency?.map(
+            ({ currencyCodeA, rateBuy, rateSell, rateCross }) => (
+              <tr key={currencyCodeA}>
+                <Cell>{searchCurrencyName(currencyCodeA)}</Cell>
+                <Cell>{rateBuy ? rateBuy.toFixed(2) : '-'}</Cell>
+                <Cell>
+                  {rateSell ? rateSell.toFixed(2) : rateCross.toFixed(2)}
+                </Cell>
+              </tr>
+            )
+          )}
         </Body>
       </CurrencyTable>
     </CurrencyWrap>

@@ -15,16 +15,21 @@ export const device = {
 };
 
 export const ModalWrapper = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: '100vw';
-  height: '100vh';
+  /* width: '100vw';
+  height: '100vh'; */
   padding-right: 10px;
   padding-left: 10px;
   padding-top: 20px;
   padding-bottom: 37px;
+  background-color: var(--main-bg-cl);
   @media ${device.tablet} {
     max-width: 540px;
     padding: 40px 73px;
@@ -145,4 +150,13 @@ export const Button = styled.button`
     color: var(--main-bg-cl);
     border-color: var(--income-cl);
   }
+`;
+
+export const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.25);
 `;

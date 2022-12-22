@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from 'components/Layout/styled';
 
 export const UserMenuStyled = styled.div`
   position: relative;
@@ -12,14 +13,17 @@ export const UserMenuStyled = styled.div`
   color: var(--secondary-text-cl);
 `;
 export const UserName = styled.p`
-  display: flex;
-  :after {
-    content: '';
-    margin-left: 12px;
-    margin-right: 12px;
-    display: block;
-    height: 30px;
-    border-right: 1px solid var(--secondary-text-cl);
+  margin-right: 8px;
+  @media ${device.tablet} {
+    display: flex;
+    :after {
+      content: '';
+      margin-left: 12px;
+      margin-right: 12px;
+      display: block;
+      height: 30px;
+      border-right: 1px solid var(--secondary-text-cl);
+    }
   }
 `;
 
