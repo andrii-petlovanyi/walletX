@@ -12,14 +12,17 @@ const initialState = {
 const transactionSlice = createSlice({
   name: 'transaction',
   initialState,
-  // reducers: {
-  //   openModal(state, _) {
-  //     state.isModalOpen = true;
-  //   },
-  //   closeModal(state, _) {
-  //     state.isModalOpen = false;
-  //   },
-  // },
+  reducers: {
+    // openModal(state, _) {
+    //   state.isModalOpen = true;
+    // },
+    // closeModal(state, _) {
+    //   state.isModalOpen = false;
+    // },
+    cleanError(state, _) {
+      state.error = null;
+    },
+  },
   extraReducers: {
     [options.createTransaction.pending]: state => {
       state.loadingAddTrans = true;
