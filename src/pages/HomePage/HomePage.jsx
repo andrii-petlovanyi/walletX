@@ -5,11 +5,15 @@ import TransactionsListDesktop from 'components/TransactionsListDesktop/Transact
 import TransactionsListMobile from 'components/TransactionsListMobile/TransactionsListMobile';
 import { useMedia } from 'react-use';
 import { ListBox } from './HomePage.styled';
+import Balance from 'components/Balance/Balance';
 
 const HomePage = () => {
   const isWide = useMedia('(min-width: 768px)');
+  const isMob = useMedia('(max-width: 767px)');
+
   return (
     <>
+      {isMob && <Balance />}
       <ListBox>
         {isWide ? <TransactionsListDesktop /> : <TransactionsListMobile />}
       </ListBox>

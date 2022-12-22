@@ -10,7 +10,7 @@ import operations from 'redux/auth/auth-operations';
 import PublicRoute from './Routs/PublicRoute';
 import StatTab from './StatTab/StatTab';
 import HomePage from 'pages/HomePage/HomePage';
-import Currency from './Currency/Currency';
+import CurrencyMob from './Currency/CurrencyMob';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -30,7 +30,7 @@ export const App = () => {
             <Route path="/" element={<Layout />}>
               <Route index element={<HomePage />} />
               <Route path="diagram" element={<StatTab />} />
-              <Route path="currency" element={<Currency />} />
+              <Route path="currency" element={<CurrencyMob />} />
               {/* <Route path="test" element={<ModalWindow />} /> */}
             </Route>
           </Route>

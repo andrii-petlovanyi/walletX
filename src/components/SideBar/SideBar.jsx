@@ -9,7 +9,7 @@ import NavMob from 'components/NavMob/NavMob';
 export const SideBar = () => {
   const { SideBarWrapper, NavWrap } = styles;
   const isWide = useMedia('(min-width: 768px)');
-  const isMob = useMedia('(max-width: 768px)');
+  const isMob = useMedia('(max-width: 767px)');
 
   return (
     <SideBarWrapper>
