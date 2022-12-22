@@ -1,5 +1,9 @@
 import React from 'react';
-import { Table,  HeaderTr, StrTr, StrTdDate, StrTdType, StrTdCadegoryId, StrTdComment, StrTdAmount, StrTdBalanceAfter, HeaderThDate, HeaderThBalance, HeaderThCategore, HeaderThComment, HeaderThType, HeaderThSum } from './TransactionsListDesktop.styled';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+
+import { Table, HeaderTr, StrTr, StrTdDate, StrTdType, StrTdCadegoryId, StrTdComment, StrTdAmount, StrTdBalanceAfter, HeaderThDate, HeaderThBalance, HeaderThCategore, HeaderThComment, HeaderThType, HeaderThSum } from './TransactionsListDesktop.styled';
+import  operations  from 'redux/transactions/transactions-operations';
 
 function getTransList() {
     const transList = [
@@ -59,8 +63,18 @@ function getTransList() {
 }
 
 const TransactionsListDesktop = () => {
-    const elementsList = getTransList();
-    
+    const dispatch = useDispatch();
+    const elementsList = useSelector(state => state.transaction.transactions);
+    const category = useSelector(state => state.category.category);
+
+    useEffect(() => {
+        dispatch(operations.getTransactions());
+    }, [dispatch]);
+
+    if (category.length===0 || elementsList.length === 0) return;
+
+    // console.log(Date(elementsList[0].transactionDate));
+    // console.log(elementsList);
     return (
         <Table>
             <thead>
@@ -79,7 +93,7 @@ const TransactionsListDesktop = () => {
                         <StrTr key={e.id}>
                             <StrTdDate>{e.transactionDate}</StrTdDate>
                             <StrTdType>{e.type==='INCOME' ? '+' : '-' }</StrTdType>
-                            <StrTdCadegoryId>{e.categoryId}</StrTdCadegoryId>
+                            <StrTdCadegoryId>{category.find(c => c.id===e.categoryId).name}</StrTdCadegoryId>
                             <StrTdComment>{e.comment}</StrTdComment>
                             <StrTdAmount type={e.type}>{e.amount.toFixed(2)}</StrTdAmount>
                             <StrTdBalanceAfter>{e.balanceAfter.toFixed(2)}</StrTdBalanceAfter>
