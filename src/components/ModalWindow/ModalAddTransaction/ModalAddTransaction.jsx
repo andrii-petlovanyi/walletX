@@ -8,7 +8,9 @@ import DatetimePicker from '../DatetimePicker/DatetimePicker';
 import { ButtonAddTrans } from '../styled';
 import { HiPlus } from 'react-icons/hi2';
 import Select from 'react-select';
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import iconClose from 'images/modal/symbol-defs.svg';
 import SwitchModal from '../SwitchModal/SwitchModal';
 
 import {
@@ -19,7 +21,11 @@ import {
   ModalTitle,
   TextareaComment,
   ModalWrapper,
-} from './ModalWrapper.styled.js';
+  IconClose,
+  ButtonClose,
+} from './ModalAddTransaction.styled.js';
+import { selectError } from 'redux/transactions/transactions-selectors';
+import { cleanError } from 'redux/transactions/transactions-slice';
 
 const ModalWindow = () => {
   const [checked, setChecked] = useState(true);
@@ -27,11 +33,16 @@ const ModalWindow = () => {
   const [balance, setBalance] = useState('');
   const [comment, setComment] = useState('');
   const [date, setDate] = useState(new Date());
-  const categories = useSelector(selectCategory);
-  const dispatch = useDispatch();
-  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-
   const [isOpen, setIsOpen] = useState(false);
+  const [error, setError] = useState({
+    select: false,
+    balance: false,
+    datePick: false,
+  });
+  const categories = useSelector(selectCategory);
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  const isError = useSelector(selectError);
+  const dispatch = useDispatch();
 
   const options = categories
     .filter(category => category.type === 'EXPENSE')
@@ -65,8 +76,44 @@ const ModalWindow = () => {
     setBalance(result);
   };
 
-  const onSubmit = e => {
+  function isValidDate(d) {
+    return d instanceof Date && !isNaN(d);
+  }
+
+  const validateField = async () => {
+    const errorObj = {
+      select: false,
+      balance: false,
+      datePick: false,
+    };
+    if (checked && !selected) {
+      console.log('select error');
+      await setError(prevState => {
+        return { ...prevState, select: 'select category' };
+      });
+      errorObj.select = true;
+    }
+
+    if (isValidDate(date) === false) {
+      console.log('DATE ERROR');
+      await setError(prevState => {
+        console.log(prevState);
+        return { ...prevState, datePick: `date format DD.MM.YYYY` };
+      });
+      errorObj.datePick = true;
+    }
+    return errorObj;
+  };
+
+  const onSubmit = async e => {
     e.preventDefault();
+    const errorObj = await validateField();
+    console.log(errorObj);
+    if (errorObj.select || errorObj.datePick || errorObj.balance) {
+      console.log(123);
+      return;
+    }
+    console.log(new Date(date));
     const categoryData = findCategory(checked ? selected.value : 'Income');
     const normalizeBalance = Number(balance).toFixed(2);
     const transaction = {
@@ -81,6 +128,7 @@ const ModalWindow = () => {
     };
     dispatch(operations.createTransaction(transaction));
     reset();
+    setIsOpen(false);
   };
 
   const reset = () => {
@@ -114,10 +162,14 @@ const ModalWindow = () => {
 
   return (
     <>
+      {isError && toast('Error!')}
       {!isOpen && (
         <ButtonAddTrans
           aria-label="add transaction"
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => {
+            dispatch(cleanError());
+            setIsOpen(!isOpen);
+          }}
         >
           <HiPlus />
         </ButtonAddTrans>
@@ -125,18 +177,29 @@ const ModalWindow = () => {
       {isOpen && (
         <Overlay onClick={handleBackDropClick}>
           <ModalWrapper>
-            <button type="button" onClick={() => setIsOpen(!isOpen)}>
-              Close
-            </button>
+            <ButtonClose type="button" onClick={() => setIsOpen(!isOpen)}>
+              <IconClose>
+                <use href={iconClose + '#icon-close'}></use>
+              </IconClose>
+            </ButtonClose>
             <form onSubmit={onSubmit}>
               <ModalTitle>Add transaction</ModalTitle>
               <SwitchModal checked={checked} setChecked={setChecked} />
               {checked && (
-                <Select
-                  options={options}
-                  value={selected ? selected : ''}
-                  onChange={setSelected}
-                />
+                <>
+                  <Select
+                    options={options}
+                    value={selected ? selected : ''}
+                    onChange={data => {
+                      setSelected(data);
+                      setError(prevState => {
+                        return { ...prevState, select: null };
+                      });
+                    }}
+                    required
+                  />
+                  <p>{error.select}</p>
+                </>
               )}
               <BalanceDateWrapper htmlFor="balance">
                 <InputBalance
@@ -148,7 +211,12 @@ const ModalWindow = () => {
                   required
                   onChange={e => handleChangeBalance(e)}
                 />
-                <DatetimePicker date={date} setDate={setDate} />
+                <DatetimePicker
+                  date={date}
+                  setDate={setDate}
+                  setError={setError}
+                />
+                <p>{error.datePick}</p>
               </BalanceDateWrapper>
               <TextareaComment
                 placeholder="Comment"
@@ -157,7 +225,14 @@ const ModalWindow = () => {
                 onChange={e => handleChange(e)}
               ></TextareaComment>
               <Button type="submit">Add</Button>
-              <Button type="button">Clear</Button>
+              <Button
+                type="button"
+                onClick={() => {
+                  reset();
+                }}
+              >
+                Clear
+              </Button>
             </form>
           </ModalWrapper>
         </Overlay>

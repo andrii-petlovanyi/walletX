@@ -5,7 +5,7 @@ import moment from 'moment';
 import iconCalendar from 'images/modal/symbol-defs.svg';
 import { Icon, DatetimeWrapper } from './styled';
 
-const DatetimePicker = ({ date, setDate }) => {
+const DatetimePicker = ({ date, setDate, setError }) => {
   // const [date, setDate] = useState([new Date()]);
   // const [isOpen, setIsOpen] = useState(false);
   let end = moment().subtract(0, 'day');
@@ -16,8 +16,11 @@ const DatetimePicker = ({ date, setDate }) => {
 
   const handleChange = dateObj => {
     // const { value } = e.target;
-    console.log(dateObj._d);
+    console.log(dateObj);
     setDate(dateObj._d);
+    setError(prevState => {
+      return { ...prevState, datePick: null };
+    });
     // setIsOpen(false);
   };
 
@@ -36,6 +39,9 @@ const DatetimePicker = ({ date, setDate }) => {
         value={date}
         isValidDate={valid}
         onChange={handleChange}
+        closeOnSelect={() => {
+          return true;
+        }}
       />
       <Icon>
         <use href={iconCalendar + '#icon-date'}></use>

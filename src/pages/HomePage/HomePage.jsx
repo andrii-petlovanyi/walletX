@@ -1,4 +1,6 @@
-import ModalWindow from 'components/ModalWindow/ModalWindow/ModalWindow';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ModalWindow from 'components/ModalWindow/ModalAddTransaction/ModalAddTransaction';
 import TransactionsListDesktop from 'components/TransactionsListDesktop/TransactionsListDesktop';
 import TransactionsListMobile from 'components/TransactionsListMobile/TransactionsListMobile';
 
@@ -16,6 +18,7 @@ const HomePage = () => {
         )}
       </ListBox>
       <ModalWindow />
+      <ToastContainer />
     </>
   );
 };
