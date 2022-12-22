@@ -10,7 +10,7 @@ const DoughnutChart = () => {
     labels: [],
     datasets: [
       {
-        label: 'My First Dataset',
+        label: '',
         data: [300, 50, 100, 20],
         backgroundColor: [
           'rgb(255, 99, 132)',

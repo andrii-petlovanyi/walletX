@@ -32,11 +32,11 @@ function DiagramTab() {
   const [month, setMonth] = useState('');
   const [year, setYear] = useState('');
   const dispatch = useDispatch();
-  const statData = useSelector(state => state.statistic.statistic);
-  console.log(statData);
 
-  // month:
-  // year:
+  const statData = useSelector(state => state.statistic.statistic);
+
+  console.log('statData :',statData);
+
 
   useEffect(() => {
     dispatch(getTransactionSummary({ month, year }));
@@ -68,8 +68,8 @@ function DiagramTab() {
         <label>
           <DropDown name="year" value={year} onChange={handleChangeYear}>
             <option value="">Year</option>
-            <option value="">2022</option>
-            <option value="">2021</option>
+            <option value="2022">2022</option>
+            <option value="2021">2021</option>
           </DropDown>
         </label>
       </DropDownWrapper>
@@ -83,16 +83,24 @@ function DiagramTab() {
           </tr>
         </thead>
         <tbody>
-          {statData.map(({ type, amount }) => {
+          {statData.categoriesSummary.map(({ name, total }) => {
             return (
               <TabItem>
-                <TableData>{type}</TableData>
-                <TableDataAmount>{amount}</TableDataAmount>
+                <TableData>{name}</TableData>
+                <TableDataAmount>{total}</TableDataAmount>
               </TabItem>
             );
           })}
         </tbody>
       </Table>
+      <p>
+        <span>Expenses</span>
+        <span>{statData.expenseSummary}</span>
+      </p>
+      <p>
+        <span>Income</span>
+        <span>{statData.expenseSummary}</span>
+      </p>
     </Box>
   );
 }

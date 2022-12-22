@@ -11,7 +11,7 @@ const Balance = () => {
       <Title>your balance</Title>
       <CurrentBalance>
         <span>&#x20b4;</span>
-        <Text>{balance}</Text>
+        <Text>{Number(balance).toFixed(2)}</Text>
       </CurrentBalance>
     </BalanceWrap>
   );
