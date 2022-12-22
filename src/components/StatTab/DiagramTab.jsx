@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import getTransactionSummary from 'redux/statistic/statistic-operations';
 import {
   DropDown,
-  // DropDownTitle,
   DropDownWrapper,
   TabItem,
   Table,
