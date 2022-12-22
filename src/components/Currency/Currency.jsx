@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './styled';
 import fetchCurrency from 'services/api/currency';
-
+import Loader from 'components/Loader/Loader';
 const Currency = () => {
   const {
     CurrencyWrap,
@@ -15,6 +15,9 @@ const Currency = () => {
   const [currency, setCurrency] = useState(
     JSON.parse(localStorage.getItem('currency')) || []
   );
+
+  const [isLoading, setLoading] = useState(false);
+
   const currencyName = [
     { name: 'EUR', code: 978 },
     { name: 'USD', code: 840 },
@@ -31,9 +34,11 @@ const Currency = () => {
     const sortCurrencyArr = [978, 840, 756, 985];
     const delta = Date.now() - Number(currency.time) < 3600000;
     if (currency.currency?.length && delta) return;
+    setLoading(true);
     const getCurrency = async () => {
       try {
         const { data } = await fetchCurrency();
+        setLoading(false);
         const filteredCurrency = data.filter(
           item =>
             sortCurrencyArr.includes(Number(item.currencyCodeA)) &&
@@ -51,30 +56,33 @@ const Currency = () => {
   }, [currency]);
 
   return (
-    <CurrencyWrap>
-      <CurrencyTable>
-        <Head>
-          <BodyWrap>
-            <HeaderLine>Currency</HeaderLine>
-            <HeaderLine>Purchase</HeaderLine>
-            <HeaderLine>Sale</HeaderLine>
-          </BodyWrap>
-        </Head>
-        <Body>
-          {currency.currency?.map(
-            ({ currencyCodeA, rateBuy, rateSell, rateCross }) => (
-              <tr key={currencyCodeA}>
-                <Cell>{searchCurrencyName(currencyCodeA)}</Cell>
-                <Cell>{rateBuy ? rateBuy.toFixed(2) : '-'}</Cell>
-                <Cell>
-                  {rateSell ? rateSell.toFixed(2) : rateCross.toFixed(2)}
-                </Cell>
-              </tr>
-            )
-          )}
-        </Body>
-      </CurrencyTable>
-    </CurrencyWrap>
+    <>
+      {isLoading && <Loader />}
+      <CurrencyWrap>
+        <CurrencyTable>
+          <Head>
+            <BodyWrap>
+              <HeaderLine>Currency</HeaderLine>
+              <HeaderLine>Purchase</HeaderLine>
+              <HeaderLine>Sale</HeaderLine>
+            </BodyWrap>
+          </Head>
+          <Body>
+            {currency.currency?.map(
+              ({ currencyCodeA, rateBuy, rateSell, rateCross }) => (
+                <tr key={currencyCodeA}>
+                  <Cell>{searchCurrencyName(currencyCodeA)}</Cell>
+                  <Cell>{rateBuy ? rateBuy.toFixed(2) : '-'}</Cell>
+                  <Cell>
+                    {rateSell ? rateSell.toFixed(2) : rateCross.toFixed(2)}
+                  </Cell>
+                </tr>
+              )
+            )}
+          </Body>
+        </CurrencyTable>
+      </CurrencyWrap>
+    </>
   );
 };
 export default Currency;
