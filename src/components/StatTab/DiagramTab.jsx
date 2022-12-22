@@ -40,6 +40,10 @@ function DiagramTab() {
       dispatch(getTransactionSummary({ month, year }));
   }, [month, year, dispatch]);
 
+  const filteredExp = statData?.categoriesSummary?.filter(
+    el => el.type !== 'INCOME'
+  );
+
   const handleChangeMonth = e => {
     setMonth(e.target.value);
   };
@@ -80,9 +84,9 @@ function DiagramTab() {
             </TableHeader>
           </tr>
         </thead>
-        {statData?.categoriesSummary?.length > 0 && (
+        {filteredExp?.length > 0 && (
           <tbody>
-            {statData?.categoriesSummary?.map(({ name, total }) => {
+            {filteredExp?.map(({ name, total }) => {
               return (
                 <TabItem key={name}>
                   <TableData>{name}</TableData>

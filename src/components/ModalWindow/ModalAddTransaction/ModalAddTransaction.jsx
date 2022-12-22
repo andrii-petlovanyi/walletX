@@ -10,7 +10,7 @@ import { HiPlus } from 'react-icons/hi2';
 import Select from 'react-select';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import iconClose from 'images/modal/symbol-defs.svg';
+import { IoCloseSharp } from 'react-icons/io5';
 import SwitchModal from '../SwitchModal/SwitchModal';
 
 import {
@@ -21,7 +21,6 @@ import {
   ModalTitle,
   TextareaComment,
   ModalWrapper,
-  IconClose,
   ButtonClose,
 } from './ModalAddTransaction.styled.js';
 import { selectError } from 'redux/transactions/transactions-selectors';
@@ -178,9 +177,7 @@ const ModalAddTransaction = () => {
         <Overlay onClick={handleBackDropClick}>
           <ModalWrapper>
             <ButtonClose type="button" onClick={() => setIsOpen(!isOpen)}>
-              <IconClose>
-                <use href={iconClose + '#icon-close'}></use>
-              </IconClose>
+              <IoCloseSharp />
             </ButtonClose>
             <form onSubmit={onSubmit}>
               <ModalTitle>Add transaction</ModalTitle>
