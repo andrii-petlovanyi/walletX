@@ -1,4 +1,6 @@
-import ModalWindow from 'components/ModalWindow/ModalWindow/ModalWindow';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ModalAddTransaction from 'components/ModalWindow/ModalAddTransaction/ModalAddTransaction';
 import TransactionsListDesktop from 'components/TransactionsListDesktop/TransactionsListDesktop';
 import TransactionsListMobile from 'components/TransactionsListMobile/TransactionsListMobile';
 import { useMedia } from 'react-use';
@@ -11,7 +13,8 @@ const HomePage = () => {
       <ListBox>
         {isWide ? <TransactionsListDesktop /> : <TransactionsListMobile />}
       </ListBox>
-      <ModalWindow />
+      <ModalAddTransaction />
+      <ToastContainer />
     </>
   );
 };

@@ -160,3 +160,15 @@ export const Overlay = styled.div`
   height: 100vh;
   background: rgba(0, 0, 0, 0.25);
 `;
+
+export const IconClose = styled.svg`
+  width: 16px;
+  height: 16px;
+  fill: var(--accent-active-cl);
+`;
+
+export const ButtonClose = styled.button`
+  width: 16px;
+  height: 16px;
+  /* fill: var(--accent-active-cl); */
+`;
