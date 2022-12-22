@@ -1,42 +1,35 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-
-const size = {
-  mobileS: '320px',
-  mobileM: '480px',
-  tablet: '768px',
-  desktop: '1280px',
-};
-
-export const device = {
-  mobileS: `(min-width: ${size.mobileS})`,
-  mobileM: `(min-width: ${size.mobileM})`,
-  tablet: `(min-width: ${size.tablet})`,
-  desktop: `(min-width: ${size.desktop})`,
-};
+import { device } from 'components/Layout/styled';
 
 const SideBarWrapper = styled.div`
+  display: block;
   @media ${device.tablet} {
     display: flex;
-    flex-direction: row;
-    padding: 40px 32px 20px;
+    justify-content: space-between;
+    padding-bottom: 20px;
   }
   @media ${device.desktop} {
+    min-width: 480px;
     flex-direction: column;
-    padding: 40px 16px;
+    justify-content: flex-start;
     border-right: 1px solid rgba(231, 229, 242, 1);
     box-shadow: 1px 0px 0px 0px rgba(255, 255, 255, 0.6);
   }
 `;
 const NavWrap = styled.div`
-  @media ${device.tablet} {
-    /* display: flex; */
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 `;
 
 const NavStyled = styled.nav`
+  display: flex;
+  gap: 32px;
+  margin-bottom: 12px;
   @media ${device.tablet} {
-    display: flex;
     flex-direction: column;
     gap: 12px;
     margin-bottom: 28px;
@@ -46,7 +39,6 @@ const NavStyled = styled.nav`
     transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
   @media ${device.desktop} {
-    width: 480px;
   }
 `;
 
@@ -56,13 +48,17 @@ const NavLinkStyled = styled(NavLink)`
   align-items: center;
 
   .icon {
+    width: 44px;
+    height: 44px;
     background-color: #6e78e8;
     color: white;
     border-radius: 2px;
-    width: 24px;
-    height: 24px;
-  }
 
+    @media ${device.tablet} {
+      width: 24px;
+      height: 24px;
+    }
+  }
   &.active .icon {
     background-color: #4a56e2;
     filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
@@ -77,5 +73,5 @@ const NavLinkStyled = styled(NavLink)`
   }
 `;
 
-const styles = { NavStyled, SideBarWrapper, NavLinkStyled, NavWrap };
+const styles = { NavStyled, SideBarWrapper, NavLinkStyled, NavWrap, device };
 export default styles;

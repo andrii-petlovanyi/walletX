@@ -14,41 +14,20 @@ export const device = {
   desktop: `(min-width: ${size.desktop})`,
 };
 
-export const ModalWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: '100vw';
-  height: '100vh';
-  padding-right: 10px;
-  padding-left: 10px;
-  padding-top: 20px;
-  padding-bottom: 37px;
-  @media ${device.tablet} {
-    max-width: 540px;
-    padding: 40px 73px;
-  }
-
-  @media ${device.desktop} {
-    width: 540px;
-  }
-`;
-
-export const ModalTitle = styled.h1`
-  margin-bottom: 40px;
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 1.5;
-  text-align: center;
-  color: var(--main-text-cl);
-  @media ${device.tablet} {
-    font-size: 30px;
-    line-height: 1.5;
-  }
-`;
+// export const ModalTitle = styled.h1`
+//   margin-bottom: 40px;
+//   font-family: 'Poppins';
+//   font-style: normal;
+//   font-weight: 400;
+//   font-size: 24px;
+//   line-height: 1.5;
+//   text-align: center;
+//   color: var(--main-text-cl);
+//   @media ${device.tablet} {
+//     font-size: 30px;
+//     line-height: 1.5;
+//   }
+// `;
 
 export const SwitchWrapper = styled.div`
   display: flex;
@@ -258,5 +237,48 @@ export const Label = styled.label`
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     border: 1px solid #f9f9f9;
     background-color: red;
+  }
+`;
+
+// ========  Button Add Transaction  ==========
+
+export const IconAddTrans = styled.img`
+  width: 20px;
+  height: 20px;
+  color: white;
+  margin: auto;
+`;
+
+export const ButtonAddTrans = styled.button`
+  cursor: pointer;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 44px;
+  height: 44px;
+  background-color: #24cca7;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & svg {
+    font-size: 30px;
+    color: white;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: #04ac97;
+  }
+  @media screen and (min-width: 1280px) {
+    right: 40px;
+    bottom: 40px;
+
+    [data-scroll-lock] & {
+      right: 57px;
+    }
   }
 `;

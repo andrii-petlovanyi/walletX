@@ -13,19 +13,18 @@ const UserMenu = () => {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
+  const viewPortWidth = window.innerWidth;
   return (
-    <>
-      <UserMenuStyled>
-        <UserName>{name}</UserName>
-        <ButtonExit type="button" onClick={handleShow}>
-          <IconContext.Provider value={{ className: 'icon' }}>
-            <TbLogout />
-          </IconContext.Provider>
-          <span>Exit</span>
-        </ButtonExit>
-        {show && <ModalExit show={show} handleClose={handleClose} />}
-      </UserMenuStyled>
-    </>
+    <UserMenuStyled>
+      <UserName>{name}</UserName>
+      <ButtonExit type="button" onClick={handleShow}>
+        <IconContext.Provider value={{ className: 'icon' }}>
+          <TbLogout />
+        </IconContext.Provider>
+        {viewPortWidth > 767.98 && <span>Exit</span>}
+      </ButtonExit>
+      {show && <ModalExit show={show} handleClose={handleClose} />}
+    </UserMenuStyled>
   );
 };
 export default UserMenu;

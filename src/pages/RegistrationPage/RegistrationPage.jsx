@@ -5,17 +5,22 @@ import {
   FieldStyled,
   TitleFieldStyled,
   FormFieldStyled,
+  TextStyled,
+  ContainerStyled,
 } from './RegistrationPage.styled';
 
 const RegistrationPage = () => {
   return (
     <FieldStyled>
-      <TitleFieldStyled>
-        <img src={mainRegister} alt="" width="450" />
-      </TitleFieldStyled>
-      <FormFieldStyled>
-        <RegistrationForm />
-      </FormFieldStyled>
+      <ContainerStyled>
+        <TitleFieldStyled>
+          <img src={mainRegister} alt="" width="450" />
+          <TextStyled>Finance App</TextStyled>
+        </TitleFieldStyled>
+        <FormFieldStyled>
+          <RegistrationForm />
+        </FormFieldStyled>
+      </ContainerStyled>
     </FieldStyled>
   );
 };

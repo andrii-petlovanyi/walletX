@@ -1,18 +1,23 @@
-import TransactionsListDesktop from "components/TransactionsListDesktop/TransactionsListDesktop";
-import TransactionsListMobile from "components/TransactionsListMobile/TransactionsListMobile";
+import ModalWindow from 'components/ModalWindow/ModalWindow/ModalWindow';
+import TransactionsListDesktop from 'components/TransactionsListDesktop/TransactionsListDesktop';
+import TransactionsListMobile from 'components/TransactionsListMobile/TransactionsListMobile';
 
-import { ListBox } from "./HomePage.styled";
-
+import { ListBox } from './HomePage.styled';
 
 const HomePage = () => {
-
   const viewPortWith = window.innerWidth;
-
   return (
+    <>
       <ListBox>
-          { viewPortWith<767.98 ? <TransactionsListMobile/> :  <TransactionsListDesktop/>}
-    </ListBox>
+        {viewPortWith < 767.98 ? (
+          <TransactionsListMobile />
+        ) : (
+          <TransactionsListDesktop />
+        )}
+      </ListBox>
+      <ModalWindow />
+    </>
   );
-}
+};
 
 export default HomePage;
