@@ -21,62 +21,62 @@ import {
 } from './TransactionsListDesktop.styled';
 import operations from 'redux/transactions/transactions-operations';
 
-function getTransList() {
-  const transList = [
-    {
-      id: '1',
-      transactionDate: '04.01.19',
-      type: '-',
-      categoryId: 'Other',
-      // userId: 'string',
-      comment: 'Gift for you wife',
-      amount: 300.0,
-      balanceAfter: 6900.0,
-    },
-    {
-      id: '2',
-      transactionDate: '05.01.19',
-      type: 'INCOME',
-      categoryId: 'Income',
-      // userId: 'string',
-      comment: 'January bonus',
-      amount: 8000.0,
-      balanceAfter: 14900.0,
-    },
-    {
-      id: '3',
-      transactionDate: '07.01.19',
-      type: '-',
-      categoryId: 'Car',
-      // userId: 'string',
-      comment: 'Oil',
-      amount: 1000.0,
-      balanceAfter: 13900.0,
-    },
-    {
-      id: '4',
-      transactionDate: '07.01.19',
-      type: '-',
-      categoryId: 'Products',
-      // userId: 'string',
-      comment: 'Vegetables for week',
-      amount: 280.0,
-      balanceAfter: 13870.0,
-    },
-    {
-      id: '5',
-      transactionDate: '07.01.19',
-      type: 'INCOME',
-      categoryId: 'Income',
-      // userId: 'string',
-      comment: 'Gift',
-      amount: 1000.0,
-      balanceAfter: 14870.0,
-    },
-  ];
+// function getTransList() {
+//   const transList = [
+//     {
+//       id: '1',
+//       transactionDate: '04.01.19',
+//       type: '-',
+//       categoryId: 'Other',
+//       // userId: 'string',
+//       comment: 'Gift for you wife',
+//       amount: 300.0,
+//       balanceAfter: 6900.0,
+//     },
+//     {
+//       id: '2',
+//       transactionDate: '05.01.19',
+//       type: 'INCOME',
+//       categoryId: 'Income',
+//       // userId: 'string',
+//       comment: 'January bonus',
+//       amount: 8000.0,
+//       balanceAfter: 14900.0,
+//     },
+//     {
+//       id: '3',
+//       transactionDate: '07.01.19',
+//       type: '-',
+//       categoryId: 'Car',
+//       // userId: 'string',
+//       comment: 'Oil',
+//       amount: 1000.0,
+//       balanceAfter: 13900.0,
+//     },
+//     {
+//       id: '4',
+//       transactionDate: '07.01.19',
+//       type: '-',
+//       categoryId: 'Products',
+//       // userId: 'string',
+//       comment: 'Vegetables for week',
+//       amount: 280.0,
+//       balanceAfter: 13870.0,
+//     },
+//     {
+//       id: '5',
+//       transactionDate: '07.01.19',
+//       type: 'INCOME',
+//       categoryId: 'Income',
+//       // userId: 'string',
+//       comment: 'Gift',
+//       amount: 1000.0,
+//       balanceAfter: 14870.0,
+//     },
+//   ];
 
-  return transList;
-}
+//   return transList;
+// }
 
 const TransactionsListDesktop = () => {
   const dispatch = useDispatch();
