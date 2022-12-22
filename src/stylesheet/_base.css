@@ -8,7 +8,6 @@ html {
   scroll-behavior: smooth;
 }
 body {
-  /* overflow: hidden; */
   font-family: Circe, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica,
     Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
   -webkit-font-smoothing: antialiased;

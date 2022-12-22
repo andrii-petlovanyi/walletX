@@ -14,11 +14,13 @@ export const device = {
   desktop: `(min-width: ${size.desktop})`,
 };
 
-const LayoutStyled = styled.div``;
+const LayoutStyled = styled.div`
+  position: relative;
+`;
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 100px);
   margin: 0 auto;
   padding: 12px 20px 0 20px;
   display: block;

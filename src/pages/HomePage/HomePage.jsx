@@ -14,8 +14,8 @@ const HomePage = () => {
         ) : (
           <TransactionsListDesktop />
         )}
-        <ModalWindow />
       </ListBox>
+      <ModalWindow />
     </>
   );
 };
