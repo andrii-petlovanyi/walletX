@@ -242,21 +242,11 @@ const ModalAddTransaction = ({ className = '' }) => {
                 onChange={e => handleChange(e)}
               ></TextareaComment>
               <ButtonWrapper>
-                <Button
-                  type="submit"
-                  // className="button__add"
-                  className={`button__add ${className}`}
-                  // style={{
-                  //   background: '#24cca7',
-                  //   color: '#ffffff',
-                  //   borderColor: '#24cca7',
-                  // }}
-                >
+                <Button type="submit" className="button__add">
                   Add
                 </Button>
                 <Button
                   type="button"
-                  // className="button__clear"
                   className={className}
                   onClick={() => {
                     reset();

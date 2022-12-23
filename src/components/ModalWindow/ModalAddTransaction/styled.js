@@ -142,13 +142,12 @@ export const Button = styled.button`
   text-align: center;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  background: var(--main-bg-cl);
-  color: var(--accent-active-cl);
-  /* .button__add {
-    background: '#24cca7';
-    color: '#ffffff';
-    border-color: '#24cca7';
-  } */
+  background-color: ${props =>
+    props.className === 'button__add' ? '#24cca7' : '#ffffff'};
+  color: ${props =>
+    props.className === 'button__add' ? '#ffffff' : '#4a56e2'};
+  border-color: ${props =>
+    props.className === 'button__add' ? '#24cca7' : '#4a56e2'};
   &:not(:last-child) {
     margin-bottom: 20px;
   }
