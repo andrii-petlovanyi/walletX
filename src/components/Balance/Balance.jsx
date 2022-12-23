@@ -1,3 +1,4 @@
+import { numberSpace } from 'helpers/numberSpace';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import authSelectors from 'redux/auth/auth-selectors';
@@ -11,7 +12,7 @@ const Balance = () => {
       <Title>your balance</Title>
       <CurrentBalance>
         <span>&#x20b4;</span>
-        <Text>{Number(balance).toFixed(2)}</Text>
+        <Text>{numberSpace(balance)}</Text>
       </CurrentBalance>
     </BalanceWrap>
   );
