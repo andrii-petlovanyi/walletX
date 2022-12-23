@@ -37,9 +37,9 @@ const monthsList = [
 ];
 
 const yearsList = [
-  { value: '2020', label: '2020' },
-  { value: '2021', label: '2021' },
   { value: '2022', label: '2022' },
+  { value: '2021', label: '2021' },
+  { value: '2020', label: '2020' },
 ];
 function DiagramTab() {
   let statisticLS = JSON.parse(localStorage.getItem('statistic')) || {
@@ -95,12 +95,6 @@ function DiagramTab() {
           }}
           styles={statSelectStyles}
         />
-
-        {/* <DropDown name="year" value={year} onChange={handleChangeYear}>
-            <option value="">Year</option>
-            <option value="2022">2022</option>
-            <option value="2021">2021</option>
-          </DropDown> */}
       </DropDownWrapper>
       <Table>
         <thead>
