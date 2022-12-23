@@ -35,8 +35,12 @@ const monthsList = [
   ' December',
 ];
 function DiagramTab() {
-  const [month, setMonth] = useState('');
-  const [year, setYear] = useState('');
+  let statisticLS = JSON.parse(localStorage.getItem('statistic')) || {
+    month: '',
+    year: '',
+  };
+  const [month, setMonth] = useState(statisticLS.month || '');
+  const [year, setYear] = useState(statisticLS.year || '');
   const dispatch = useDispatch();
 
   const statData = useSelector(state => state.statistic.statistic);
@@ -51,20 +55,23 @@ function DiagramTab() {
   );
 
   const handleChangeMonth = e => {
-    setMonth(e.target.value);
+    const month = e.target.value;
+    statisticLS.month = month;
+    setMonth(month);
+    localStorage.setItem('statistic', JSON.stringify(statisticLS));
   };
   const handleChangeYear = e => {
-    setYear(e.target.value);
+    const year = e.target.value;
+    statisticLS.year = year;
+    setYear(year);
+    localStorage.setItem('statistic', JSON.stringify(statisticLS));
   };
   return (
     <Box marginTop="20px">
       <DropDownWrapper>
         <label>
           <DropDown name="month" value={month} onChange={handleChangeMonth}>
-            <option value="">
-              {/* <DropDownTitle> Month</DropDownTitle> */}
-              Month
-            </option>
+            <option value="">Month</option>
 
             {monthsList.map((monthEl, index) => (
               <option key={monthEl} value={index + 1}>
