@@ -1,29 +1,21 @@
 import styled from 'styled-components';
 import { device } from 'components/Layout/styled';
 
-// const size = {
-//   mobileS: '320px',
-//   mobileM: '480px',
-//   tablet: '768px',
-//   desktop: '1280px',
-// };
-
-// export const device = {
-//   mobileS: `(min-width: ${size.mobileS})`,
-//   mobileM: `(min-width: ${size.mobileM})`,
-//   tablet: `(min-width: ${size.tablet})`,
-//   desktop: `(min-width: ${size.desktop})`,
-// };
-
 export const DatetimeWrapper = styled.label`
   display: flex;
   justify-content: center;
   width: 100%;
   height: '32px';
+  @media ${device.tablet} {
+    width: 181px;
+  }
 
   & .rdt {
     width: 100%;
     height: 32px;
+    @media ${device.tablet} {
+      width: 181px;
+    }
   }
   & .form-control {
     width: 100%;
@@ -39,6 +31,10 @@ export const DatetimeWrapper = styled.label`
     font-size: '18px';
     line-height: '1.5';
     color: 'var(--main-text-cl)';
+    @media ${device.tablet} {
+      width: 157px;
+      margin-right: 0;
+    }
   }
 `;
 

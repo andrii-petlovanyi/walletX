@@ -1,20 +1,6 @@
 import styled from 'styled-components';
 import { device } from 'components/Layout/styled';
 
-// const size = {
-//   mobileS: '320px',
-//   mobileM: '480px',
-//   tablet: '768px',
-//   desktop: '1280px',
-// };
-
-// export const device = {
-//   mobileS: `(min-width: ${size.mobileS})`,
-//   mobileM: `(min-width: ${size.mobileM})`,
-//   tablet: `(min-width: ${size.tablet})`,
-//   desktop: `(min-width: ${size.desktop})`,
-// };
-
 export const ModalWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -28,16 +14,12 @@ export const ModalWrapper = styled.div`
   height: '100vh';
   padding: 20px;
   background-color: var(--main-bg-cl);
-  @media ${device.mobileM} {
+  @media ${device.tablet} {
     top: 50%;
     width: 540px;
-    height: 508px;
-    padding: 40px 73px;
+    height: 603px;
     border-radius: 20px;
-  }
-
-  @media ${device.desktop} {
-    width: 540px;
+    padding: 0;
   }
 `;
 
@@ -63,10 +45,21 @@ export const newStyles = {
   control: styles => ({
     ...styles,
     width: '100%',
-    margin: '0 auto',
-    padding: '8 20',
     borderColor: '#ffffff',
     borderBottom: '1px solid #E0E0E0',
+    cursor: 'pointer',
+  }),
+
+  valueContainer: styles => ({
+    ...styles,
+    padding: '8px 20px',
+    margin: 0,
+  }),
+
+  input: styles => ({
+    ...styles,
+    padding: 0,
+    margin: 0,
   }),
   menu: styles => ({
     ...styles,
@@ -79,11 +72,9 @@ export const newStyles = {
   }),
   placeholder: styles => ({
     ...styles,
-    fontFamily: 'Circe',
-    fontWeight: 400,
-    fontSize: 18,
-    lineHeight: 1.5,
-    color: '#BDBDBD',
+    padding: 0,
+    margin: 0,
+    color: '#bdbdbd',
   }),
   option: (styles, { isFocused, isSelected }) => ({
     ...styles,
@@ -111,7 +102,6 @@ export const InputBalance = styled.input`
   height: 32px;
   padding: 8px 20px;
   font-family: 'Circe';
-  font-style: normal;
   font-weight: 700;
   font-size: 18px;
   line-height: 1.5;
@@ -120,18 +110,37 @@ export const InputBalance = styled.input`
   border-right: inherit;
   border-left: inherit;
   border-bottom: 1px solid #e0e0e0;
+  cursor: pointer;
+  &::placeholder {
+    color: var(--secondary-text-cl);
+  }
   @media ${device.tablet} {
-    max-width: 190px;
-    margin-bottom: 0;
+    width: 190px;
+    margin: 0;
+    margin-right: 30px;
   }
 `;
 
-export const BalanceDateWrapper = styled.label`
-  /* @media ${device.tablet} {
+export const BalanceDateWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  @media ${device.tablet} {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
-  } */
+    width: 394px;
+    margin-top: 40px;
+  }
+`;
+
+export const ErrorWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const ErrorText = styled.p`
+  margin-left: 8px;
+  color: red;
 `;
 
 export const TextareaComment = styled.textarea`
@@ -156,11 +165,15 @@ export const TextareaComment = styled.textarea`
   border-right: inherit;
   border-left: inherit;
   border-bottom: 1px solid #e0e0e0;
+  cursor: pointer;
+  &::placeholder {
+    color: var(--secondary-text-cl);
+  }
   @media ${device.tablet} {
     max-width: 394px;
     max-height: 32px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 8px;
+    padding-right: 8px;
   }
 `;
 
@@ -168,6 +181,7 @@ export const ButtonWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 `;
 
 export const Button = styled.button`
@@ -206,28 +220,18 @@ export const Overlay = styled.div`
   background: rgba(0, 0, 0, 0.25);
 `;
 
-// export const IconClose = styled.svg`
-//   width: 16px;
-//   height: 16px;
-
-//   color: var(--accent-active-cl);
-// `;
-
 export const ButtonClose = styled.button`
-  display: flex;
-  justify-content: center;
+  /* display: flex;
+  justify-content: flex-end;
   align-items: center;
-  color: var(--accent-active-cl);
-  /* padding: 20px; */
-  width: 30px;
-  height: 30px;
+  color: var(--main-text-cl);
+  width: 16px;
+  height: 16px;
   font-size: 25px;
   border-radius: 10px;
-  border: 1px solid black;
+  border-color: red;
   background: none;
-
-  &:hover {
-    color: red;
-  }
-  /* fill: var(--accent-active-cl); */
+  & svg {
+    margin-right: 0;
+  } */
 `;
