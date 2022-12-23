@@ -4,7 +4,9 @@ import { App } from 'components/App';
 import './index.css';
 import { Provider } from 'react-redux';
 import { store } from 'redux/store';
-import { BrowserRouter } from '../node_modules/react-router-dom/dist/index';
+import 'react-toastify/dist/ReactToastify.css';
+import { BrowserRouter } from 'react-router-dom';
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter basename="/walletX">

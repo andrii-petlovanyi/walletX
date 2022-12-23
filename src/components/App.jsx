@@ -11,6 +11,7 @@ import PublicRoute from './Routs/PublicRoute';
 import StatTab from './StatTab/StatTab';
 import HomePage from 'pages/HomePage/HomePage';
 import CurrencyMob from './Currency/CurrencyMob';
+import { ToastContainer } from 'react-toastify';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -31,7 +32,6 @@ export const App = () => {
               <Route index element={<HomePage />} />
               <Route path="diagram" element={<StatTab />} />
               <Route path="currency" element={<CurrencyMob />} />
-              {/* <Route path="test" element={<ModalWindow />} /> */}
             </Route>
           </Route>
           <Route element={<PublicRoute />}>
@@ -40,6 +40,18 @@ export const App = () => {
           </Route>
           <Route path="test" element={<ModalWindow />} />
         </Routes>
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </>
     )
   );
