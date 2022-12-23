@@ -21,7 +21,6 @@ const signUp = createAsyncThunk(
 
       return data;
     } catch (error) {
-      console.log(error);
       const {
         response: { status },
       } = error;
@@ -37,7 +36,6 @@ const signIn = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
     token.set(data.token);
     return data;
   } catch (error) {
-    console.log(error);
     const {
       response: { status },
     } = error;
@@ -74,8 +72,6 @@ export const fetchCurrentUser = createAsyncThunk(
       const data = await API.fetchCurrentUser();
       return data;
     } catch (error) {
-      console.log(error);
-
       return thunkAPI.rejectWithValue();
     }
   }

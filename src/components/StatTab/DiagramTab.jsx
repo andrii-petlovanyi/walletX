@@ -1,36 +1,53 @@
 import { Box } from 'components/Box';
+import colorsDonut from 'helpers/colorsDonut';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import getTransactionSummary from 'redux/statistic/statistic-operations';
+import Select from 'react-select';
 import {
-  DropDown,
-  // DropDownTitle,
+  ColorLegend,
   DropDownWrapper,
+  StatExp,
+  StatInc,
+  StatLabel,
   TabItem,
   Table,
   TableData,
   TableDataAmount,
-  TableHeader,
+  TableHeaderL,
+  TableHeaderR,
+  TableHeaderWrapper,
 } from './styled';
+import statSelectStyles from 'helpers/statSelectStyles';
 
 const monthsList = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  ' December',
+  { value: '1', label: 'January' },
+  { value: '2', label: 'February' },
+  { value: '3', label: 'March' },
+  { value: '4', label: 'April' },
+  { value: '5', label: 'May' },
+  { value: '6', label: 'June' },
+  { value: '7', label: 'July' },
+  { value: '8', label: 'August' },
+  { value: '9', label: 'September' },
+  { value: '10', label: 'October' },
+  { value: '11', label: 'November' },
+  { value: '12', label: 'December' },
+];
+
+const yearsList = [
+  { value: '2022', label: '2022' },
+  { value: '2021', label: '2021' },
+  { value: '2020', label: '2020' },
 ];
 function DiagramTab() {
-  const [month, setMonth] = useState('');
-  const [year, setYear] = useState('');
+  let statisticLS = JSON.parse(localStorage.getItem('statistic')) || {
+    month: '',
+    year: '',
+  };
+  const [month, setMonth] = useState(statisticLS.month || '');
+  const [year, setYear] = useState(statisticLS.year || '');
   const dispatch = useDispatch();
 
   const statData = useSelector(state => state.statistic.statistic);
@@ -45,66 +62,103 @@ function DiagramTab() {
   );
 
   const handleChangeMonth = e => {
-    setMonth(e.target.value);
+    console.log(e.value);
+    const month = e.value;
+    statisticLS.month = month;
+    setMonth(month);
+    localStorage.setItem('statistic', JSON.stringify(statisticLS));
   };
   const handleChangeYear = e => {
-    setYear(e.target.value);
+    const year = e.value;
+    statisticLS.year = year;
+    setYear(year);
+    localStorage.setItem('statistic', JSON.stringify(statisticLS));
   };
   return (
-    <Box marginTop="60px">
+    <Box marginTop="20px">
       <DropDownWrapper>
-        <label>
-          <DropDown name="month" value={month} onChange={handleChangeMonth}>
-            <option value="">
-              {/* <DropDownTitle> Month</DropDownTitle> */}
-              Month
-            </option>
-
-            {monthsList.map((monthEl, index) => (
-              <option key={monthEl} value={index + 1}>
-                {monthEl}
-              </option>
-            ))}
-          </DropDown>
-        </label>
-        <label>
-          <DropDown name="year" value={year} onChange={handleChangeYear}>
-            <option value="">Year</option>
-            <option value="2022">2022</option>
-            <option value="2021">2021</option>
-          </DropDown>
-        </label>
+        <Select
+          placeholder="Month"
+          options={monthsList}
+          onChange={e => handleChangeMonth(e)}
+          components={{
+            IndicatorSeparator: () => null,
+          }}
+          styles={statSelectStyles}
+        />
+        <Select
+          placeholder="Year"
+          options={yearsList}
+          onChange={e => handleChangeYear(e)}
+          components={{
+            IndicatorSeparator: () => null,
+          }}
+          styles={statSelectStyles}
+        />
       </DropDownWrapper>
       <Table>
         <thead>
-          <tr>
-            <TableHeader colSpan={2}>
+          <TableHeaderWrapper>
+            <TableHeaderL scope="col">
               <span>Category </span>
+            </TableHeaderL>
+            <TableHeaderR scope="col">
               <span>Sum</span>
-            </TableHeader>
-          </tr>
+            </TableHeaderR>
+          </TableHeaderWrapper>
         </thead>
         {filteredExp?.length > 0 && (
-          <tbody>
-            {filteredExp?.map(({ name, total }) => {
-              return (
-                <TabItem key={name}>
-                  <TableData>{name}</TableData>
-                  <TableDataAmount>{total}</TableDataAmount>
-                </TabItem>
-              );
-            })}
-          </tbody>
+          <>
+            <tbody>
+              {filteredExp?.map(({ name, total }, ind) => {
+                return (
+                  <TabItem key={name}>
+                    <TableData scope="row">
+                      <ColorLegend
+                        style={{ backgroundColor: colorsDonut[ind] }}
+                      />
+                      {name}
+                    </TableData>
+                    <TableDataAmount>{Math.abs(total)}</TableDataAmount>
+                  </TabItem>
+                );
+              })}
+            </tbody>
+          </>
         )}
       </Table>
-      <p>
-        <span>Expenses</span>
-        <span>{statData.expenseSummary}</span>
-      </p>
-      <p>
-        <span>Income</span>
-        <span>{statData.incomeSummary}</span>
-      </p>
+      {filteredExp?.length > 0 && (
+        <>
+          <Box
+            display="flex"
+            pl="20px"
+            pr="10px"
+            flexDirection="column"
+            gridGap="20px"
+          >
+            <Box
+              display="flex"
+              justifyContent="space-between"
+              alignItems="center"
+              gridGap="20px"
+            >
+              <StatLabel>Expenses:</StatLabel>
+              <StatExp>{Number(statData.expenseSummary).toFixed(2)}</StatExp>
+            </Box>
+            <Box
+              display="flex"
+              justifyContent="space-between"
+              alignItems="center"
+              gridGap="20px"
+            >
+              <StatLabel>Income:</StatLabel>
+              <StatInc>{Number(statData.incomeSummary).toFixed(2)}</StatInc>
+            </Box>
+          </Box>
+        </>
+      )}
+      {!filteredExp && <>No data statistic...</>}
+      {filteredExp?.length === 0 && <>No data statistic for this period...</>}
     </Box>
   );
 }

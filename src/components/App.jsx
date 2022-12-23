@@ -10,7 +10,8 @@ import operations from 'redux/auth/auth-operations';
 import PublicRoute from './Routs/PublicRoute';
 import StatTab from './StatTab/StatTab';
 import HomePage from 'pages/HomePage/HomePage';
-import Currency from './Currency/Currency';
+import CurrencyMob from './Currency/CurrencyMob';
+import { ToastContainer } from 'react-toastify';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -30,8 +31,7 @@ export const App = () => {
             <Route path="/" element={<Layout />}>
               <Route index element={<HomePage />} />
               <Route path="diagram" element={<StatTab />} />
-              <Route path="currency" element={<Currency />} />
-              {/* <Route path="test" element={<ModalWindow />} /> */}
+              <Route path="currency" element={<CurrencyMob />} />
             </Route>
           </Route>
           <Route element={<PublicRoute />}>
@@ -40,6 +40,18 @@ export const App = () => {
           </Route>
           <Route path="test" element={<ModalWindow />} />
         </Routes>
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </>
     )
   );

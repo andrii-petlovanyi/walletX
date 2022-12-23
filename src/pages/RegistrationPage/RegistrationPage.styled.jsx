@@ -24,7 +24,7 @@ export const ContainerStyled = styled.div`
   }
   @media ${device.desktop} {
     padding-top: 0;
-    width: 1280px;
+    width: 100%;
     flex-direction: row;
     align-items: stretch;
   }
@@ -80,10 +80,6 @@ export const TextStyled = styled.p`
   @media ${device.desktop} {
     margin-top: 30px;
   }
-  /* position: absolute;
-  bottom: -60px;
-  left: 50%;
-  transform: translate(-50%); */
   font-family: Poppins;
   font-size: 30px;
   line-height: 45px;

@@ -1,15 +1,10 @@
 import React from 'react';
-import {
-  FormStyed,
-  ImgStyed,
-  LinkStyled,
-  // IndicatorBarWrapper,
-  // IndicatorBar,
-} from './styled';
+import { FormStyed, ImgStyed, LinkStyled } from './styled';
 import { useDispatch } from 'react-redux';
 import operations from 'redux/auth/auth-operations';
 import Logo from 'components/Logo/Logo';
 import { Box } from 'components/Box';
+import errorToast from 'components/Toasts/error';
 
 import emailImg from 'images/registration/mail.svg';
 import lockImg from 'images/registration/lock.svg';
@@ -43,10 +38,9 @@ const RegistrationForm = () => {
     e.preventDefault();
     const checked = checkPassword();
     if (!checked) {
-      alert('Пароли не совпадают!');
+      errorToast('Пароли не совпадают!');
       return;
     }
-
     const form = e.currentTarget;
     const res = await dispatch(
       signUp({
@@ -55,15 +49,20 @@ const RegistrationForm = () => {
         password: form.elements.password.value,
       })
     );
-    console.log('res', res);
+    errorToast(res);
     form.reset();
   };
 
   return (
     <FormStyed onSubmit={onSubmit}>
-      <Box m="0px auto" height="40px" width="181px" style={{
-        marginBottom: '60px',
-      }}>
+      <Box
+        m="0px auto"
+        height="40px"
+        width="181px"
+        style={{
+          marginBottom: '60px',
+        }}
+      >
         <Logo />
       </Box>
       <label>
@@ -86,7 +85,6 @@ const RegistrationForm = () => {
           value={parol1}
           required
           pattern=".{6,}"
-        // pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,12}$"
         />
       </label>
       <label>
@@ -99,7 +97,6 @@ const RegistrationForm = () => {
           placeholder="Confirm password"
           required
           pattern=".{6,}"
-        // pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,12}$"
         />
         {parol.length > 0 && (
           <Box
