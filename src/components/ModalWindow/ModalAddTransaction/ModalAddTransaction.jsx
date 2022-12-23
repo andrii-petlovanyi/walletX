@@ -23,12 +23,12 @@ import {
   ModalWrapper,
   ButtonClose,
   ButtonWrapper,
-  newStyles,
   ErrorWrapper,
   ErrorText,
 } from './styled.js';
 import { selectError } from 'redux/transactions/transactions-selectors';
 import { cleanError } from 'redux/transactions/transactions-slice';
+import addTransSelectStyles from 'helpers/addTransSelectStyles';
 
 const ModalAddTransaction = () => {
   const [checked, setChecked] = useState(true);
@@ -204,7 +204,7 @@ const ModalAddTransaction = () => {
                 <ErrorWrapper>
                   <Select
                     placeholder="Select a category"
-                    styles={newStyles}
+                    styles={addTransSelectStyles}
                     options={options}
                     value={selected ? selected : ''}
                     onChange={data => {

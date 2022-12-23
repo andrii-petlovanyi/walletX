@@ -7,7 +7,6 @@ import getTransactionSummary from 'redux/statistic/statistic-operations';
 import Select from 'react-select';
 import {
   ColorLegend,
-  DropDown,
   DropDownWrapper,
   StatExp,
   StatInc,
@@ -20,6 +19,7 @@ import {
   TableHeaderR,
   TableHeaderWrapper,
 } from './styled';
+import statSelectStyles from 'helpers/statSelectStyles';
 
 const monthsList = [
   { value: '1', label: 'January' },
@@ -34,6 +34,12 @@ const monthsList = [
   { value: '10', label: 'October' },
   { value: '11', label: 'November' },
   { value: '12', label: 'December' },
+];
+
+const yearsList = [
+  { value: '2020', label: '2020' },
+  { value: '2021', label: '2021' },
+  { value: '2022', label: '2022' },
 ];
 function DiagramTab() {
   let statisticLS = JSON.parse(localStorage.getItem('statistic')) || {
@@ -63,7 +69,7 @@ function DiagramTab() {
     localStorage.setItem('statistic', JSON.stringify(statisticLS));
   };
   const handleChangeYear = e => {
-    const year = e.target.value;
+    const year = e.value;
     statisticLS.year = year;
     setYear(year);
     localStorage.setItem('statistic', JSON.stringify(statisticLS));
@@ -71,53 +77,30 @@ function DiagramTab() {
   return (
     <Box marginTop="20px">
       <DropDownWrapper>
-        <label>
-          <Select
-            options={monthsList}
-            onChange={e => handleChangeMonth(e)}
-            styles={{
-              control: (baseStyles, state) => ({
-                ...baseStyles,
-                '&:hover': {
-                  borderWeight: '3px',
-                  borderColor: '#000',
-                },
+        <Select
+          placeholder="Month"
+          options={monthsList}
+          onChange={e => handleChangeMonth(e)}
+          components={{
+            IndicatorSeparator: () => null,
+          }}
+          styles={statSelectStyles}
+        />
+        <Select
+          placeholder="Year"
+          options={yearsList}
+          onChange={e => handleChangeYear(e)}
+          components={{
+            IndicatorSeparator: () => null,
+          }}
+          styles={statSelectStyles}
+        />
 
-                borderWeight: '2px',
-                borderColor: state.isFocused ? '#000' : '#000',
-                borderRadius: '30px',
-                padding: '9px 16px',
-                color: '#000',
-
-                background: 'none',
-                width: '181px',
-                fontFamily: 'Circe',
-                fontWeight: '400',
-                fontSize: '16px',
-              }),
-              placeholder: defaultStyles => ({
-                ...defaultStyles,
-                color: '#000',
-              }),
-            }}
-          />
-          {/* <DropDown name="month" value={month} onChange={handleChangeMonth}>
-            <option value="">Month</option>
-
-            {monthsList.map((monthEl, index) => (
-              <option key={monthEl} value={index + 1}>
-                {monthEl}
-              </option>
-            ))}
-          </DropDown> */}
-        </label>
-        <label>
-          <DropDown name="year" value={year} onChange={handleChangeYear}>
+        {/* <DropDown name="year" value={year} onChange={handleChangeYear}>
             <option value="">Year</option>
             <option value="2022">2022</option>
             <option value="2021">2021</option>
-          </DropDown>
-        </label>
+          </DropDown> */}
       </DropDownWrapper>
       <Table>
         <thead>
