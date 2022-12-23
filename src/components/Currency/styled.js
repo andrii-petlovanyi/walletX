@@ -69,6 +69,7 @@ const CurrencyWrap = styled.div`
   @media ${device.tablet} {
     width: 336px;
     min-height: 182px;
+    margin: 0;
   }
   @media ${device.desktop} {
     width: 393px;
