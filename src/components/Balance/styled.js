@@ -5,20 +5,21 @@ const BalanceWrap = styled.div`
   padding-top: 8px;
   padding-left: 40px;
   padding-bottom: 11px;
-  margin-top: 12px;
-  margin-bottom: 32px;
   height: 80px;
   background-color: var(--main-bg-cl);
   border-radius: 30px;
-  min-width: 280px;
-  @media ${device.mobileM} {
-    min-width: 280px;
-  }
+  max-width: 280px;
+  margin: 0 auto;
+  margin-top: 12px;
+  margin-bottom: 32px;
+
   @media ${device.tablet} {
     min-width: 336px;
+    margin: 0;
   }
   @media ${device.desktop} {
     width: 395px;
+    margin-bottom: 32px;
   }
 `;
 
