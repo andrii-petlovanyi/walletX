@@ -7,24 +7,24 @@ import NavTab from 'components/NavTab/NavTab';
 import NavMob from 'components/NavMob/NavMob';
 
 export const SideBar = () => {
-  const { SideBarWrapper, NavWrap,StyledWrap } = styles;
+  const { SideBarWrapper, NavWrap, StyledWrap, Wrap } = styles;
   const isWide = useMedia('(min-width: 768px)');
   const isMob = useMedia('(max-width: 767px)');
 
   return (
     <SideBarWrapper>
-      <NavWrap>
+      <>
         {isWide && (
-          <>
-            <StyledWrap>
+          <Wrap>
+            <NavWrap>
               <NavTab />
               <Balance />
-            </StyledWrap>
+            </NavWrap>
             <Currency />
-          </>
+          </Wrap>
         )}
         {isMob && <NavMob />}
-      </NavWrap>
+      </>
     </SideBarWrapper>
   );
 };

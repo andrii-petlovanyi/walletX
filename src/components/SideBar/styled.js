@@ -4,11 +4,7 @@ import { device } from 'components/Layout/styled';
 
 const SideBarWrapper = styled.div`
   display: block;
-  @media ${device.tablet} {
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 20px;
-  }
+
   @media ${device.desktop} {
     min-width: 480px;
     border-right: 1px solid rgba(231, 229, 242, 1);
@@ -16,20 +12,21 @@ const SideBarWrapper = styled.div`
   }
 `;
 const NavWrap = styled.div`
-  /* @media screen and (max-width: 767px) {
-    /* display: flex;
-    flex-direction: column;
-    align-items: center; */
-
-  @media screen and (min-width: 768px) and (max-width: 1280px) {
+  @media screen and (min-width: 768px) {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+    flex-direction: column;
   }
 `;
 const StyledWrap = styled.div``;
-
+const Wrap = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 20px;
+  @media ${device.desktop} {
+    display: block;
+  }
+`;
 const NavStyled = styled.nav`
   display: flex;
   justify-content: center;
@@ -81,5 +78,6 @@ const styles = {
   NavLinkStyled,
   NavWrap,
   StyledWrap,
+  Wrap,
 };
 export default styles;
