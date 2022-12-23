@@ -23,7 +23,9 @@ import {
   ModalWrapper,
   IconClose,
   ButtonClose,
-} from './ModalAddTransaction.styled.js';
+  ButtonWrapper,
+  newStyles,
+} from './styled.js';
 import { selectError } from 'redux/transactions/transactions-selectors';
 import { cleanError } from 'redux/transactions/transactions-slice';
 
@@ -188,6 +190,8 @@ const ModalAddTransaction = () => {
               {checked && (
                 <>
                   <Select
+                    placeholder="Select a category"
+                    styles={newStyles}
                     options={options}
                     value={selected ? selected : ''}
                     onChange={data => {
@@ -224,15 +228,17 @@ const ModalAddTransaction = () => {
                 value={comment}
                 onChange={e => handleChange(e)}
               ></TextareaComment>
-              <Button type="submit">Add</Button>
-              <Button
-                type="button"
-                onClick={() => {
-                  reset();
-                }}
-              >
-                Clear
-              </Button>
+              <ButtonWrapper>
+                <Button type="submit">Add</Button>
+                <Button
+                  type="button"
+                  onClick={() => {
+                    reset();
+                  }}
+                >
+                  Clear
+                </Button>
+              </ButtonWrapper>
             </form>
           </ModalWrapper>
         </Overlay>

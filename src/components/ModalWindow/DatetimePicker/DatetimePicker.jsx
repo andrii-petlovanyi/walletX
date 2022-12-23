@@ -1,5 +1,4 @@
 import 'react-datetime/css/react-datetime.css';
-// import { useState } from 'react';
 import Datetime from 'react-datetime';
 import moment from 'moment';
 import iconCalendar from 'images/modal/symbol-defs.svg';
@@ -23,23 +22,15 @@ const DatetimePicker = ({ date, setDate, setError }) => {
   };
 
   return (
-    <DatetimeWrapper
-    // onClick={() => !setIsOpen()}
-    // htmlFor="date" name="date"
-    >
+    <DatetimeWrapper>
       <Datetime
-        // id="date"
         name="date"
         dateFormat="DD.MM.YYYY"
-        // open={isOpen}
         timeFormat={false}
-        required
         value={date}
         isValidDate={valid}
         onChange={handleChange}
-        closeOnSelect={() => {
-          return true;
-        }}
+        closeOnSelect={true}
       />
       <Icon>
         <use href={iconCalendar + '#icon-date'}></use>
