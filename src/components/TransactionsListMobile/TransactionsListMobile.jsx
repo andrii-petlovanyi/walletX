@@ -2,13 +2,14 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
-import { TdBorder, StrTr, TdName, TdData, TdDataSum, Table, TdBorderDate, TdBorderBalance } from './TransactionsListMobile.styled';
+import { TdBorder, StrTr, TdName, TdData, TdDataSum, Table, TdBorderDate, TdBorderBalance, TdDataComment } from './TransactionsListMobile.styled';
 import { transactionsListSort } from 'components/TransactionsListSort/TransactionsListSort';
 import moment from '../../../node_modules/moment/moment';
 import operations from 'redux/transactions/transactions-operations';
 
 
 const TransactionsListMobile = () => {
+  const VISIBLE_SYMBOL_COUNT = 14;
   const dispatch = useDispatch();
   const elementsList = useSelector(state => state.transaction.transactions);
   const category = useSelector(state => state.category.category);
@@ -45,7 +46,7 @@ const TransactionsListMobile = () => {
                 <StrTr >
                     <TdBorder type={e.type}/>
                     <TdName>Comment</TdName>
-                    <TdData>{e.comment}</TdData>
+                    <TdDataComment commentStr={e.comment}>{e.comment.length >VISIBLE_SYMBOL_COUNT ? `${e.comment.substr(0,VISIBLE_SYMBOL_COUNT)}...` : e.comment}</TdDataComment>
                 </StrTr>
                 <StrTr >
                     <TdBorder type={e.type}/>

@@ -24,7 +24,7 @@ import {
 import operations from 'redux/transactions/transactions-operations';
 
 const TransactionsListDesktop = () => {
-
+  const VISIBLE_SYMBOL_COUNT = 14;
   const dispatch = useDispatch();
   const elementsList = useSelector(state => state.transaction.transactions);
   const category = useSelector(state => state.category.category);
@@ -36,7 +36,7 @@ const TransactionsListDesktop = () => {
   if (category.length === 0 || elementsList.length === 0) return;
     
   const sortElementsList = transactionsListSort(elementsList, category);
- 
+  
   return (
     <Table>
       <thead>
@@ -58,7 +58,7 @@ const TransactionsListDesktop = () => {
               <StrTdCadegoryId>
                 {category?.find(c => c.id === e.categoryId).name}
               </StrTdCadegoryId>
-              <StrTdComment>{e.comment}</StrTdComment>
+              <StrTdComment commentStr={e.comment}>{e.comment.length >VISIBLE_SYMBOL_COUNT ? `${e.comment.substr(0,VISIBLE_SYMBOL_COUNT)}...` : e.comment}</StrTdComment>
               <StrTdAmount type={e.type}>{e.amount.toFixed(2)}</StrTdAmount>
               <StrTdBalanceAfter>{e.balanceAfter.toFixed(2)}</StrTdBalanceAfter>
             </StrTr>
