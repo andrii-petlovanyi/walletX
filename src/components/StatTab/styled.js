@@ -13,10 +13,15 @@ export const DropDown = styled.select`
 
   // left: 869px;
   // top: 177px;
+  background: none;
   width: 181px;
   border: 1px solid #000000;
   border-radius: 30px;
   padding: 12px 0 14px 20px;
+  font-family: 'Circe';
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
 `;
 
 export const TabHeader = styled.h1`

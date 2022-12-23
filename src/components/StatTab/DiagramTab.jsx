@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import getTransactionSummary from 'redux/statistic/statistic-operations';
+import Select from 'react-select';
 import {
   ColorLegend,
   DropDown,
@@ -21,18 +22,18 @@ import {
 } from './styled';
 
 const monthsList = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  ' December',
+  { value: '1', label: 'January' },
+  { value: '2', label: 'February' },
+  { value: '3', label: 'March' },
+  { value: '4', label: 'April' },
+  { value: '5', label: 'May' },
+  { value: '6', label: 'June' },
+  { value: '7', label: 'July' },
+  { value: '8', label: 'August' },
+  { value: '9', label: 'September' },
+  { value: '10', label: 'October' },
+  { value: '11', label: 'November' },
+  { value: '12', label: 'December' },
 ];
 function DiagramTab() {
   let statisticLS = JSON.parse(localStorage.getItem('statistic')) || {
@@ -55,7 +56,8 @@ function DiagramTab() {
   );
 
   const handleChangeMonth = e => {
-    const month = e.target.value;
+    console.log(e.value);
+    const month = e.value;
     statisticLS.month = month;
     setMonth(month);
     localStorage.setItem('statistic', JSON.stringify(statisticLS));
@@ -70,7 +72,36 @@ function DiagramTab() {
     <Box marginTop="20px">
       <DropDownWrapper>
         <label>
-          <DropDown name="month" value={month} onChange={handleChangeMonth}>
+          <Select
+            options={monthsList}
+            onChange={e => handleChangeMonth(e)}
+            styles={{
+              control: (baseStyles, state) => ({
+                ...baseStyles,
+                '&:hover': {
+                  borderWeight: '3px',
+                  borderColor: '#000',
+                },
+
+                borderWeight: '2px',
+                borderColor: state.isFocused ? '#000' : '#000',
+                borderRadius: '30px',
+                padding: '9px 16px',
+                color: '#000',
+
+                background: 'none',
+                width: '181px',
+                fontFamily: 'Circe',
+                fontWeight: '400',
+                fontSize: '16px',
+              }),
+              placeholder: defaultStyles => ({
+                ...defaultStyles,
+                color: '#000',
+              }),
+            }}
+          />
+          {/* <DropDown name="month" value={month} onChange={handleChangeMonth}>
             <option value="">Month</option>
 
             {monthsList.map((monthEl, index) => (
@@ -78,7 +109,7 @@ function DiagramTab() {
                 {monthEl}
               </option>
             ))}
-          </DropDown>
+          </DropDown> */}
         </label>
         <label>
           <DropDown name="year" value={year} onChange={handleChangeYear}>
