@@ -4,9 +4,9 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import getTransactionSummary from 'redux/statistic/statistic-operations';
+import Select from 'react-select';
 import {
   ColorLegend,
-  DropDown,
   DropDownWrapper,
   StatExp,
   StatInc,
@@ -19,20 +19,27 @@ import {
   TableHeaderR,
   TableHeaderWrapper,
 } from './styled';
+import statSelectStyles from 'helpers/statSelectStyles';
 
 const monthsList = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  ' December',
+  { value: '1', label: 'January' },
+  { value: '2', label: 'February' },
+  { value: '3', label: 'March' },
+  { value: '4', label: 'April' },
+  { value: '5', label: 'May' },
+  { value: '6', label: 'June' },
+  { value: '7', label: 'July' },
+  { value: '8', label: 'August' },
+  { value: '9', label: 'September' },
+  { value: '10', label: 'October' },
+  { value: '11', label: 'November' },
+  { value: '12', label: 'December' },
+];
+
+const yearsList = [
+  { value: '2022', label: '2022' },
+  { value: '2021', label: '2021' },
+  { value: '2020', label: '2020' },
 ];
 function DiagramTab() {
   let statisticLS = JSON.parse(localStorage.getItem('statistic')) || {
@@ -55,13 +62,14 @@ function DiagramTab() {
   );
 
   const handleChangeMonth = e => {
-    const month = e.target.value;
+    console.log(e.value);
+    const month = e.value;
     statisticLS.month = month;
     setMonth(month);
     localStorage.setItem('statistic', JSON.stringify(statisticLS));
   };
   const handleChangeYear = e => {
-    const year = e.target.value;
+    const year = e.value;
     statisticLS.year = year;
     setYear(year);
     localStorage.setItem('statistic', JSON.stringify(statisticLS));
@@ -69,24 +77,24 @@ function DiagramTab() {
   return (
     <Box marginTop="20px">
       <DropDownWrapper>
-        <label>
-          <DropDown name="month" value={month} onChange={handleChangeMonth}>
-            <option value="">Month</option>
-
-            {monthsList.map((monthEl, index) => (
-              <option key={monthEl} value={index + 1}>
-                {monthEl}
-              </option>
-            ))}
-          </DropDown>
-        </label>
-        <label>
-          <DropDown name="year" value={year} onChange={handleChangeYear}>
-            <option value="">Year</option>
-            <option value="2022">2022</option>
-            <option value="2021">2021</option>
-          </DropDown>
-        </label>
+        <Select
+          placeholder="Month"
+          options={monthsList}
+          onChange={e => handleChangeMonth(e)}
+          components={{
+            IndicatorSeparator: () => null,
+          }}
+          styles={statSelectStyles}
+        />
+        <Select
+          placeholder="Year"
+          options={yearsList}
+          onChange={e => handleChangeYear(e)}
+          components={{
+            IndicatorSeparator: () => null,
+          }}
+          styles={statSelectStyles}
+        />
       </DropDownWrapper>
       <Table>
         <thead>

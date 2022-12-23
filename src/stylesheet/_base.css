@@ -18,7 +18,11 @@ body {
   background-color: rgba(231, 234, 242, 0.4);
   backdrop-filter: blur(25px);
 }
-
+@media screen and (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 0 !important;
+  }
+}
 @media screen and (min-width: 768px) {
   body {
     background-image: url('../images/registration/ellipse1.png'),
