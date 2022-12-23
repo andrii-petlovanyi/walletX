@@ -4,6 +4,7 @@ export const MainContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   padding: 32px 16px;
+  padding-top: 0;
   width: 100%;
 `;
 
@@ -42,7 +43,7 @@ export const DropDownWrapper = styled.div`
 `;
 
 export const TabItem = styled.tr`
-  border: 1px solid #dcdcdf;
+  border-bottom: 2px solid #dcdcdf;
   box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
 `;
 
@@ -52,19 +53,35 @@ export const Table = styled.table`
   padding-bottom: 33px;
 `;
 
-export const TableHeader = styled.th`
+export const TableHeaderWrapper = styled.tr`
   background: #ffffff;
-  border-radius: 30px;
-  padding: 15px;
+  border-color: #ffffff;
+  border: none;
+  /* margin: 0; */
+`;
 
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
+export const TableHeaderL = styled.th`
+  padding: 15px;
+  border-top-left-radius: 30px;
+  border: none;
+  border-bottom-left-radius: 30px;
+`;
+export const TableHeaderR = styled.th`
+  padding: 15px;
+  border-top-right-radius: 30px;
+  border: none;
+
+  border-bottom-right-radius: 30px;
 `;
 
 export const TableData = styled.td`
   padding: 15px;
   border: 1px solid #dcdcdf;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
   box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
 `;
 
@@ -72,6 +89,7 @@ export const TableDataAmount = styled.td`
   padding: 15px;
   text-align: end;
   border: 1px solid #dcdcdf;
+  border: none;
   box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
 `;
 
@@ -89,4 +107,32 @@ export const DoughnutBalance = styled.p`
 export const ChartContainer = styled.div`
   position: relative;
   margin-bottom: 32px;
+`;
+
+export const StatLabel = styled.p`
+  font-family: 'Circe';
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+`;
+
+export const StatInc = styled.p`
+  font-family: 'Circe';
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: #24cca7;
+`;
+
+export const StatExp = styled.p`
+  font-family: 'Circe';
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ff6596;
+`;
+
+export const ColorLegend = styled.p`
+  width: 24px;
+  height: 24px;
 `;

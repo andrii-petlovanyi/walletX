@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const ListBox = styled.div`
-  margin-left: auto;
   width: 100%;
   display: flex;
   flex-direction: column;
