@@ -5,7 +5,6 @@ const BalanceWrap = styled.div`
   padding-top: 8px;
   padding-left: 40px;
   padding-bottom: 11px;
-  height: 80px;
   background-color: var(--main-bg-cl);
   border-radius: 30px;
   max-width: 280px;
@@ -18,7 +17,7 @@ const BalanceWrap = styled.div`
     margin: 0;
   }
   @media ${device.desktop} {
-    width: 395px;
+    min-width: 395px;
     margin-bottom: 32px;
   }
 `;
