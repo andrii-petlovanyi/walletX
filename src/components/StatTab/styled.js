@@ -24,6 +24,18 @@ export const MainContainer = styled.div`
     flex-direction: row;
     justify-content: space-between;
   }
+
+  @media screen and (min-width: 1280px) {
+    padding: 0;
+    margin: 0;
+    margin-left: 30px;
+    width: 100%;
+    max-width: 100%;
+    gap: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 `;
 
 export const DropDown = styled.select`
@@ -180,4 +192,11 @@ export const StatExp = styled.p`
 export const ColorLegend = styled.p`
   width: 24px;
   height: 24px;
+`;
+
+export const DonutSection = styled.div`
+  margin: 0 auto;
+  @media screen and (min-width: 1280px) {
+    margin: 0;
+  }
 `;

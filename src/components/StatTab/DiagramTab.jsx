@@ -75,7 +75,7 @@ function DiagramTab() {
     localStorage.setItem('statistic', JSON.stringify(statisticLS));
   };
   return (
-    <Box marginTop="20px">
+    <Box marginTop="20px" marginBottom="50px">
       <DropDownWrapper>
         <Select
           placeholder="Month"
