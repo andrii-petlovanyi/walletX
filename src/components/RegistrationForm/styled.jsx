@@ -48,9 +48,12 @@ export const FormStyed = styled.form`
     }
   }
   button {
+    width: 100%;
+    @media ${device.mobileM} {
+      width: 300px;
+    }
     margin: 0 auto;
     margin-bottom: 20px;
-    width: 300px;
     height: 50px;
     border: none;
     background: #24cca7;
@@ -79,11 +82,15 @@ export const ImgStyed = styled.img`
 `;
 
 export const LinkStyled = styled(Link)`
+  width: 100%;
+  @media ${device.mobileM} {
+    width: 300px;
+  }
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  width: 300px;
+
   height: 50px;
   border: 1px solid #4a56e2;
   background: #fff;

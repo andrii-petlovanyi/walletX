@@ -46,7 +46,6 @@ const RegistrationForm = () => {
       alert('Пароли не совпадают!');
       return;
     }
-
     const form = e.currentTarget;
     const res = await dispatch(
       signUp({
@@ -61,9 +60,14 @@ const RegistrationForm = () => {
 
   return (
     <FormStyed onSubmit={onSubmit}>
-      <Box m="0px auto" height="40px" width="181px" style={{
-        marginBottom: '60px',
-      }}>
+      <Box
+        m="0px auto"
+        height="40px"
+        width="181px"
+        style={{
+          marginBottom: '60px',
+        }}
+      >
         <Logo />
       </Box>
       <label>
@@ -86,7 +90,6 @@ const RegistrationForm = () => {
           value={parol1}
           required
           pattern=".{6,}"
-        // pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,12}$"
         />
       </label>
       <label>
@@ -99,7 +102,6 @@ const RegistrationForm = () => {
           placeholder="Confirm password"
           required
           pattern=".{6,}"
-        // pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,12}$"
         />
         {parol.length > 0 && (
           <Box
