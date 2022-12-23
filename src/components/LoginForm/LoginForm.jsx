@@ -41,13 +41,13 @@ function LoginForm({ isLoading }) {
 
     try {
       const res = await dispatch(signIn(finalData));
-      if (res.payload === 403) return error('Не вірно введені дані!');
+      if (res.payload === 403) return error('Password is incorrect!');
       if (res.payload === 404)
         return error(
-          'Такого користувача не знайдено, зареєструйтесь, будь ласка!'
+          `User with email ${finalData.email} not found`
         );
       reset();
-    } catch (error) {}
+    } catch (error) { }
   };
 
   const reset = () => {
