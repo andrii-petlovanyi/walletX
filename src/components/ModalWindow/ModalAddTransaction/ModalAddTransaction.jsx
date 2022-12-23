@@ -30,7 +30,7 @@ import {
 import { selectError } from 'redux/transactions/transactions-selectors';
 import { cleanError } from 'redux/transactions/transactions-slice';
 
-const ModalAddTransaction = () => {
+const ModalAddTransaction = ({ className = '' }) => {
   const [checked, setChecked] = useState(true);
   const [selected, setSelected] = useState();
   const [balance, setBalance] = useState('');
@@ -100,7 +100,7 @@ const ModalAddTransaction = () => {
       errorObj.datePick = true;
     }
 
-    if (balance > userBalance) {
+    if (checked && balance > userBalance) {
       await setError(prevState => {
         return { ...prevState, balance: `Unavailable amount ` };
       });
@@ -144,6 +144,7 @@ const ModalAddTransaction = () => {
   const handelKeyDown = useCallback(
     event => {
       if (event.code === 'Escape') {
+        reset();
         setIsOpen(!isOpen);
       }
     },
@@ -152,6 +153,7 @@ const ModalAddTransaction = () => {
 
   const handleBackDropClick = event => {
     if (event.currentTarget === event.target) {
+      reset();
       setIsOpen(!isOpen);
     }
   };
@@ -188,14 +190,7 @@ const ModalAddTransaction = () => {
                 setIsOpen(!isOpen);
               }}
             >
-              <IoCloseSharp
-                style={{
-                  position: 'absolute',
-                  top: '20px',
-                  right: '20px',
-                }}
-                size="30px"
-              />
+              <IoCloseSharp />
             </ButtonClose>
             <form onSubmit={onSubmit}>
               <ModalTitle>Add transaction</ModalTitle>
@@ -247,9 +242,22 @@ const ModalAddTransaction = () => {
                 onChange={e => handleChange(e)}
               ></TextareaComment>
               <ButtonWrapper>
-                <Button type="submit">Add</Button>
+                <Button
+                  type="submit"
+                  // className="button__add"
+                  className={`button__add ${className}`}
+                  // style={{
+                  //   background: '#24cca7',
+                  //   color: '#ffffff',
+                  //   borderColor: '#24cca7',
+                  // }}
+                >
+                  Add
+                </Button>
                 <Button
                   type="button"
+                  // className="button__clear"
+                  className={className}
                   onClick={() => {
                     reset();
                   }}

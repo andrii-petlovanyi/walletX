@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { HiPlus } from 'react-icons/hi2';
 
 export const SwitchWrapper = styled.div`
   display: flex;
@@ -32,6 +33,7 @@ export const Switch = styled.div`
     width: 44px;
     height: 44px;
     background: ${p => p.switchColor};
+    /* background-image: url(${HiPlus}); */
     box-shadow: 0px 6px 15px rgba(255, 101, 150, 0.5);
     border-radius: 50px;
     transform: translate(0, -50%);

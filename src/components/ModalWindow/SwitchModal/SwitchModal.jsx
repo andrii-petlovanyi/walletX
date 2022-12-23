@@ -1,3 +1,4 @@
+import { HiPlus } from 'react-icons/hi2';
 import {
   Switch,
   SwitchInput,
@@ -21,10 +22,14 @@ const SwitchModal = ({ checked, setChecked }) => {
           name="checkbox"
           checked={checked}
           type="checkbox"
-          // required
           onChange={handleChange}
         />
-        <Switch switchColor={!checked ? '#24cca7' : '#ff6596'} />
+        <Switch
+          switchColor={!checked ? '#24cca7' : '#ff6596'}
+          // {!checked ? <HiPlus />  : <HiPlus /> }
+        >
+          <HiPlus />
+        </Switch>
       </SwitchLabel>
       <TextExpense expenseColor={expenseColor}>Expense</TextExpense>
     </SwitchWrapper>

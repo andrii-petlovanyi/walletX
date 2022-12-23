@@ -7,7 +7,7 @@ export const ModalWrapper = styled.div`
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 55%;
+  top: 62%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: '100vw';
@@ -66,7 +66,6 @@ export const newStyles = {
     overflow: 'hidden',
     backgroundColor: 'rgba(255, 255, 255, 0.7)',
     boxShadow: '0px 6px 15px rgba(0, 0, 0, 0.1)',
-    backdropFilter: 'blur(25px)',
     borderRadius: 20,
     outline: 0,
   }),
@@ -74,6 +73,10 @@ export const newStyles = {
     ...styles,
     padding: 0,
     margin: 0,
+    fontFamily: 'Circe',
+    fontWeight: 400,
+    fontSize: 18,
+    lineHeight: 1.5,
     color: '#bdbdbd',
   }),
   option: (styles, { isFocused, isSelected }) => ({
@@ -96,8 +99,6 @@ export const InputBalance = styled.input`
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  margin-top: 40px;
-  margin-bottom: 40px;
   width: 100%;
   height: 32px;
   padding: 8px 20px;
@@ -136,10 +137,11 @@ export const BalanceDateWrapper = styled.div`
 export const ErrorWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom: 40px;
 `;
 
 export const ErrorText = styled.p`
-  margin-left: 8px;
+  padding: 5px 20px;
   color: red;
 `;
 
@@ -150,7 +152,6 @@ export const TextareaComment = styled.textarea`
   padding-left: 20px;
   padding-right: 20px;
   margin: 0 auto;
-  margin-top: 40px;
   margin-bottom: 40px;
   width: 100%;
   height: 84px;
@@ -199,39 +200,44 @@ export const Button = styled.button`
   text-transform: uppercase;
   background: var(--main-bg-cl);
   color: var(--accent-active-cl);
+  /* .button__add {
+    background: '#24cca7';
+    color: '#ffffff';
+    border-color: '#24cca7';
+  } */
   &:not(:last-child) {
     margin-bottom: 20px;
-  }
-
-  &:hover,
-  &:active {
-    background: var(--income-cl);
-    color: var(--main-bg-cl);
-    border-color: var(--income-cl);
   }
 `;
 
 export const Overlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.25);
+  @media ${device.tablet} {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.25);
+  }
 `;
 
 export const ButtonClose = styled.button`
-  /* display: flex;
+  position: absolute;
+  display: flex;
   justify-content: flex-end;
   align-items: center;
-  color: var(--main-text-cl);
-  width: 16px;
-  height: 16px;
-  font-size: 25px;
-  border-radius: 10px;
-  border-color: red;
+  top: 15px;
+  right: 15px;
+  width: 20px;
+  height: 20px;
   background: none;
-  & svg {
-    margin-right: 0;
-  } */
+  font-size: 20px;
+  border: none;
+  @media ${device.tablet} {
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    font-size: 25px;
+  }
 `;
