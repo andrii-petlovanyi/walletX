@@ -206,13 +206,28 @@ export const Overlay = styled.div`
   background: rgba(0, 0, 0, 0.25);
 `;
 
-export const IconClose = styled.svg`
-  width: 16px;
-  height: 16px;
-  fill: var(--accent-active-cl);
-`;
+// export const IconClose = styled.svg`
+//   width: 16px;
+//   height: 16px;
+
+//   color: var(--accent-active-cl);
+// `;
 
 export const ButtonClose = styled.button`
-  width: 16px;
-  height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--accent-active-cl);
+  /* padding: 20px; */
+  width: 30px;
+  height: 30px;
+  font-size: 25px;
+  border-radius: 10px;
+  border: 1px solid black;
+  background: none;
+
+  &:hover {
+    color: red;
+  }
+  /* fill: var(--accent-active-cl); */
 `;

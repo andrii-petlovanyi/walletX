@@ -11,22 +11,28 @@ const SideBarWrapper = styled.div`
   }
   @media ${device.desktop} {
     min-width: 480px;
-    flex-direction: column;
-    justify-content: flex-start;
     border-right: 1px solid rgba(231, 229, 242, 1);
     box-shadow: 1px 0px 0px 0px rgba(255, 255, 255, 0.6);
   }
 `;
 const NavWrap = styled.div`
-  @media screen and (max-width: 768px) {
-    display: flex;
+  /* @media screen and (max-width: 767px) {
+    /* display: flex;
     flex-direction: column;
+    align-items: center; */
+
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
+    margin-bottom: 20px;
   }
 `;
+const StyledWrap = styled.div``;
 
 const NavStyled = styled.nav`
   display: flex;
+  justify-content: center;
   gap: 32px;
   @media ${device.tablet} {
     flex-direction: column;
@@ -43,7 +49,6 @@ const NavLinkStyled = styled(NavLink)`
   display: flex;
   gap: 20px;
   align-items: center;
-
   .icon {
     width: 44px;
     height: 44px;
@@ -70,5 +75,11 @@ const NavLinkStyled = styled(NavLink)`
   }
 `;
 
-const styles = { NavStyled, SideBarWrapper, NavLinkStyled, NavWrap, device };
+const styles = {
+  NavStyled,
+  SideBarWrapper,
+  NavLinkStyled,
+  NavWrap,
+  StyledWrap,
+};
 export default styles;

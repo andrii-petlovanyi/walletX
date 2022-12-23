@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { ChartContainer, DoughnutBalance } from './styled';
 import { numberSpace } from 'helpers/numberSpace';
+import colorsDonut from 'helpers/colorsDonut';
 
 ChartJS.register(ArcElement, Tooltip);
 
@@ -16,13 +17,11 @@ const DoughnutChart = () => {
   const [category, setCategory] = useState([]);
 
   useEffect(() => {
-    console.log(statData);
     if (!statData?.categoriesSummary?.length) return setExpenses([]);
     const filteredStat = statData.categoriesSummary.reduce(function (
       prev,
       curr
     ) {
-      console.log(curr);
       if (curr.type !== 'INCOME') {
         return [...prev, curr.total];
       } else {
@@ -36,7 +35,6 @@ const DoughnutChart = () => {
       prev,
       curr
     ) {
-      console.log(curr);
       if (curr.type !== 'INCOME') {
         return [...prev, curr.name];
       } else {
@@ -52,19 +50,7 @@ const DoughnutChart = () => {
     datasets: [
       {
         data: expenses,
-        backgroundColor: [
-          'rgb(255, 99, 132)',
-          'rgb(255,69,0)',
-          'rgb(255,140,0)',
-          'rgb(255,215,0)',
-          'rgb(0,128,0)',
-          'rgb(30,144,255)',
-          'rgb(148,0,211)',
-          'rgb(255,20,147)',
-          'rgb(240,128,128)',
-          'rgb(255,160,122)',
-          'rgb(255,222,173)',
-        ],
+        backgroundColor: colorsDonut,
         borderWidth: 1,
       },
     ],
@@ -74,8 +60,8 @@ const DoughnutChart = () => {
   return (
     <>
       <ChartContainer>
-        <Doughnut data={data} options={options} />
-        {expenses?.length && (
+        {expenses?.length > 0 && <Doughnut data={data} options={options} />}
+        {expenses?.length > 0 && (
           <DoughnutBalance>
             {'\u20B4'} {numberSpace(balance)}
           </DoughnutBalance>

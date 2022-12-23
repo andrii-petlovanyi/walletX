@@ -10,7 +10,7 @@ import { HiPlus } from 'react-icons/hi2';
 import Select from 'react-select';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import iconClose from 'images/modal/symbol-defs.svg';
+import { IoCloseSharp } from 'react-icons/io5';
 import SwitchModal from '../SwitchModal/SwitchModal';
 
 import {
@@ -21,7 +21,6 @@ import {
   ModalTitle,
   TextareaComment,
   ModalWrapper,
-  IconClose,
   ButtonClose,
   ButtonWrapper,
   newStyles,
@@ -89,7 +88,6 @@ const ModalAddTransaction = () => {
       datePick: false,
     };
     if (checked && !selected) {
-      console.log('select error');
       await setError(prevState => {
         return { ...prevState, select: 'select category' };
       });
@@ -97,9 +95,7 @@ const ModalAddTransaction = () => {
     }
 
     if (isValidDate(date) === false) {
-      console.log('DATE ERROR');
       await setError(prevState => {
-        console.log(prevState);
         return { ...prevState, datePick: `date format DD.MM.YYYY` };
       });
       errorObj.datePick = true;
@@ -110,12 +106,9 @@ const ModalAddTransaction = () => {
   const onSubmit = async e => {
     e.preventDefault();
     const errorObj = await validateField();
-    console.log(errorObj);
     if (errorObj.select || errorObj.datePick || errorObj.balance) {
-      console.log(123);
       return;
     }
-    console.log(new Date(date));
     const categoryData = findCategory(checked ? selected.value : 'Income');
     const normalizeBalance = Number(balance).toFixed(2);
     const transaction = {
@@ -149,11 +142,13 @@ const ModalAddTransaction = () => {
     },
     [isOpen]
   );
+
   const handleBackDropClick = event => {
     if (event.currentTarget === event.target) {
       setIsOpen(!isOpen);
     }
   };
+
   useEffect(() => {
     window.addEventListener('keydown', handelKeyDown);
 
@@ -180,9 +175,7 @@ const ModalAddTransaction = () => {
         <Overlay onClick={handleBackDropClick}>
           <ModalWrapper>
             <ButtonClose type="button" onClick={() => setIsOpen(!isOpen)}>
-              <IconClose>
-                <use href={iconClose + '#icon-close'}></use>
-              </IconClose>
+              <IoCloseSharp />
             </ButtonClose>
             <form onSubmit={onSubmit}>
               <ModalTitle>Add transaction</ModalTitle>

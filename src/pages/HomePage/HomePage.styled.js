@@ -6,6 +6,8 @@ export const ListBox = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
+  height: 70vh;
+  overflow-y: scroll;
   @media screen and (min-width: 1279px) {
     display: flex;
   }
