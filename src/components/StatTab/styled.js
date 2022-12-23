@@ -2,10 +2,28 @@ import styled from 'styled-components';
 
 export const MainContainer = styled.div`
   display: flex;
-  justify-content: flex-end;
-  padding: 32px 16px;
-  padding-top: 0;
+  margin: 0 auto;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 40px;
+  /* margin-left: -6px;
+  margin-right: -6px; */
   width: 100%;
+  max-width: 320px;
+
+  @media screen and (min-width: 480px) {
+    width: 320px;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 0;
+    margin: 0;
+    width: 768px;
+    gap: 70px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 `;
 
 export const DropDown = styled.select`
@@ -42,9 +60,16 @@ export const DropDownTitle = styled.span`
 
 export const DropDownWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   gap: 32px;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export const TabItem = styled.tr`
@@ -54,8 +79,23 @@ export const TabItem = styled.tr`
 
 export const Table = styled.table`
   width: 100%;
+  max-width: 320px;
   padding-top: 20px;
   padding-bottom: 33px;
+  margin: 0 auto;
+
+  /* @media screen and (min-width: 480px) {
+    max-width: 320px;
+  } */
+
+  @media screen and (min-width: 768px) {
+    max-width: 336px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 395px;
+    max-width: 395px;
+  }
 `;
 
 export const TableHeaderWrapper = styled.tr`

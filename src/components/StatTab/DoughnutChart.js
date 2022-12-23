@@ -55,7 +55,9 @@ const DoughnutChart = () => {
       },
     ],
   };
-  const options = { cutout: '70%' };
+  const options = {
+    cutout: '70%',
+  };
 
   return (
     <>

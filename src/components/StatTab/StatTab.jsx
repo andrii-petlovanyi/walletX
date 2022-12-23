@@ -7,7 +7,7 @@ import { MainContainer, TabHeader } from './styled';
 function StatTab() {
   return (
     <MainContainer>
-      <Box marginRight="auto">
+      <Box mx="auto">
         <TabHeader>Statistics</TabHeader>
         <DoughnutChart />
       </Box>
