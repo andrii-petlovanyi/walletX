@@ -1,42 +1,25 @@
 import styled from 'styled-components';
-
-const size = {
-  mobileS: '320px',
-  mobileM: '480px',
-  tablet: '768px',
-  desktop: '1280px',
-};
-
-export const device = {
-  mobileS: `(min-width: ${size.mobileS})`,
-  mobileM: `(min-width: ${size.mobileM})`,
-  tablet: `(min-width: ${size.tablet})`,
-  desktop: `(min-width: ${size.desktop})`,
-};
+import { device } from 'components/Layout/styled';
 
 export const ModalWrapper = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* width: '100vw';
-  height: '100vh'; */
-  padding-right: 10px;
-  padding-left: 10px;
-  padding-top: 20px;
-  padding-bottom: 37px;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: '100vw';
+  height: '100vh';
+  padding: 20px;
   background-color: var(--main-bg-cl);
   @media ${device.tablet} {
-    max-width: 540px;
-    padding: 40px 73px;
-  }
-
-  @media ${device.desktop} {
+    top: 50%;
     width: 540px;
+    height: 603px;
+    border-radius: 20px;
+    padding: 0;
   }
 `;
 
@@ -55,6 +38,59 @@ export const ModalTitle = styled.h1`
   }
 `;
 
+export const newStyles = {
+  container: styles => ({
+    ...styles,
+  }),
+  control: styles => ({
+    ...styles,
+    width: '100%',
+    borderColor: '#ffffff',
+    borderBottom: '1px solid #E0E0E0',
+    cursor: 'pointer',
+  }),
+
+  valueContainer: styles => ({
+    ...styles,
+    padding: '8px 20px',
+    margin: 0,
+  }),
+
+  input: styles => ({
+    ...styles,
+    padding: 0,
+    margin: 0,
+  }),
+  menu: styles => ({
+    ...styles,
+    overflow: 'hidden',
+    backgroundColor: 'rgba(255, 255, 255, 0.7)',
+    boxShadow: '0px 6px 15px rgba(0, 0, 0, 0.1)',
+    backdropFilter: 'blur(25px)',
+    borderRadius: 20,
+    outline: 0,
+  }),
+  placeholder: styles => ({
+    ...styles,
+    padding: 0,
+    margin: 0,
+    color: '#bdbdbd',
+  }),
+  option: (styles, { isFocused, isSelected }) => ({
+    ...styles,
+    color: isFocused ? '#FF6596' : isSelected ? '#FF6596' : undefined,
+    backgroundColor: isFocused ? '#ffffff' : isSelected ? '#ffffff' : undefined,
+    cursor: 'pointer',
+    borderRadius: isFocused ? '0' : isSelected ? '0' : undefined,
+    fontFamily: 'Circe',
+    fontWeight: isFocused ? '700' : isSelected ? '700' : '400',
+    fontSize: 18,
+    lineHeight: 1.5,
+    display: 'flex',
+    alignItems: 'center',
+  }),
+};
+
 export const InputBalance = styled.input`
   display: flex;
   justify-content: center;
@@ -63,11 +99,9 @@ export const InputBalance = styled.input`
   margin-top: 40px;
   margin-bottom: 40px;
   width: 100%;
-  max-width: 280px;
   height: 32px;
   padding: 8px 20px;
   font-family: 'Circe';
-  font-style: normal;
   font-weight: 700;
   font-size: 18px;
   line-height: 1.5;
@@ -76,18 +110,37 @@ export const InputBalance = styled.input`
   border-right: inherit;
   border-left: inherit;
   border-bottom: 1px solid #e0e0e0;
+  cursor: pointer;
+  &::placeholder {
+    color: var(--secondary-text-cl);
+  }
   @media ${device.tablet} {
-    max-width: 190px;
-    margin-bottom: 0;
+    width: 190px;
+    margin: 0;
+    margin-right: 30px;
   }
 `;
 
-export const BalanceDateWrapper = styled.label`
-  /* @media ${device.tablet} {
+export const BalanceDateWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  @media ${device.tablet} {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
-  } */
+    width: 394px;
+    margin-top: 40px;
+  }
+`;
+
+export const ErrorWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const ErrorText = styled.p`
+  margin-left: 8px;
+  color: red;
 `;
 
 export const TextareaComment = styled.textarea`
@@ -97,12 +150,9 @@ export const TextareaComment = styled.textarea`
   padding-left: 20px;
   padding-right: 20px;
   margin: 0 auto;
-  /* margin-top: 40px;
+  margin-top: 40px;
   margin-bottom: 40px;
-  margin-left: auto;
-  margin-right: auto; */
   width: 100%;
-  width: 280px;
   height: 84px;
   resize: none;
   font-family: 'Circe';
@@ -115,17 +165,26 @@ export const TextareaComment = styled.textarea`
   border-right: inherit;
   border-left: inherit;
   border-bottom: 1px solid #e0e0e0;
+  cursor: pointer;
+  &::placeholder {
+    color: var(--secondary-text-cl);
+  }
   @media ${device.tablet} {
     max-width: 394px;
     max-height: 32px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 8px;
+    padding-right: 8px;
   }
 `;
 
-export const Button = styled.button`
+export const ButtonWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+`;
+
+export const Button = styled.button`
   width: 300px;
   height: 50px;
   border: 1px solid var(--accent-active-cl);
@@ -161,28 +220,18 @@ export const Overlay = styled.div`
   background: rgba(0, 0, 0, 0.25);
 `;
 
-// export const IconClose = styled.svg`
-//   width: 16px;
-//   height: 16px;
-
-//   color: var(--accent-active-cl);
-// `;
-
 export const ButtonClose = styled.button`
-  display: flex;
-  justify-content: center;
+  /* display: flex;
+  justify-content: flex-end;
   align-items: center;
-  color: var(--accent-active-cl);
-  /* padding: 20px; */
-  width: 30px;
-  height: 30px;
+  color: var(--main-text-cl);
+  width: 16px;
+  height: 16px;
   font-size: 25px;
   border-radius: 10px;
-  border: 1px solid black;
+  border-color: red;
   background: none;
-
-  &:hover {
-    color: red;
-  }
-  /* fill: var(--accent-active-cl); */
+  & svg {
+    margin-right: 0;
+  } */
 `;

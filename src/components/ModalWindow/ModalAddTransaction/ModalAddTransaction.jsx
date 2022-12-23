@@ -22,7 +22,11 @@ import {
   TextareaComment,
   ModalWrapper,
   ButtonClose,
-} from './ModalAddTransaction.styled.js';
+  ButtonWrapper,
+  newStyles,
+  ErrorWrapper,
+  ErrorText,
+} from './styled.js';
 import { selectError } from 'redux/transactions/transactions-selectors';
 import { cleanError } from 'redux/transactions/transactions-slice';
 
@@ -41,6 +45,7 @@ const ModalAddTransaction = () => {
   const categories = useSelector(selectCategory);
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const isError = useSelector(selectError);
+  const userBalance = useSelector(authSelectors.getUserBalance);
   const dispatch = useDispatch();
 
   const options = categories
@@ -64,14 +69,10 @@ const ModalAddTransaction = () => {
     if (name === 'comment') {
       setComment(() => value);
     }
-    // if (name === 'balance') {
-    //   setBalance(() => value);
-    // }
   };
 
   const handleChangeBalance = event => {
     const result = event.target.value.replace(/[a-zA-Z]/g, '');
-
     setBalance(result);
   };
 
@@ -87,14 +88,21 @@ const ModalAddTransaction = () => {
     };
     if (checked && !selected) {
       await setError(prevState => {
-        return { ...prevState, select: 'select category' };
+        return { ...prevState, select: 'Select a category, please' };
       });
       errorObj.select = true;
     }
 
     if (isValidDate(date) === false) {
       await setError(prevState => {
-        return { ...prevState, datePick: `date format DD.MM.YYYY` };
+        return { ...prevState, datePick: `Date format DD.MM.YYYY` };
+      });
+      errorObj.datePick = true;
+    }
+
+    if (balance > userBalance) {
+      await setError(prevState => {
+        return { ...prevState, balance: `Unavailable amount ` };
       });
       errorObj.datePick = true;
     }
@@ -130,6 +138,7 @@ const ModalAddTransaction = () => {
     setComment('');
     setDate(new Date());
     setChecked(true);
+    setError({ select: false, balance: false, datePick: false });
   };
 
   const handelKeyDown = useCallback(
@@ -172,15 +181,30 @@ const ModalAddTransaction = () => {
       {isOpen && (
         <Overlay onClick={handleBackDropClick}>
           <ModalWrapper>
-            <ButtonClose type="button" onClick={() => setIsOpen(!isOpen)}>
-              <IoCloseSharp />
+            <ButtonClose
+              type="button"
+              onClick={() => {
+                reset();
+                setIsOpen(!isOpen);
+              }}
+            >
+              <IoCloseSharp
+                style={{
+                  position: 'absolute',
+                  top: '20px',
+                  right: '20px',
+                }}
+                size="30px"
+              />
             </ButtonClose>
             <form onSubmit={onSubmit}>
               <ModalTitle>Add transaction</ModalTitle>
               <SwitchModal checked={checked} setChecked={setChecked} />
               {checked && (
-                <>
+                <ErrorWrapper>
                   <Select
+                    placeholder="Select a category"
+                    styles={newStyles}
                     options={options}
                     value={selected ? selected : ''}
                     onChange={data => {
@@ -191,25 +215,30 @@ const ModalAddTransaction = () => {
                     }}
                     required
                   />
-                  <p>{error.select}</p>
-                </>
+                  <ErrorText>{error.select}</ErrorText>
+                </ErrorWrapper>
               )}
               <BalanceDateWrapper htmlFor="balance">
-                <InputBalance
-                  type="text"
-                  name="balance"
-                  id="balance"
-                  placeholder="0.00"
-                  value={balance}
-                  required
-                  onChange={e => handleChangeBalance(e)}
-                />
-                <DatetimePicker
-                  date={date}
-                  setDate={setDate}
-                  setError={setError}
-                />
-                <p>{error.datePick}</p>
+                <ErrorWrapper>
+                  <InputBalance
+                    type="text"
+                    name="balance"
+                    id="balance"
+                    placeholder="0.00"
+                    value={balance}
+                    required
+                    onChange={e => handleChangeBalance(e)}
+                  />
+                  <ErrorText>{error.balance}</ErrorText>
+                </ErrorWrapper>
+                <ErrorWrapper>
+                  <DatetimePicker
+                    date={date}
+                    setDate={setDate}
+                    setError={setError}
+                  />
+                  <ErrorText>{error.datePick}</ErrorText>
+                </ErrorWrapper>
               </BalanceDateWrapper>
               <TextareaComment
                 placeholder="Comment"
@@ -217,15 +246,17 @@ const ModalAddTransaction = () => {
                 value={comment}
                 onChange={e => handleChange(e)}
               ></TextareaComment>
-              <Button type="submit">Add</Button>
-              <Button
-                type="button"
-                onClick={() => {
-                  reset();
-                }}
-              >
-                Clear
-              </Button>
+              <ButtonWrapper>
+                <Button type="submit">Add</Button>
+                <Button
+                  type="button"
+                  onClick={() => {
+                    reset();
+                  }}
+                >
+                  Clear
+                </Button>
+              </ButtonWrapper>
             </form>
           </ModalWrapper>
         </Overlay>
