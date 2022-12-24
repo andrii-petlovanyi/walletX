@@ -148,6 +148,16 @@ export const Button = styled.button`
     props.className === 'button__add' ? '#ffffff' : '#4a56e2'};
   border-color: ${props =>
     props.className === 'button__add' ? '#24cca7' : '#4a56e2'};
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: ${props =>
+      props.className === 'button__add' ? '#14BC97' : '#ffffff'};
+    color: ${props =>
+      props.className !== 'button__add' ? '#14BC97' : '#ffffff'};
+    border-color: ${props =>
+      props.className !== 'button__add' ? '#14BC97' : '#14BC97'};
+  }
   &:not(:last-child) {
     margin-bottom: 20px;
   }

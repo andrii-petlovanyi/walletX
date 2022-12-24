@@ -1,18 +1,21 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import authSelectors from 'redux/auth/auth-selectors';
-import getCategory from 'redux/category/category-operations';
-import { selectCategory } from 'redux/category/category-selectors';
-import operations from 'redux/transactions/transactions-operations';
-import DatetimePicker from '../DatetimePicker/DatetimePicker';
-import { ButtonAddTrans } from '../styled';
-import { HiPlus } from 'react-icons/hi2';
 import Select from 'react-select';
+import { HiPlus } from 'react-icons/hi2';
+import { IoCloseSharp } from 'react-icons/io5';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { IoCloseSharp } from 'react-icons/io5';
-import SwitchModal from '../SwitchModal/SwitchModal';
 
+import operations from 'redux/transactions/transactions-operations';
+import getCategory from 'redux/category/category-operations';
+import { selectCategory } from 'redux/category/category-selectors';
+import authSelectors from 'redux/auth/auth-selectors';
+import { selectError } from 'redux/transactions/transactions-selectors';
+import { cleanError } from 'redux/transactions/transactions-slice';
+
+import SwitchModal from '../SwitchModal/SwitchModal';
+import DatetimePicker from '../DatetimePicker/DatetimePicker';
+import { ButtonAddTrans } from '../styled';
 import {
   InputBalance,
   Overlay,
@@ -26,8 +29,6 @@ import {
   ErrorWrapper,
   ErrorText,
 } from './styled.js';
-import { selectError } from 'redux/transactions/transactions-selectors';
-import { cleanError } from 'redux/transactions/transactions-slice';
 import addTransSelectStyles from 'helpers/addTransSelectStyles';
 
 const ModalAddTransaction = ({ className = '' }) => {
