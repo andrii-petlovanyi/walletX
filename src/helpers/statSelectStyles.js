@@ -18,6 +18,18 @@ const statSelectStyles = {
     padding: '9px 16px',
     color: '#000',
 
+    '@media only screen and (max-width: 767px)': {
+      ...baseStyles['@media only screen and (max-width: 767px)'],
+      width: '280px',
+    },
+
+    '@media only screen and (min-width: 768px) and (max-width: 1279px)': {
+      ...baseStyles[
+        '@media only screen and (min-width: 768px) and (max-width: 1279px)'
+      ],
+      width: '150px',
+    },
+
     background: 'none',
     width: '181px',
     fontFamily: 'Circe',
@@ -41,7 +53,7 @@ const statSelectStyles = {
     borderRadius: isFocused ? '0' : isSelected ? '0' : undefined,
     fontFamily: 'Circe',
     fontWeight: isFocused ? '700' : isSelected ? '700' : '400',
-    fontSize: 16,
+    fontSize: '16px',
     lineHeight: 1.5,
     display: 'flex',
     alignItems: 'center',

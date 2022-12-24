@@ -54,10 +54,36 @@ export const TdData = styled.td`
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 1.5;
   text-align: right;
   padding-right: 20px;
   color: #000000;
+`;
+
+export const TdDataComment = styled.td`
+  position: relative;
+
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: right;
+  padding-right: 20px;
+  color: #000000;
+  :hover::before {
+    z-index: 3;
+    position: absolute;
+    padding: 5px;
+    opacity: ${props => (props.commentStr.length > 14 ? 1 : 0)};
+    content: '${props =>
+      props.commentStr.length > 14 ? props.commentStr : ''}';
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid black;
+    color: black;
+    cursor: pointer;
+  }
 `;
 
 export const TdDataSum = styled.td`
@@ -66,7 +92,7 @@ export const TdDataSum = styled.td`
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 1.5;
   text-align: right;
   padding-right: 20px;
   color: var(--trans-color);
