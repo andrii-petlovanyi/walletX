@@ -5,7 +5,9 @@ import {
   SwitchWrapper,
   TextExpense,
   TextIncome,
-} from '../styled';
+} from './styled';
+import imagePlus from '../../../images/modal/plus.svg';
+import imageMinus from '../../../images/modal/minus.svg';
 
 const SwitchModal = ({ checked, setChecked }) => {
   const handleChange = e => setChecked(e.target.checked);
@@ -21,10 +23,14 @@ const SwitchModal = ({ checked, setChecked }) => {
           name="checkbox"
           checked={checked}
           type="checkbox"
-          // required
           onChange={handleChange}
         />
-        <Switch switchColor={!checked ? '#24cca7' : '#ff6596'} />
+        <Switch
+          switchColor={!checked ? '#24cca7' : '#ff6596'}
+          backgroundImage={
+            !checked ? `url(${imagePlus})` : `url(${imageMinus})`
+          }
+        ></Switch>
       </SwitchLabel>
       <TextExpense expenseColor={expenseColor}>Expense</TextExpense>
     </SwitchWrapper>

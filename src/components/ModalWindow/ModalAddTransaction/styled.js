@@ -7,7 +7,7 @@ export const ModalWrapper = styled.div`
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 55%;
+  top: 62%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: '100vw';
@@ -38,15 +38,11 @@ export const ModalTitle = styled.h1`
   }
 `;
 
-
-
 export const InputBalance = styled.input`
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  margin-top: 40px;
-  margin-bottom: 40px;
   width: 100%;
   height: 32px;
   padding: 8px 20px;
@@ -85,10 +81,11 @@ export const BalanceDateWrapper = styled.div`
 export const ErrorWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom: 40px;
 `;
 
 export const ErrorText = styled.p`
-  margin-left: 8px;
+  padding: 5px 20px;
   color: red;
 `;
 
@@ -99,7 +96,6 @@ export const TextareaComment = styled.textarea`
   padding-left: 20px;
   padding-right: 20px;
   margin: 0 auto;
-  margin-top: 40px;
   margin-bottom: 40px;
   width: 100%;
   height: 84px;
@@ -146,41 +142,55 @@ export const Button = styled.button`
   text-align: center;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  background: var(--main-bg-cl);
-  color: var(--accent-active-cl);
+  background-color: ${props =>
+    props.className === 'button__add' ? '#24cca7' : '#ffffff'};
+  color: ${props =>
+    props.className === 'button__add' ? '#ffffff' : '#4a56e2'};
+  border-color: ${props =>
+    props.className === 'button__add' ? '#24cca7' : '#4a56e2'};
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: ${props =>
+      props.className === 'button__add' ? '#14BC97' : '#ffffff'};
+    color: ${props =>
+      props.className !== 'button__add' ? '#14BC97' : '#ffffff'};
+    border-color: ${props =>
+      props.className !== 'button__add' ? '#14BC97' : '#14BC97'};
+  }
   &:not(:last-child) {
     margin-bottom: 20px;
-  }
-
-  &:hover,
-  &:active {
-    background: var(--income-cl);
-    color: var(--main-bg-cl);
-    border-color: var(--income-cl);
   }
 `;
 
 export const Overlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.25);
+  @media ${device.tablet} {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.25);
+  }
 `;
 
 export const ButtonClose = styled.button`
-  /* display: flex;
+  position: absolute;
+  display: flex;
   justify-content: flex-end;
   align-items: center;
-  color: var(--main-text-cl);
-  width: 16px;
-  height: 16px;
-  font-size: 25px;
-  border-radius: 10px;
-  border-color: red;
+  top: 15px;
+  right: 15px;
+  width: 20px;
+  height: 20px;
   background: none;
-  & svg {
-    margin-right: 0;
-  } */
+  font-size: 20px;
+  border: none;
+  @media ${device.tablet} {
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    font-size: 25px;
+  }
 `;

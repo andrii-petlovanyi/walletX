@@ -1,18 +1,21 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import authSelectors from 'redux/auth/auth-selectors';
-import getCategory from 'redux/category/category-operations';
-import { selectCategory } from 'redux/category/category-selectors';
-import operations from 'redux/transactions/transactions-operations';
-import DatetimePicker from '../DatetimePicker/DatetimePicker';
-import { ButtonAddTrans } from '../styled';
-import { HiPlus } from 'react-icons/hi2';
 import Select from 'react-select';
+import { HiPlus } from 'react-icons/hi2';
+import { IoCloseSharp } from 'react-icons/io5';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { IoCloseSharp } from 'react-icons/io5';
-import SwitchModal from '../SwitchModal/SwitchModal';
 
+import operations from 'redux/transactions/transactions-operations';
+import getCategory from 'redux/category/category-operations';
+import { selectCategory } from 'redux/category/category-selectors';
+import authSelectors from 'redux/auth/auth-selectors';
+import { selectError } from 'redux/transactions/transactions-selectors';
+import { cleanError } from 'redux/transactions/transactions-slice';
+
+import SwitchModal from '../SwitchModal/SwitchModal';
+import DatetimePicker from '../DatetimePicker/DatetimePicker';
+import { ButtonAddTrans } from '../styled';
 import {
   InputBalance,
   Overlay,
@@ -26,11 +29,9 @@ import {
   ErrorWrapper,
   ErrorText,
 } from './styled.js';
-import { selectError } from 'redux/transactions/transactions-selectors';
-import { cleanError } from 'redux/transactions/transactions-slice';
 import addTransSelectStyles from 'helpers/addTransSelectStyles';
 
-const ModalAddTransaction = () => {
+const ModalAddTransaction = ({ className = '' }) => {
   const [checked, setChecked] = useState(true);
   const [selected, setSelected] = useState();
   const [balance, setBalance] = useState('');
@@ -100,7 +101,7 @@ const ModalAddTransaction = () => {
       errorObj.datePick = true;
     }
 
-    if (balance > userBalance) {
+    if (checked && balance > userBalance) {
       await setError(prevState => {
         return { ...prevState, balance: `Unavailable amount ` };
       });
@@ -144,6 +145,7 @@ const ModalAddTransaction = () => {
   const handelKeyDown = useCallback(
     event => {
       if (event.code === 'Escape') {
+        reset();
         setIsOpen(!isOpen);
       }
     },
@@ -152,6 +154,7 @@ const ModalAddTransaction = () => {
 
   const handleBackDropClick = event => {
     if (event.currentTarget === event.target) {
+      reset();
       setIsOpen(!isOpen);
     }
   };
@@ -188,14 +191,7 @@ const ModalAddTransaction = () => {
                 setIsOpen(!isOpen);
               }}
             >
-              <IoCloseSharp
-                style={{
-                  position: 'absolute',
-                  top: '20px',
-                  right: '20px',
-                }}
-                size="30px"
-              />
+              <IoCloseSharp />
             </ButtonClose>
             <form onSubmit={onSubmit}>
               <ModalTitle>Add transaction</ModalTitle>
@@ -247,9 +243,12 @@ const ModalAddTransaction = () => {
                 onChange={e => handleChange(e)}
               ></TextareaComment>
               <ButtonWrapper>
-                <Button type="submit">Add</Button>
+                <Button type="submit" className="button__add">
+                  Add
+                </Button>
                 <Button
                   type="button"
+                  className={className}
                   onClick={() => {
                     reset();
                   }}
