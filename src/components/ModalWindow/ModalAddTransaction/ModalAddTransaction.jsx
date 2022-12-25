@@ -48,6 +48,7 @@ const ModalAddTransaction = ({ className = '' }) => {
   const isError = useSelector(selectError);
   const userBalance = useSelector(authSelectors.getUserBalance);
   const dispatch = useDispatch();
+  
 
   const options = categories
     .filter(category => category.type === 'EXPENSE')
