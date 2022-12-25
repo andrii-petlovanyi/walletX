@@ -11,10 +11,12 @@ ChartJS.register(ArcElement, Tooltip);
 
 const DoughnutChart = () => {
   const statData = useSelector(state => state.statistic.statistic);
-  const balance = useSelector(state => state.auth.user.balance);
 
   const [expenses, setExpenses] = useState([]);
   const [category, setCategory] = useState([]);
+
+  const summaryBalance =
+    statData?.incomeSummary - Math.abs(statData?.expenseSummary);
 
   useEffect(() => {
     if (!statData?.categoriesSummary?.length) return setExpenses([]);
@@ -65,7 +67,7 @@ const DoughnutChart = () => {
         {expenses?.length > 0 && <Doughnut data={data} options={options} />}
         {expenses?.length > 0 && (
           <DoughnutBalance>
-            {'\u20B4'} {numberSpace(balance)}
+            {'\u20B4'} {numberSpace(summaryBalance)}
           </DoughnutBalance>
         )}
       </ChartContainer>
