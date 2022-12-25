@@ -2,6 +2,7 @@ import Currency from './Currency';
 import { useMedia } from 'react-use';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import SectionAnim from 'components/Animations/SectionAnim';
 
 const CurrencyMob = () => {
   const isMob = useMedia('(max-width: 767px)');
@@ -13,7 +14,9 @@ const CurrencyMob = () => {
   }, [isMob, location.pathname, navigate]);
   return (
     <>
-      <Currency />
+      <SectionAnim delay={0.2}>
+        <Currency />
+      </SectionAnim>
     </>
   );
 };

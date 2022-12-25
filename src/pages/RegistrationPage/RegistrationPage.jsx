@@ -8,17 +8,25 @@ import {
   TextStyled,
   ContainerStyled,
 } from './RegistrationPage.styled';
+import ImgWrapAnim from 'components/Animations/ImgWrapAnim';
+import SectionAnim from 'components/Animations/SectionAnim';
 
 const RegistrationPage = () => {
   return (
     <FieldStyled>
       <ContainerStyled>
         <TitleFieldStyled>
-          <img src={mainRegister} alt="" width="450" />
-          <TextStyled>Finance App</TextStyled>
+          <ImgWrapAnim>
+            <img src={mainRegister} alt="" width="450" />
+          </ImgWrapAnim>
+          <SectionAnim delay={0.1}>
+            <TextStyled>Finance App</TextStyled>
+          </SectionAnim>
         </TitleFieldStyled>
         <FormFieldStyled>
-          <RegistrationForm />
+          <SectionAnim delay={0.3}>
+            <RegistrationForm />
+          </SectionAnim>
         </FormFieldStyled>
       </ContainerStyled>
     </FieldStyled>

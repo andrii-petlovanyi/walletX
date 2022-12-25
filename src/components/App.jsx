@@ -7,7 +7,7 @@ import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
 import { useDispatch, useSelector } from 'react-redux';
 import operations from 'redux/auth/auth-operations';
 import PublicRoute from './Routs/PublicRoute';
-import StatTab from './StatTab/StatTab';
+import StatTab from '../pages/StatTab/StatTab';
 import HomePage from 'pages/HomePage/HomePage';
 import CurrencyMob from './Currency/CurrencyMob';
 import { ToastContainer } from 'react-toastify';

@@ -6,6 +6,7 @@ import TransactionsListMobile from 'components/TransactionsListMobile/Transactio
 import { useMedia } from 'react-use';
 import { ListBox } from './HomePage.styled';
 import Balance from 'components/Balance/Balance';
+import SectionAnim from 'components/Animations/SectionAnim';
 
 const HomePage = () => {
   const isWide = useMedia('(min-width: 768px)');
@@ -13,10 +14,16 @@ const HomePage = () => {
 
   return (
     <>
-      {isMob && <Balance />}
-      <ListBox>
-        {isWide ? <TransactionsListDesktop /> : <TransactionsListMobile />}
-      </ListBox>
+      {isMob && (
+        <SectionAnim delay={0.2}>
+          <Balance />
+        </SectionAnim>
+      )}
+      <SectionAnim delay={0.3}>
+        <ListBox>
+          {isWide ? <TransactionsListDesktop /> : <TransactionsListMobile />}
+        </ListBox>
+      </SectionAnim>
       <ModalAddTransaction />
       <ToastContainer />
     </>
