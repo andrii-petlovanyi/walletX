@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/walletX/static/css/main.99b7c7a1.css",
-    "main.js": "/walletX/static/js/main.f2c98f97.js",
+    "main.js": "/walletX/static/js/main.6cbb3654.js",
     "static/js/187.6e9c4a77.chunk.js": "/walletX/static/js/187.6e9c4a77.chunk.js",
     "static/js/34.4203ff61.chunk.js": "/walletX/static/js/34.4203ff61.chunk.js",
     "static/js/869.cad036db.chunk.js": "/walletX/static/js/869.cad036db.chunk.js",
     "static/css/307.38e66425.chunk.css": "/walletX/static/css/307.38e66425.chunk.css",
-    "static/js/307.f9ba59a1.chunk.js": "/walletX/static/js/307.f9ba59a1.chunk.js",
+    "static/js/307.8aeba8e8.chunk.js": "/walletX/static/js/307.8aeba8e8.chunk.js",
     "static/js/164.5b098e2b.chunk.js": "/walletX/static/js/164.5b098e2b.chunk.js",
     "static/js/171.08876f94.chunk.js": "/walletX/static/js/171.08876f94.chunk.js",
     "static/js/614.860afeac.chunk.js": "/walletX/static/js/614.860afeac.chunk.js",
@@ -48,12 +48,12 @@
     "static/media/plus.svg": "/walletX/static/media/plus.6194a661e88e1e5113d28da2398b6404.svg",
     "static/media/minus.svg": "/walletX/static/media/minus.e0cb843d1ff381a83ce6550df5260e39.svg",
     "main.99b7c7a1.css.map": "/walletX/static/css/main.99b7c7a1.css.map",
-    "main.f2c98f97.js.map": "/walletX/static/js/main.f2c98f97.js.map",
+    "main.6cbb3654.js.map": "/walletX/static/js/main.6cbb3654.js.map",
     "187.6e9c4a77.chunk.js.map": "/walletX/static/js/187.6e9c4a77.chunk.js.map",
     "34.4203ff61.chunk.js.map": "/walletX/static/js/34.4203ff61.chunk.js.map",
     "869.cad036db.chunk.js.map": "/walletX/static/js/869.cad036db.chunk.js.map",
     "307.38e66425.chunk.css.map": "/walletX/static/css/307.38e66425.chunk.css.map",
-    "307.f9ba59a1.chunk.js.map": "/walletX/static/js/307.f9ba59a1.chunk.js.map",
+    "307.8aeba8e8.chunk.js.map": "/walletX/static/js/307.8aeba8e8.chunk.js.map",
     "164.5b098e2b.chunk.js.map": "/walletX/static/js/164.5b098e2b.chunk.js.map",
     "171.08876f94.chunk.js.map": "/walletX/static/js/171.08876f94.chunk.js.map",
     "614.860afeac.chunk.js.map": "/walletX/static/js/614.860afeac.chunk.js.map",
@@ -68,6 +68,6 @@
   },
   "entrypoints": [
     "static/css/main.99b7c7a1.css",
-    "static/js/main.f2c98f97.js"
+    "static/js/main.6cbb3654.js"
   ]
 }
