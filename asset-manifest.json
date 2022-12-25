@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/walletX/static/css/main.3e324122.css",
-    "main.js": "/walletX/static/js/main.39f87f17.js",
+    "main.js": "/walletX/static/js/main.503bdb04.js",
     "static/media/Circe-Regular.eot": "/walletX/static/media/Circe-Regular.13bbfad0e7f851273f3c.eot",
     "static/media/Circe-Regular.ttf": "/walletX/static/media/Circe-Regular.814e4dd4329ffdb6c9ed.ttf",
     "static/media/Circe-Bold.eot": "/walletX/static/media/Circe-Bold.23b8280ab15052d5ba11.eot",
@@ -32,10 +32,10 @@
     "static/media/plus.svg": "/walletX/static/media/plus.6194a661e88e1e5113d28da2398b6404.svg",
     "static/media/minus.svg": "/walletX/static/media/minus.e0cb843d1ff381a83ce6550df5260e39.svg",
     "main.3e324122.css.map": "/walletX/static/css/main.3e324122.css.map",
-    "main.39f87f17.js.map": "/walletX/static/js/main.39f87f17.js.map"
+    "main.503bdb04.js.map": "/walletX/static/js/main.503bdb04.js.map"
   },
   "entrypoints": [
     "static/css/main.3e324122.css",
-    "static/js/main.39f87f17.js"
+    "static/js/main.503bdb04.js"
   ]
 }
