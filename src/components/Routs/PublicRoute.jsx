@@ -4,10 +4,13 @@ import authSelectors from 'redux/auth/auth-selectors';
 
 export default function PublicRoute() {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  const isRefresh = useSelector(authSelectors.getIsRefreshingUser);
 
-  if (isLoggedIn) {
+  if (isLoggedIn && !isRefresh) {
     return <Navigate to="/" />;
   }
 
-  return <Outlet />;
+  if (!isLoggedIn && !isRefresh) {
+    return <Outlet />;
+  }
 }
