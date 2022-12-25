@@ -44,6 +44,7 @@ const ButtonExit = styled.button`
   &:hover,
   &:focus {
     color: var(--accent-active-cl);
+ 
   }
 `;
 

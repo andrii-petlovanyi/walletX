@@ -64,8 +64,10 @@ const ButtonYes = styled.button`
 
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  /* transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1); */
+  transition: background 0.5s ease;
   :hover {
-    background: #307957;
+    background: #14bc97;
     cursor: pointer;
   }
 `;
@@ -81,10 +83,13 @@ const ButtonNo = styled.button`
   font-style: normal;
   font-weight: 400;
   font-size: 15px;
-
   text-transform: uppercase;
+  transition: color 0.5s ease;
+  transition: 0.5s ease;
   :hover {
     cursor: pointer;
+    border-color: #14bc97;
+    color: #14bc97;
   }
 `;
 const styles = { ModalStyled, ButtonWrap, ButtonYes, ButtonNo };
