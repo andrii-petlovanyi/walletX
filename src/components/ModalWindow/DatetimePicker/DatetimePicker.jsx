@@ -12,7 +12,7 @@ const DatetimePicker = ({ date, setDate, setError }) => {
     return current.isBefore(end) && current.isAfter(start);
   };
 
-  //not good case
+  //is not good solution
   const datetimeRef = useRef(null);
 
   const handleChange = dateObj => {
@@ -21,7 +21,7 @@ const DatetimePicker = ({ date, setDate, setError }) => {
       return { ...prevState, datePick: null };
     });
 
-    //not good case
+    //is not good solution
     setTimeout(() => datetimeRef.current._closeCalendar(), 0);
   };
 
