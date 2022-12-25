@@ -5,9 +5,8 @@ export const transactionsListSort = (elementsList, category) => {
   //   return category.find(c => c.id === element.categoryId).name;
   // };
 
-  return [...elementsList]
-    .sort((a, b) => {
-      // console.log(moment(a.transactionDate), 'DD.MM.YY');
-      return (moment(a.transactionDate) - moment(b.transactionDate))
-    });
+  return [...elementsList].sort((a, b) => {
+    // console.log(moment(a.transactionDate), 'DD.MM.YY');
+    return moment(b.transactionDate) - moment(a.transactionDate);
+  });
 };
