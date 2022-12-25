@@ -104,20 +104,6 @@ export const StrTdCadegoryId = styled.td`
 export const StrTdComment = styled.td`
   text-align: left;
   position: relative;
-
-  :hover::before {
-    z-index: 3;
-    position: absolute;
-    padding: 5px;
-    opacity: ${props => (props.commentStr.length > 14 ? 1 : 0)};
-    content: '${props =>
-      props.commentStr.length > 14 ? props.commentStr : ''}';
-    background-color: white;
-    border-radius: 10px;
-    color: black;
-    cursor: pointer;
-    
-  }
 `;
 
 export const StrTdAmount = styled.td`

@@ -71,19 +71,6 @@ export const TdDataComment = styled.td`
   text-align: right;
   padding-right: 20px;
   color: #000000;
-  :hover::before {
-    z-index: 3;
-    position: absolute;
-    padding: 5px;
-    opacity: ${props => (props.commentStr.length > 14 ? 1 : 0)};
-    content: '${props =>
-      props.commentStr.length > 14 ? props.commentStr : ''}';
-    background-color: white;
-    border-radius: 10px;
-    border: 1px solid black;
-    color: black;
-    cursor: pointer;
-  }
 `;
 
 export const TdDataSum = styled.td`
