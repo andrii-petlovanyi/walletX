@@ -67,8 +67,9 @@ export const FormStyed = styled.form`
     text-align: center;
     letter-spacing: 0.1em;
     text-transform: uppercase;
+    transition: background-Color 250ms cubic-bezier(0.4, 0, 0.2, 1);
     :hover {
-      background: #307957;
+      background: #14bc97;
       cursor: pointer;
     }
   }
@@ -104,7 +105,13 @@ export const LinkStyled = styled(Link)`
   text-align: center;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   :hover {
+    border-color: #14bc97;
+    color: #14bc97;
     cursor: pointer;
   }
 `;
