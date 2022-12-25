@@ -37,9 +37,10 @@ const RegistrationForm = () => {
   const onSubmit = async e => {
     e.preventDefault();
     const checked = checkPassword();
+    if (parol1.length < 6)
+      return errorToast('Password must be length more 6 symbols');
     if (!checked) {
-      errorToast('Пароли не совпадают!');
-      return;
+      return errorToast('Passwords do not match!');
     }
     const form = e.currentTarget;
     const res = await dispatch(
@@ -83,8 +84,8 @@ const RegistrationForm = () => {
           name="password"
           placeholder="Password"
           value={parol1}
-          required
-          pattern=".{6,}"
+          // required
+          // pattern=".{6,}"
         />
       </label>
       <label>
@@ -95,8 +96,8 @@ const RegistrationForm = () => {
           type="password"
           name="ConfirmPassword"
           placeholder="Confirm password"
-          required
-          pattern=".{6,}"
+          // required
+          // pattern=".{6,}"
         />
         {parol.length > 0 && (
           <Box

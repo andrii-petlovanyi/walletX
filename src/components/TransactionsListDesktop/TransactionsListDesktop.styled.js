@@ -20,13 +20,8 @@ export const HeaderTr = styled.tr`
   border-color: white;
 `;
 
-// export const HeaderTh = styled.th`
-//   border-bottom-left-radius: 30px;
-//   border-color: #ffffff;
-// `;
-
 export const HeaderThDate = styled.th`
-  min-width: 75px;
+  width: 75px;
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
   padding-top: 15px;
@@ -34,28 +29,28 @@ export const HeaderThDate = styled.th`
 `;
 
 export const HeaderThType = styled.th`
-  min-width: 100px;
+  width: 90px;
   text-align: center;
   padding-top: 15px;
   padding-bottom: 16px;
 `;
 
 export const HeaderThCategore = styled.th`
-  min-width: 139px;
+  width: 139px;
   text-align: left;
   padding-top: 15px;
   padding-bottom: 16px;
 `;
 
 export const HeaderThComment = styled.th`
-  min-width: 117px;
+  width: 117px;
   text-align: left;
   padding-top: 15px;
   padding-bottom: 16px;
 `;
 
 export const HeaderThSum = styled.th`
-  min-width: 101px;
+  width: 101px;
   text-align: right;
   padding-top: 15px;
   padding-bottom: 16px;

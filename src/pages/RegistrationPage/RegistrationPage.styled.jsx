@@ -4,7 +4,7 @@ import ellipse2 from 'images/registration/ellipse2.png';
 import { device } from 'components/Layout/styled';
 
 export const FieldStyled = styled.div`
-  height: 100vh;
+  min-height: 100vh;
   background-color: #e5e5e5;
   background-image: url(${ellipse1}), url(${ellipse2});
   background-position: bottom left, top right;

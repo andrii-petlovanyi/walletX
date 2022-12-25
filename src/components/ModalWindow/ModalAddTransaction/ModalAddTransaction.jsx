@@ -28,8 +28,10 @@ import {
   ButtonWrapper,
   ErrorWrapper,
   ErrorText,
+  Frame,
 } from './styled.js';
 import addTransSelectStyles from 'helpers/addTransSelectStyles';
+import errorToast from 'components/Toasts/error';
 
 const ModalAddTransaction = ({ className = '' }) => {
   const [checked, setChecked] = useState(true);
@@ -67,6 +69,8 @@ const ModalAddTransaction = ({ className = '' }) => {
 
   const handleChange = e => {
     const { name, value } = e.target;
+    if (value.length > 150)
+      return errorToast('Comment must be max length 150 symbols');
     if (name === 'comment') {
       setComment(() => value);
     }
@@ -196,7 +200,7 @@ const ModalAddTransaction = ({ className = '' }) => {
             <form onSubmit={onSubmit}>
               <ModalTitle>Add transaction</ModalTitle>
               <SwitchModal checked={checked} setChecked={setChecked} />
-              {checked && (
+              {checked ? (
                 <ErrorWrapper>
                   <Select
                     placeholder="Select a category"
@@ -213,6 +217,8 @@ const ModalAddTransaction = ({ className = '' }) => {
                   />
                   <ErrorText>{error.select}</ErrorText>
                 </ErrorWrapper>
+              ) : (
+                <Frame />
               )}
               <BalanceDateWrapper htmlFor="balance">
                 <ErrorWrapper>
@@ -239,7 +245,6 @@ const ModalAddTransaction = ({ className = '' }) => {
               <TextareaComment
                 placeholder="Comment"
                 name="comment"
-                maxlength="30"
                 value={comment}
                 onChange={e => handleChange(e)}
               ></TextareaComment>

@@ -62,7 +62,6 @@ function DiagramTab() {
   );
 
   const handleChangeMonth = e => {
-    console.log(e.value);
     const month = e.value;
     statisticLS.month = month;
     setMonth(month);

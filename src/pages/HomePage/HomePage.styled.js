@@ -11,7 +11,7 @@ export const ListBox = styled.div`
 
   @media screen and (min-width: 768px) {
     width: 100%;
-    height: 50vh;
+    height: 45vh;
   }
   @media screen and (min-width: 1280px) {
     margin-left: 39px;

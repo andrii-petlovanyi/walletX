@@ -194,3 +194,7 @@ export const ButtonClose = styled.button`
     font-size: 25px;
   }
 `;
+
+export const Frame = styled.div`
+  height: 48px;
+`;
