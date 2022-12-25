@@ -1,4 +1,4 @@
-import React, { useEffect, lazy } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
@@ -28,7 +28,7 @@ export const App = () => {
 
   return (
     !isFetchingCurrentUser && (
-      <>
+      <Suspense fallback={false}>
         <Routes>
           <Route element={<PrivateRoute />}>
             <Route path="/" element={<Layout />}>
@@ -54,7 +54,7 @@ export const App = () => {
           pauseOnHover
           theme="light"
         />
-      </>
+      </Suspense>
     )
   );
 };
