@@ -1,8 +1,8 @@
 import React from 'react';
 import { useMedia } from 'react-use';
 import LogoStyled from 'components/Logo/styled';
-import logo from 'img/logo.svg';
-import logo_mob from 'img/logo.svg';
+import logo from 'images/logo.svg';
+import logo_mob from 'images/logo.svg';
 
 const Logo = () => {
   const isWide = useMedia('(min-width: 768px)');

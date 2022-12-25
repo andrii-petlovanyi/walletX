@@ -20,7 +20,7 @@ const LayoutStyled = styled.div`
 
 const Wrapper = styled.div`
   width: 100%;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 70px);
   margin: 0 auto;
   padding: 12px 20px 0 20px;
   display: block;
@@ -30,6 +30,7 @@ const Wrapper = styled.div`
 
   @media ${device.tablet} {
     width: 768px;
+    height: calc(100vh - 85px);
     padding: 32px 32px 84px 32px;
   }
 
