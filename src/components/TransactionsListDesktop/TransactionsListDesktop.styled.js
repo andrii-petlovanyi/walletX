@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Table = styled.table`
   width: 704px;
-  height: 306px;
+  /* height: 250px; */
   border-collapse: collapse;
   overflow: auto;
 `;
@@ -34,7 +34,7 @@ export const HeaderThDate = styled.th`
 `;
 
 export const HeaderThType = styled.th`
-  min-width: 131px;
+  min-width: 100px;
   text-align: center;
   padding-top: 15px;
   padding-bottom: 16px;
@@ -116,6 +116,7 @@ export const StrTdComment = styled.td`
     border-radius: 10px;
     color: black;
     cursor: pointer;
+    
   }
 `;
 

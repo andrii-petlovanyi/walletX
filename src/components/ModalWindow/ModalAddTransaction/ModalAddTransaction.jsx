@@ -48,7 +48,6 @@ const ModalAddTransaction = ({ className = '' }) => {
   const isError = useSelector(selectError);
   const userBalance = useSelector(authSelectors.getUserBalance);
   const dispatch = useDispatch();
-  
 
   const options = categories
     .filter(category => category.type === 'EXPENSE')
@@ -240,6 +239,7 @@ const ModalAddTransaction = ({ className = '' }) => {
               <TextareaComment
                 placeholder="Comment"
                 name="comment"
+                maxlength="30"
                 value={comment}
                 onChange={e => handleChange(e)}
               ></TextareaComment>
