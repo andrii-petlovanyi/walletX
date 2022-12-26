@@ -15,9 +15,6 @@ const DoughnutChart = () => {
   const [expenses, setExpenses] = useState([]);
   const [category, setCategory] = useState([]);
 
-  const summaryBalance =
-    statData?.incomeSummary - Math.abs(statData?.expenseSummary);
-
   useEffect(() => {
     if (!statData?.categoriesSummary?.length) return setExpenses([]);
     const filteredStat = statData.categoriesSummary.reduce(function (
@@ -25,7 +22,7 @@ const DoughnutChart = () => {
       curr
     ) {
       if (curr.type !== 'INCOME') {
-        return [...prev, curr.total];
+        return [...prev, Math.abs(curr.total)];
       } else {
         return [...prev];
       }
@@ -67,7 +64,7 @@ const DoughnutChart = () => {
         {expenses?.length > 0 && <Doughnut data={data} options={options} />}
         {expenses?.length > 0 && (
           <DoughnutBalance>
-            {'\u20B4'} {numberSpace(summaryBalance)}
+            {'\u20B4'} {numberSpace(Math.abs(statData?.expenseSummary))}
           </DoughnutBalance>
         )}
       </ChartContainer>

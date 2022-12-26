@@ -50,7 +50,7 @@ const RegistrationForm = () => {
         password: form.elements.password.value,
       })
     );
-    errorToast(res);
+    if (res.payload === 409) return errorToast('This user is registered');
     form.reset();
   };
 
@@ -127,7 +127,7 @@ const RegistrationForm = () => {
       </label>
 
       <button type="submit">Register</button>
-      <LinkStyled to="/login">Log-In</LinkStyled>
+      <LinkStyled to="/login">Log In</LinkStyled>
     </FormStyed>
   );
 };

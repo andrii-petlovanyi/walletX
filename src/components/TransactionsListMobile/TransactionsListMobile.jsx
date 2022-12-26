@@ -10,7 +10,7 @@ import {
   TdDataSum,
   Table,
   TdBorderDate,
-  TdBorderBalance,
+  // TdBorderBalance,
   TdDataComment,
 } from './TransactionsListMobile.styled';
 import { transactionsListSort } from 'components/TransactionsListSort/TransactionsListSort';
@@ -71,11 +71,11 @@ const TransactionsListMobile = () => {
             <TdName>Sum</TdName>
             <TdDataSum type={e.type}>{e.amount.toFixed(2)}</TdDataSum>
           </StrTr>
-          <StrTr>
+          {/* <StrTr>
             <TdBorderBalance type={e.type} />
             <TdName>Balance</TdName>
             <TdData>{e.balanceAfter.toFixed(2)}</TdData>
-          </StrTr>
+          </StrTr> */}
         </tbody>
       </Table>
     );

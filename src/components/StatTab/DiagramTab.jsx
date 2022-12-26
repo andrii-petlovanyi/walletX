@@ -77,7 +77,12 @@ function DiagramTab() {
     <Box marginTop="20px" marginBottom="50px">
       <DropDownWrapper>
         <Select
-          placeholder="Month"
+          // defaultValue={{ value: month }}
+          placeholder={
+            month
+              ? monthsList.filter(el => el.value === month)[0].label
+              : 'Month'
+          }
           options={monthsList}
           onChange={e => handleChangeMonth(e)}
           components={{
@@ -86,7 +91,9 @@ function DiagramTab() {
           styles={statSelectStyles}
         />
         <Select
-          placeholder="Year"
+          placeholder={
+            year ? yearsList.filter(el => el.value === year)[0].label : 'Year'
+          }
           options={yearsList}
           onChange={e => handleChangeYear(e)}
           components={{

@@ -25,11 +25,12 @@ export const HeaderThDate = styled.th`
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
   padding-top: 15px;
+  padding-left: 25px;
   padding-bottom: 16px;
 `;
 
 export const HeaderThType = styled.th`
-  width: 90px;
+  width: 60px;
   text-align: center;
   padding-top: 15px;
   padding-bottom: 16px;
@@ -43,29 +44,34 @@ export const HeaderThCategore = styled.th`
 `;
 
 export const HeaderThComment = styled.th`
-  width: 117px;
+  width: 177px;
   text-align: left;
   padding-top: 15px;
   padding-bottom: 16px;
 `;
 
 export const HeaderThSum = styled.th`
-  width: 101px;
+  width: 51px;
   text-align: right;
   padding-top: 15px;
   padding-bottom: 16px;
-`;
+  padding-right: 30px;
 
-export const HeaderThBalance = styled.th`
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
   border-color: #ffffff;
-  min-width: 141px;
-  text-align: right;
-  padding-right: 20px;
-  padding-top: 15px;
-  padding-bottom: 16px;
 `;
+
+// export const HeaderThBalance = styled.th`
+//   border-top-right-radius: 30px;
+//   border-bottom-right-radius: 30px;
+//   border-color: #ffffff;
+//   min-width: 141px;
+//   text-align: right;
+//   padding-right: 20px;
+//   padding-top: 15px;
+//   padding-bottom: 16px;
+// `;
 
 export const StrTr = styled.tr`
   font-family: 'Circe';
@@ -109,10 +115,12 @@ export const StrTdAmount = styled.td`
   line-height: 1.5;
   text-align: right;
 
+  padding-right: 28px;
+
   color: ${props => (props.type === 'INCOME' ? '#24CCA7' : '#ff6596')};
 `;
 
-export const StrTdBalanceAfter = styled.td`
-  text-align: right;
-  padding-right: 28px;
-`;
+// export const StrTdBalanceAfter = styled.td`
+//   text-align: right;
+//   padding-right: 28px;
+// `;

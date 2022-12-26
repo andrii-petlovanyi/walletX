@@ -3,14 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import Select from 'react-select';
 import { HiPlus } from 'react-icons/hi2';
 import { IoCloseSharp } from 'react-icons/io5';
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import operations from 'redux/transactions/transactions-operations';
 import getCategory from 'redux/category/category-operations';
 import { selectCategory } from 'redux/category/category-selectors';
 import authSelectors from 'redux/auth/auth-selectors';
-import { selectError } from 'redux/transactions/transactions-selectors';
+// import { selectError } from 'redux/transactions/transactions-selectors';
 import { cleanError } from 'redux/transactions/transactions-slice';
 
 import SwitchModal from '../SwitchModal/SwitchModal';
@@ -34,7 +33,7 @@ import addTransSelectStyles from 'helpers/addTransSelectStyles';
 import errorToast from 'components/Toasts/error';
 
 const ModalAddTransaction = ({ className = '' }) => {
-  const [checked, setChecked] = useState(true);
+  const [checked, setChecked] = useState(false); //true default
   const [selected, setSelected] = useState();
   const [balance, setBalance] = useState('');
   const [comment, setComment] = useState('');
@@ -47,7 +46,7 @@ const ModalAddTransaction = ({ className = '' }) => {
   });
   const categories = useSelector(selectCategory);
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  const isError = useSelector(selectError);
+  // const isError = useSelector(selectError);
   const userBalance = useSelector(authSelectors.getUserBalance);
   const dispatch = useDispatch();
 
@@ -132,7 +131,14 @@ const ModalAddTransaction = ({ className = '' }) => {
       categoryId: categoryData.id,
       comment: comment,
     };
-    dispatch(operations.createTransaction(transaction));
+    const res = await dispatch(operations.createTransaction(transaction));
+
+    if (
+      res?.payload?.message &&
+      res?.payload?.message[0] === 'Expense amount should be negative'
+    )
+      return errorToast('Expense amount should be more than 0');
+
     reset();
     setIsOpen(false);
   };
@@ -142,7 +148,7 @@ const ModalAddTransaction = ({ className = '' }) => {
     setBalance('');
     setComment('');
     setDate(new Date());
-    setChecked(true);
+    setChecked(false); //true default
     setError({ select: false, balance: false, datePick: false });
   };
 
@@ -173,7 +179,7 @@ const ModalAddTransaction = ({ className = '' }) => {
 
   return (
     <>
-      {isError && toast('Error!')}
+      {/* {isError && toast('Error!')} */}
       {!isOpen && (
         <ButtonAddTrans
           aria-label="add transaction"
@@ -223,7 +229,7 @@ const ModalAddTransaction = ({ className = '' }) => {
               <BalanceDateWrapper htmlFor="balance">
                 <ErrorWrapper>
                   <InputBalance
-                    type="text"
+                    type="number"
                     name="balance"
                     id="balance"
                     placeholder="0.00"

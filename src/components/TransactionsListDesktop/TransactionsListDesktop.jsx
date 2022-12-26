@@ -13,9 +13,7 @@ import {
   StrTdCadegoryId,
   StrTdComment,
   StrTdAmount,
-  StrTdBalanceAfter,
   HeaderThDate,
-  HeaderThBalance,
   HeaderThCategore,
   HeaderThComment,
   HeaderThType,
@@ -27,7 +25,7 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 
 const TransactionsListDesktop = () => {
-  const VISIBLE_SYMBOL_COUNT = 14;
+  const VISIBLE_SYMBOL_COUNT = 36;
   const dispatch = useDispatch();
   const elementsList = useSelector(state => state.transaction.transactions);
   const category = useSelector(state => state.category.category);
@@ -49,7 +47,7 @@ const TransactionsListDesktop = () => {
           <HeaderThCategore>Category</HeaderThCategore>
           <HeaderThComment>Comment</HeaderThComment>
           <HeaderThSum>Sum</HeaderThSum>
-          <HeaderThBalance>Balance</HeaderThBalance>
+          {/* <HeaderThBalance>Balance</HeaderThBalance> */}
         </HeaderTr>
       </thead>
       <tbody>
@@ -73,7 +71,7 @@ const TransactionsListDesktop = () => {
                 <StrTdComment>{e.comment}</StrTdComment>
               )}
               <StrTdAmount type={e.type}>{e.amount.toFixed(2)}</StrTdAmount>
-              <StrTdBalanceAfter>{e.balanceAfter.toFixed(2)}</StrTdBalanceAfter>
+              {/* <StrTdBalanceAfter>{e.balanceAfter.toFixed(2)}</StrTdBalanceAfter> */}
             </StrTr>
           );
         })}
